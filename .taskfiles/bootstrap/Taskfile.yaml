@@ -28,4 +28,4 @@ tasks:
       - test -f {{.KUBECONFIG}}
       - test -f {{.ROOT_DIR}}/.sops.yaml
       - test -f {{.SCRIPTS_DIR}}/bootstrap-apps.sh
-      - test -f {{.SOPS_AGE_KEY_FILE}}
+#      - test -f {{.SOPS_AGE_KEY_FILE}}

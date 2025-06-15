@@ -39,6 +39,25 @@ nodes:
         mtu: 1500
         vip:
           ip: "10.0.2.100"
+  - hostname: "mizu-02"
+    ipAddress: "10.0.2.11"
+    installDisk: "/dev/sda"
+    machineSpec:
+      secureboot: false
+    talosImageURL: factory.talos.dev/installer/376567988ad370138ad8b2698212367b8edcb69b5fd68c80be1f2ec7d603b4ba
+    controlPlane: true
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "c8:5a:cf:c1:31:2b"
+        dhcp: false
+        addresses:
+          - "10.0.2.11/23"
+        routes:
+          - network: "0.0.0.0/0"
+            gateway: "10.0.2.1"
+        mtu: 1500
+        vip:
+          ip: "10.0.2.100"
 
 # Global patches
 patches:

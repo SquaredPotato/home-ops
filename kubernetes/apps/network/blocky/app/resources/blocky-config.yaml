@@ -1,0 +1,166 @@
+ports:
+  dns: 53
+  tls: 853
+  http: 4000
+
+upstreams:
+  strategy: parallel_best
+  groups:
+    default:
+      - 10.0.2.3
+      - 1.1.1.1
+      - 1.0.0.1
+
+conditional:
+  fallbackUpstream: true
+  mapping:
+    solid-optics.com: 10.2.0.2
+
+customDNS:
+  customTTL: 1h
+  filterUnmappedTypes: true
+  mapping:
+    alertmanager.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+    bw.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
+    bazarr.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+    blocky.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+    dns.abchost.nl: "${CLUSTER_BLOCKY_IP}"
+    grafana.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+    home.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
+    idrac.lan: "192.168.2.126"
+    immich.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
+    invoice.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
+    jelly.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
+    lidarr.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+    longhorn.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+    marax.lan: "192.168.2.205"
+    meals.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
+    mosquitto.abchost.nl: "${CLUSTER_MOSQUITTO_IP}"
+    next.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
+    outline.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
+    pgadmin.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+    phpmyadmin.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+    printer.lan: "${LAN_PRINTER_IP}"
+    prometheus.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+    prowlarr.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+    proxies.abchost.nl: "${LAN_NUC}"
+    ptu.abchost.nl: "${LAN_NUC}"
+    radarr.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+    rancher.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+    schokker.dev: "${LAN_NUC}"
+    sh.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+    sso.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
+    sonarr.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+    slskd.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+    status.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+    tdarr.abchost.nl: "${LAN_TDARR_IP}"
+    torrent.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+    truenas.abchost.nl: "${LAN_TRUENAS_IP}"
+    nas.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+    un.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+    univac.lan: "${LAN_NUC}"
+    volumio.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+    zigbee.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+
+prometheus:
+  enable: true
+  path: /metrics
+
+caching:
+  minTime: 15m
+  prefetching: true
+  prefetchExpires: 2h
+
+blocking:
+  blackLists:
+    platforms:
+      - https://raw.githubusercontent.com/jmdugan/blocklists/master/corporations/facebook/all-but-whatsapp
+      - https://ente.dev/api/blocklist/tiktok
+      - https://ente.dev/api/blocklist/google-amp
+    ads:
+      - https://adaway.org/hosts.txt
+      - https://v.firebog.net/hosts/AdguardDNS.txt
+      - https://v.firebog.net/hosts/Admiral.txt
+      - https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt
+      - https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
+      - https://v.firebog.net/hosts/Easylist.txt
+      - https://big.oisd.nl/domainswild
+      - https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext
+      - https://raw.githubusercontent.com/FadeMind/hosts.extras/master/UncheckyAds/hosts
+      - https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts
+    malicious: # Ref: https://firebog.net
+      - https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareHosts.txt
+      - https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt
+      - https://s3.amazonaws.com/lists.disconnect.me/simple_malvertising.txt
+      - https://v.firebog.net/hosts/Prigent-Crypto.txt
+      - https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Risk/hosts
+      - https://bitbucket.org/ethanr/dns-blacklists/raw/master/bad_lists/Mandiant_APT1_Report_Appendix_D.txt
+      - https://phishing.army/download/phishing_army_blocklist_extended.txt
+      - https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-malware.txt
+      - https://v.firebog.net/hosts/RPiList-Malware.txt
+      - https://v.firebog.net/hosts/RPiList-Phishing.txt
+      - https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt
+      - https://raw.githubusercontent.com/AssoEchap/stalkerware-indicators/master/generated/hosts
+      - https://urlhaus.abuse.ch/downloads/hostfile/
+    trackers:
+      - https://v.firebog.net/hosts/Easyprivacy.txt
+      - https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt
+      - https://raw.githubusercontent.com/nextdns/native-tracking-domains/main/domains/alexa
+      - https://raw.githubusercontent.com/nextdns/native-tracking-domains/main/domains/apple
+      - https://raw.githubusercontent.com/nextdns/native-tracking-domains/main/domains/samsung
+      - https://raw.githubusercontent.com/nextdns/native-tracking-domains/main/domains/windows
+      - https://raw.githubusercontent.com/nextdns/native-tracking-domains/main/domains/huawei
+      - https://raw.githubusercontent.com/nextdns/native-tracking-domains/main/domains/xiaomi
+      - https://raw.githubusercontent.com/nextdns/native-tracking-domains/main/domains/sonos
+      - https://raw.githubusercontent.com/mullvad/dns-blocklists/main/files/tracker
+      - https://v.firebog.net/hosts/Easyprivacy.txt
+      - https://v.firebog.net/hosts/Prigent-Ads.txt
+      - https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts
+      - https://hostfiles.frogeye.fr/firstparty-trackers-hosts.txt
+      - https://ente.dev/api/blocklist/tracking
+    native: # Ref: https://github.com/hagezi/dns-blocklists
+      - https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.amazon.txt
+      - https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.apple.txt
+      - https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.huawei.txt
+      - https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.lgwebos.txt
+      - https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.tiktok.extended.txt
+      - https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.winoffice.txt
+    other: # Ref: https://firebog.net
+      - https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser
+    suspicious: # Ref: https://firebog.net
+      - https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
+      - https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Spam/hosts
+      - https://v.firebog.net/hosts/static/w3kbl.txt
+
+  whiteLists:
+    ads:
+      - https://raw.githubusercontent.com/mmotti/pihole-regex/master/whitelist.list
+      - https://gist.github.com/captainhook/9eb4132d6e58888e37c6bc6c73dd4e60/raw/34caa169dccbb5814b08abe224e01ebdb7cedd67/SpotifyWhitelist
+    malicious:
+      - |
+        discord.com
+    trackers:
+      - |
+        dns.msftncsi.com
+  clientGroupsBlock:
+    default:
+      - platforms
+      - ads
+      - malicious
+      - trackers
+      - native
+      - other
+      - suspicious
+
+redis:
+  required: true
+  database: ${REDIS_BLOCKY_DB}
+  sentinelPassword: ${REDIS_PASS}
+  sentinelAddresses:
+    - dragonfly.database.svc.cluster.local:6379
+
+queryLog:
+  type: postgresql
+  target: "postgresql://blocky:${BLOCKY_POSTGRES_PASS}@postgres17-rw.database:5432/blocky"
+  logRetentionDays: 1
+

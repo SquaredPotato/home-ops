@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: blocky-database-secret
+    namespace: flux-system
+type: Opaque
+stringData:
+    BLOCKY_POSTGRESS_PASS: ENC[AES256_GCM,data:WR5LdLgdone7b5NdaI61WcJYwIcqTLvV/hJtlH3Sr5P/3zhP7EtXwjPT8mniIzXpHQ==,iv:HRr9RIYYFV2gmiMKOxhKBmlDamZjA8RsEmR/4TOPlPk=,tag:ILVCeA2KiZNsNaHIwL1eMg==,type:str]
+    BLOCKY_REDIS_PASS: ENC[AES256_GCM,data:G4m8Y9Bo3v4/YCZDj65tsECnJPxHW6RAL22JYkGErWALixx7pH3/F9tbLy/2In/pXWPaMkPme7am/IOIpri0PQ==,iv:Ufgs02J2usqIZJdmvV56uD9nDzBWqjhGMbbKWmWtPvo=,tag:bza7cgiA2IfAT8xMGRCRVQ==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age16rly7ap0jy4cmtkl0ylxly88jegwavlj3kdxh4ua8tfaduaw5p7qc4nafy
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBPTlp3RHRleUFnTEtYSk55
+            NEJlWndib1dHckhnOVdkdDdET3FxMm5ncjFzCkVuby9HNEw3cFNkenVZYVcyL2ov
+            ZWZpNVoySWFaeityOUp3TWF4YnQ0L2MKLS0tIGh1RlZuTmI2dS9iMldVcTdoSnFu
+            N2pTODMveThmcHkySDJORVVjYmFoUjgKSPezIjHsSzD1q8ASV2OBC/9TEltFVnoS
+            8CDaFcziBUzTfHyAbGw8AIlg+6BMmD4+T7ATufGjBYr60nIZtYQ1PQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-05-31T12:32:00Z"
+    mac: ENC[AES256_GCM,data:Xme500cwKPOk9IZND8Lq+97328TjEye7+H8/1Omqe01P3Do6t/0BxTf4CH3WGp/DMQd6l7g9yHhebNQ1IZsogWLS5cOGhRNrG01NBuZiY0QLUiZRyuA4kFr2QQnngzvBvlIhDloxvmXwygN2wMbr81slNVpmM4SSl2ULNBm71rU=,iv:Qc262B35MLJvd+LNPycu3LYSPCtEQVm6I5ndHDbIhz0=,tag:Qv02WHyHj0W0AknpyKL6pg==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.8.1

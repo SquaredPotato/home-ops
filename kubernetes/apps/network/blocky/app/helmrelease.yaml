@@ -65,7 +65,7 @@ spec:
         controller: *app
         type: LoadBalancer
         annotations:
-          lbipam.cilium.io/ips: "${CLUSTER_BLOCKY_IP}"
+          lbipam.cilium.io/ips: "${quote}${CLUSTER_BLOCKY_IP}${quote}"
         externalTrafficPolicy: Local
         ports:
           dns-tcp:

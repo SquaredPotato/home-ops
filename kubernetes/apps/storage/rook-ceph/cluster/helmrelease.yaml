@@ -73,9 +73,15 @@ spec:
       storage:
         useAllNodes: true
         useAllDevices: false
-        devicePathFilter: /dev/disk/by-id/nvme-Micron_7450_MTFDKBA800TFS_.*
         config:
           osdsPerDevice: "1"
+        nodes:
+          - name: "mizu-01"
+            devices:
+              - name: "/dev/sda"
+          - name: "mizu-02"
+            devices:
+              - name: "/dev/nvme0n1"
     cephBlockPools:
       - name: ceph-blockpool
         spec:
@@ -89,7 +95,7 @@ spec:
           reclaimPolicy: Delete
           allowVolumeExpansion: true
           volumeBindingMode: Immediate
-          mountOptions: ["discard"]
+          mountOptions: [ "discard" ]
           parameters:
             compression_mode: aggressive
             compression_algorithm: zstd
@@ -109,5 +115,5 @@ spec:
       deletionPolicy: Delete
     # NOTE: After disabling the filesystem, the filesystem can be removed with the following commands:
     # ceph fs fail ceph-filesystem && ceph fs rm ceph-filesystem --yes-i-really-mean-it
-    cephFileSystems: []
-    cephObjectStores: []
+    cephFileSystems: [ ]
+    cephObjectStores: [ ]

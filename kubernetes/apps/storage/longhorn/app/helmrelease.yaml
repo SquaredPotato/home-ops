@@ -40,7 +40,7 @@ spec:
       ## Can replace the kubernetes.io/ingress.class annotation on v1.18+
       ingressClassName: internal
 
-      host: longhorn.abchost.nl
+      host: longops.abchost.nl
 
       ## Set this to true in order to enable TLS on the ingress record
       tls: false

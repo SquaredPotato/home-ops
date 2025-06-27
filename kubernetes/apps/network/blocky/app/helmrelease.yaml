@@ -33,7 +33,7 @@ spec:
                 custom: true
                 spec:
                   tcpSocket:
-                    port: &port 53
+                    port: 53
                   initialDelaySeconds: 60
                   periodSeconds: 30
                   failureThreshold: 3
@@ -64,14 +64,15 @@ spec:
       dns:
         controller: *app
         type: LoadBalancer
-        loadBalancerIP: "${CLUSTER_BLOCKY_IP}"
+        annotations:
+          lbipam.cilium.io/ips: "${CLUSTER_BLOCKY_IP}"
         externalTrafficPolicy: Local
         ports:
           dns-tcp:
-            port: *port
+            port: 53
             protocol: TCP
           dns-udp:
-            port: *port
+            port: 53
             protocol: UDP
           dns-tls-tcp:
             port: 853

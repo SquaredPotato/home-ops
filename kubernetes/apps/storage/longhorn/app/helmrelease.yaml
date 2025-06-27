@@ -1,0 +1,69 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: longhorn
+  namespace: longhorn-system
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: longhorn
+      version: "1.9.0"
+      sourceRef:
+        kind: HelmRepository
+        name: longhorn
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  # https://github.com/longhorn/longhorn/blob/master/chart/values.yaml
+  values:
+    persistence:
+      defaultDataLocality: best-effort
+      reclaimPolicy: Retain
+    defaultSettings:
+      backupTarget: "s3://abchost-longhorn@eu-central-003/"
+      backupTargetCredentialSecret: longhorn-backblaze-access
+    ingress:
+      ## Set to true to enable ingress record generation
+      enabled: true
+
+      ## Add ingressClassName to the Ingress
+      ## Can replace the kubernetes.io/ingress.class annotation on v1.18+
+      ingressClassName: internal
+
+      host: longhorn.abchost.nl
+
+      ## Set this to true in order to enable TLS on the ingress record
+      tls: false
+
+      ## Enable this in order to enable that the backend service will be connected at port 443
+      secureBackends: false
+
+      ## If TLS is set to true, you must declare what secret will store the key/certificate for TLS
+      # tlsSecret: longhorn
+
+      ## If ingress is enabled you can set the default ingress path
+      ## then you can access the UI by using the following full path {{host}}+{{path}}
+      path: /
+
+      ## Ingress annotations done as key:value pairs
+      ## If you're using kube-lego, you will want to add:
+      ## kubernetes.io/tls-acme: true
+      ##
+      ## For a full list of possible ingress annotations, please see
+      ## ref: https://github.com/kubernetes/ingress-nginx/blob/master/docs/annotations.md
+      ##
+      ## If tls is set to true, annotation ingress.kubernetes.io/secure-backends: "true" will automatically be set
+      annotations:
+      #  kubernetes.io/ingress.class: internal
+      #  kubernetes.io/tls-acme: true
+

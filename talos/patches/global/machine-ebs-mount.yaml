@@ -1,0 +1,6 @@
+machine:
+  disks:
+    - device: nvme0n1p2
+      partitions:
+        - mountpoint: /var/mnt/extra
+          size: 250 GiB

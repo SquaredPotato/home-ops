@@ -1,6 +1,14 @@
 machine:
+  kubelet:
+    extraMounts:
+      - destination: /var/mnt/openebs
+        type: bind
+        source: /var/mnt/openebs
+        options:
+          - bind
+          - rshared
+          - rw
   disks:
-    - device: nvme0n1p2
+    - device: /dev/nvme0n1p2
       partitions:
-        - mountpoint: /var/mnt/extra
-          size: 250 GiB
+        - mountpoint: /var/mnt/openebs

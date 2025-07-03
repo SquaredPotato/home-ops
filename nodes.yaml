@@ -3,14 +3,14 @@ nodes:
   - name: "mizu-01"
     address: "10.0.2.10"
     controller: true
-    disk: "/dev/sdb"
-    mac_addr: "c0:25:a5:d0:8e:c0"
+    disk: "/dev/sda"
+    mac_addr: "c8:5a:cf:c1:31:2b"
     schematic_id: "613e1592b2da41ae5e265e8789429f22e121aab91cb4deb6bc3c0b6262961245"
   - name: "mizu-02"
     address: "10.0.2.11"
     controller: true
-    disk: "/dev/sdb"
-    mac_addr: "c8:5a:cf:c1:31:2b"
+    disk: "/dev/sda"
+    mac_addr: "c0:25:a5:d0:8e:c0"
     schematic_id: "613e1592b2da41ae5e265e8789429f22e121aab91cb4deb6bc3c0b6262961245"
 
   # - name: ""            # (REQUIRED) Name of the node (must match [a-z0-9-\]+)

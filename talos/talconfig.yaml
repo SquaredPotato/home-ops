@@ -19,16 +19,26 @@ cniConfig:
   name: none
 
 nodes:
-  - hostname: "mizu-01"
+  - hostname: "mizu-10"
     ipAddress: "10.0.2.10"
-    installDisk: "/dev/sda"
+    installDisk: "/dev/nvme0n1"
+    controlPlane: true
     machineSpec:
       secureboot: false
-    talosImageURL: factory.talos.dev/installer/613e1592b2da41ae5e265e8789429f22e121aab91cb4deb6bc3c0b6262961245
-    controlPlane: true
+      arch: "arm64"
+      mode: "metal"
+    schematic:
+      overlay:
+        image: siderolabs/sbc-raspberrypi
+        name: rpi_generic
+      customization:
+        systemExtensions:
+          officialExtensions:
+            - siderolabs/nfsd
+            - siderolabs/util-linux-tools
     networkInterfaces:
       - deviceSelector:
-          hardwareAddr: "c8:5a:cf:c1:31:2b"
+          hardwareAddr: "e4:5f:01:e5:ed:8c"
         dhcp: false
         addresses:
           - "10.0.2.10/23"
@@ -38,16 +48,26 @@ nodes:
         mtu: 1500
         vip:
           ip: "10.0.2.100"
-  - hostname: "mizu-02"
+  - hostname: "mizu-11"
     ipAddress: "10.0.2.11"
-    installDisk: "/dev/sda"
+    installDisk: "/dev/nvme0n1"
+    controlPlane: true
     machineSpec:
       secureboot: false
-    talosImageURL: factory.talos.dev/installer/613e1592b2da41ae5e265e8789429f22e121aab91cb4deb6bc3c0b6262961245
-    controlPlane: true
+      arch: "arm64"
+      mode: "metal"
+    schematic:
+      overlay:
+        image: siderolabs/sbc-raspberrypi
+        name: rpi_generic
+      customization:
+        systemExtensions:
+          officialExtensions:
+            - siderolabs/nfsd
+            - siderolabs/util-linux-tools
     networkInterfaces:
       - deviceSelector:
-          hardwareAddr: "c0:25:a5:d0:8e:c0"
+          hardwareAddr: "e4:5f:01:e5:ed:21"
         dhcp: false
         addresses:
           - "10.0.2.11/23"
@@ -57,6 +77,107 @@ nodes:
         mtu: 1500
         vip:
           ip: "10.0.2.100"
+  - hostname: "mizu-12"
+    ipAddress: "10.0.2.12"
+    installDisk: "/dev/nvme0n1"
+    controlPlane: true
+    machineSpec:
+      secureboot: false
+      arch: "arm64"
+      mode: "metal"
+    schematic:
+      overlay:
+        image: siderolabs/sbc-raspberrypi
+        name: rpi_generic
+      customization:
+        systemExtensions:
+          officialExtensions:
+            - siderolabs/nfsd
+            - siderolabs/util-linux-tools
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "e4:5f:01:e5:ec:4f"
+        dhcp: false
+        addresses:
+          - "10.0.2.12/23"
+        routes:
+          - network: "0.0.0.0/0"
+            gateway: "10.0.2.1"
+        mtu: 1500
+        vip:
+          ip: "10.0.2.100"
+  - hostname: "mizu-13"
+    ipAddress: "10.0.2.13"
+    installDisk: "/dev/nvme0n1"
+    controlPlane: true
+    machineSpec:
+      secureboot: false
+      arch: "arm64"
+      mode: "metal"
+    schematic:
+      overlay:
+        image: siderolabs/sbc-raspberrypi
+        name: rpi_generic
+      customization:
+        systemExtensions:
+          officialExtensions:
+            - siderolabs/nfsd
+            - siderolabs/util-linux-tools
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "e4:5f:01:e5:ed:96"
+        dhcp: false
+        addresses:
+          - "10.0.2.13/23"
+        routes:
+          - network: "0.0.0.0/0"
+            gateway: "10.0.2.1"
+        mtu: 1500
+        vip:
+          ip: "10.0.2.100"
+  - hostname: "mizu-20"
+    ipAddress: "10.0.2.20"
+    installDisk: "/dev/sda"
+    controlPlane: false
+    machineSpec:
+      secureboot: false
+      arch: "amd64"
+      mode: "metal"
+    schematic:
+      customization:
+        systemExtensions:
+          officialExtensions:
+            - siderolabs/i915
+            - siderolabs/intel-ucode
+            - siderolabs/nfsd
+            - siderolabs/util-linux-tools
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "c0:25:a5:d0:8e:c0"
+        dhcp: false
+        addresses:
+          - "10.0.2.20/23"
+        routes:
+          - network: "0.0.0.0/0"
+            gateway: "10.0.2.1"
+        mtu: 1500
+  - hostname: "mizu-21"
+    ipAddress: "10.0.2.21"
+    installDisk: "/dev/sda"
+    controlPlane: false
+    machineSpec:
+      secureboot: false
+    talosImageURL: factory.talos.dev/installer/613e1592b2da41ae5e265e8789429f22e121aab91cb4deb6bc3c0b6262961245
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "c8:5a:cf:c1:31:2b"
+        dhcp: false
+        addresses:
+          - "10.0.2.21/23"
+        routes:
+          - network: "0.0.0.0/0"
+            gateway: "10.0.2.1"
+        mtu: 1500
 
 # Global patches
 patches:

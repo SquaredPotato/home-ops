@@ -5,7 +5,7 @@ kind: Kustomization
 namespace: storage
 components:
   - ../../components/common
-resources:
-  - ./rook-ceph/ks.yaml
-  - ./openebs/ks.yaml
-  - ./longhorn/ks.yaml
+#resources:
+#  - ./rook-ceph/ks.yaml
+#  - ./openebs/ks.yaml
+#  - ./longhorn/ks.yaml

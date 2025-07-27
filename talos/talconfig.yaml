@@ -23,6 +23,8 @@ nodes:
     ipAddress: "10.0.2.10"
     installDisk: "/dev/nvme0n1"
     controlPlane: true
+    nodeLabels:
+      nodeType: "pi"
     machineSpec:
       secureboot: false
       arch: "arm64"
@@ -52,6 +54,8 @@ nodes:
     ipAddress: "10.0.2.11"
     installDisk: "/dev/nvme0n1"
     controlPlane: true
+    nodeLabels:
+      nodeType: "pi"
     machineSpec:
       secureboot: false
       arch: "arm64"
@@ -81,6 +85,8 @@ nodes:
     ipAddress: "10.0.2.12"
     installDisk: "/dev/nvme0n1"
     controlPlane: true
+    nodeLabels:
+      nodeType: "pi"
     machineSpec:
       secureboot: false
       arch: "arm64"
@@ -110,6 +116,8 @@ nodes:
     ipAddress: "10.0.2.13"
     installDisk: "/dev/nvme0n1"
     controlPlane: true
+    nodeLabels:
+      nodeType: "pi"
     machineSpec:
       secureboot: false
       arch: "arm64"

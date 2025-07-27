@@ -45,7 +45,7 @@ spec:
                       - "pi"
       tolerations:
         - key: "node-role.kubernetes.io/control-plane"
-          effect: "NoSchedule"
+          operator: "Exists"
     openebs-crds:
       csi:
         volumeSnapshots:

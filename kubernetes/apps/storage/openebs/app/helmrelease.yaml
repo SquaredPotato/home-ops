@@ -57,6 +57,10 @@ spec:
       enabled: false
     mayastor:
       enabled: false
+    minio:
+      enabled: false
+    loki:
+      enabled: false
     engines:
       local:
         lvm:

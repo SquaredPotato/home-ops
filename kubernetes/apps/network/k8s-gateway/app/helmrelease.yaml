@@ -32,6 +32,7 @@ spec:
       retries: 3
   values:
     fullnameOverride: k8s-gateway
+    replicaCount: 2
     domain: "${SECRET_DOMAIN}"
     ttl: 1
     service:

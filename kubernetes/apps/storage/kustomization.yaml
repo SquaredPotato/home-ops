@@ -7,4 +7,4 @@ components:
   - ../../components/common
 resources:
   - ./openebs/ks.yaml
-#  - ./longhorn/ks.yaml
+  - ./longhorn/ks.yaml

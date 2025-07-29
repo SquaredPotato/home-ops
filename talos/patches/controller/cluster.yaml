@@ -1,3 +1,6 @@
+machine:
+  nodeTaints:
+    node-role.kubernetes.io/control-plane: PreferNoSchedule
 cluster:
   allowSchedulingOnControlPlanes: false
   apiServer:

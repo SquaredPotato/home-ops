@@ -6,3 +6,4 @@ namespace: database
 resources:
   - ./secret.sops.yaml
   - ./helmrelease.yaml
+  - ./httproute.yaml

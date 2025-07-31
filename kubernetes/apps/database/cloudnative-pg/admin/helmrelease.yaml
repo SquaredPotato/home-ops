@@ -35,7 +35,7 @@ spec:
           volume-permissions:
             image:
               repository: dpage/pgadmin4
-              tag: "9.4"
+              tag: "9.6"
             volumeMounts:
               - name: pgadmin
                 mountPath: /var/lib/pgadmin
@@ -46,7 +46,7 @@ spec:
           main:
             image:
               repository: dpage/pgadmin4
-              tag: "9.4"
+              tag: "9.6"
             env:
               PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: "False"
             envFrom:

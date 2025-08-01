@@ -68,27 +68,27 @@ nodes:
         mtu: 1500
         vip: &vip
           ip: "10.0.2.100"
-#  - hostname: "mizu-11"
-#    ipAddress: "10.0.2.11"
-#    installDisk: "/dev/nvme0n1"
-#    controlPlane: true
-#    nodeLabels:
-#      nodeType: "pi"
-#    machineSpec: *piSpec
-#    schematic: *piSchematic
-#    volumes: *volumes
-#    userVolumes:
-#  - name: openebs-data
-#    provisioning: *ebsVolume
-#    networkInterfaces:
-#      - deviceSelector:
-#          hardwareAddr: "e4:5f:01:e5:ed:21"
-#        dhcp: false
-#        addresses:
-#          - "10.0.2.11/23"
-#        routes: *routes
-#        mtu: 1500
-#        vip: *vip
+  - hostname: "mizu-11"
+    ipAddress: "10.0.2.11"
+    installDisk: "/dev/nvme0n1"
+    controlPlane: true
+    nodeLabels:
+      nodeType: "pi"
+    machineSpec: *piSpec
+    schematic: *piSchematic
+    volumes: *volumes
+    userVolumes:
+    - name: openebs-data
+      provisioning: *ebsVolume
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "e4:5f:01:e5:ed:21"
+        dhcp: false
+        addresses:
+          - "10.0.2.11/23"
+        routes: *routes
+        mtu: 1500
+        vip: *vip
   - hostname: "mizu-12"
     ipAddress: "10.0.2.12"
     installDisk: "/dev/nvme0n1"
@@ -147,19 +147,10 @@ nodes:
             - siderolabs/intel-ucode
             - siderolabs/nfsd
             - siderolabs/util-linux-tools
+            - siderolabs/iscsi-tools
     userVolumes:
       - name: openebs-data
         provisioning: *ebsVolume
-      - name: longhorn-data
-        provisioning: &longhornVolume
-          diskSelector:
-            match: disk.transport == 'nvme'
-          minSize: 300GiB
-          maxSize: 800GiB
-          grow: true
-        filesystem:
-            type: xfs
-    rawVolumes:
     networkInterfaces:
       - deviceSelector:
           hardwareAddr: "c0:25:a5:d0:8e:c0"
@@ -177,8 +168,6 @@ nodes:
     userVolumes:
       - name: openebs-data
         provisioning: *ebsVolume
-      - name: longhorn-data
-        provisioning: *longhornVolume
     networkInterfaces:
       - deviceSelector:
           hardwareAddr: "c8:5a:cf:c1:31:2b"
@@ -205,6 +194,6 @@ controlPlane:
     - "@./patches/controller/cluster.yaml"
     - "@./patches/global/machine-ebs-dir.yaml"
 
-worker:
-  patches:
-    - "@./patches/worker/longhorn-partition.yaml"
+#worker:
+#  patches:
+#    - "@./patches/worker/longhorn-partition.yaml"

@@ -148,6 +148,8 @@ nodes:
             - siderolabs/nfsd
             - siderolabs/util-linux-tools
             - siderolabs/iscsi-tools
+    extraManifests: &workerManifests
+      - "./patches/worker/longhorn-partition.yaml"
     userVolumes:
       - name: openebs-data
         provisioning: *ebsVolume
@@ -165,6 +167,7 @@ nodes:
     controlPlane: false
     machineSpec: *intelSpec
     schematic: *intelSchematic
+    extraManifests: *workerManifests
     userVolumes:
       - name: openebs-data
         provisioning: *ebsVolume
@@ -194,6 +197,6 @@ controlPlane:
     - "@./patches/controller/cluster.yaml"
     - "@./patches/global/machine-ebs-dir.yaml"
 
-#worker:
-#  patches:
-#    - "@./patches/worker/longhorn-partition.yaml"
+worker:
+  patches:
+    - "@./patches/worker/longhorn-partition.yaml"

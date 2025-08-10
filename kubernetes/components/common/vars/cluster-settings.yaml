@@ -30,3 +30,7 @@ data:
   REDIS_BLOCKY_DB: "2"
   REDIS_AUTHENTIK_DB: "3"
   REDIS_INVOICE_NINJA_DB: "4"
+# Service URLs
+  POSTGRES_HOST: "production-rw.database.svc.cluster.local"
+  DRAGONFLY_HOST: "dragonfly.database.svc.cluster.local"
+

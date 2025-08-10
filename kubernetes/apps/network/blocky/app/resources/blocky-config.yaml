@@ -40,7 +40,6 @@ customDNS:
     phpmyadmin.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     printer.lan: "${LAN_PRINTER_IP}"
     prometheus.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
-    prowlarr.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     proxies.abchost.nl: "${LAN_NUC}"
     ptu.abchost.nl: "${LAN_NUC}"
     radarr.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"

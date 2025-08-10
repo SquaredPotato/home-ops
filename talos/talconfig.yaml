@@ -52,7 +52,7 @@ nodes:
           diskSelector:
             match: disk.transport == 'nvme'
           minSize: 10GiB
-          maxSize: 50GiB
+          maxSize: 100GiB
           grow: true
         filesystem:
           type: xfs

@@ -13,7 +13,7 @@ spec:
     - ../../../../components/gatus/guarded
   dependsOn:
     - name: cluster-apps-cloudnative-pg-cluster
-      namespace: flux-system
+      namespace: database
   interval: 1h
   path: ./kubernetes/apps/default/prowlarr/app
   postBuild:

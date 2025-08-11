@@ -1,0 +1,27 @@
+---
+name: Template sync
+on:
+  schedule:
+    - cron: "0 0 1 * *"
+  # Manual trigger
+  workflow_dispatch:
+jobs:
+  template-sync:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+      actions: write
+      pull-requests: write
+      packages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: "${{ secrets.TEMPLATE_SYNC_PAT }}"
+      - name: actions-template-sync
+        uses: AndreasAugustin/actions-template-sync@v2
+        with:
+          source_repo_path: "onedr0p/cluster-template"
+          upstream_branch: main
+          pr_labels: chore
+          target_gh_token: "${{ secrets.TEMPLATE_SYNC_PAT }}"

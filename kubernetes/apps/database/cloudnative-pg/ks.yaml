@@ -3,14 +3,27 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-apps-cloudnative-pg
-  namespace: flux-system
+  name: &app cluster-apps-cloudnative-pg
+  namespace: &namespace database
 spec:
+  targetNamespace: *namespace
   path: ./kubernetes/apps/database/cloudnative-pg/app
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  postBuild:
+    substituteFrom:
+      - name: cluster-secrets
+        kind: Secret
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
+    namespace: flux-system
   wait: true
   interval: 30m
   retryInterval: 1m
@@ -20,16 +33,29 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-apps-cloudnative-pg-cluster
-  namespace: flux-system
+  name: &app cluster-apps-cloudnative-pg-cluster
+  namespace: &namespace database
 spec:
+  targetNamespace: *namespace
   dependsOn:
     - name: cluster-apps-cloudnative-pg
   path: ./kubernetes/apps/database/cloudnative-pg/cluster
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  postBuild:
+    substituteFrom:
+      - name: cluster-secrets
+        kind: Secret
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
+    namespace: flux-system
   wait: true
   interval: 30m
   retryInterval: 1m
@@ -39,14 +65,29 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-apps-pgadmin
-  namespace: flux-system
+  name: &app cluster-apps-pgadmin
+  namespace: &namespace database
 spec:
+  targetNamespace: *namespace
   path: ./kubernetes/apps/database/cloudnative-pg/admin
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  postBuild:
+    substituteFrom:
+      - name: cluster-secrets
+        kind: Secret
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
+    namespace: flux-system
+  components:
+    - ../../../../components/gatus/guarded
   dependsOn:
     - name: cluster-apps-cloudnative-pg
     - name: cluster-apps-cloudnative-pg-cluster

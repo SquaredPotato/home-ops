@@ -19,7 +19,7 @@ jobs:
         with:
           token: "${{ secrets.TEMPLATE_SYNC_PAT }}"
       - name: actions-template-sync
-        uses: AndreasAugustin/actions-template-sync@v2
+        uses: AndreasAugustin/actions-template-sync@8ec19a5f2721ffb81ff809aa340ddf75e6a85ea6 # v2
         with:
           source_repo_path: "onedr0p/cluster-template"
           upstream_branch: main

@@ -23,7 +23,7 @@ spec:
       - name: cluster-settings
         kind: ConfigMap
   dependsOn:
-    - name: longhorn
+    - name: cluster-apps-longhorn
       namespace: storage
   prune: true
   retryInterval: 2m

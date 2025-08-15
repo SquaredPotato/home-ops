@@ -1,18 +1,26 @@
 ---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2.json
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: &app blocky
 spec:
-  interval: 5m
-  chart:
-    spec:
-      chart: app-template
-      version: 3.2.1
-      sourceRef:
-        kind: HelmRepository
-        name: bjw-s
-        namespace: flux-system
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  dependsOn:
+    - name: dragonfly-operator
+      namespace: database
+    - name: cloudnative-pg
+      namespace: database
   values:
     controllers:
       blocky:
@@ -48,16 +56,16 @@ spec:
               readOnlyRootFilesystem: true
               capabilities:
                 add:
-                - NET_BIND_SERVICE
+                  - NET_BIND_SERVICE
                 drop:
-                - ALL
+                  - ALL
         statefulset:
           podManagementPolicy: Parallel
         type: statefulset
     service:
       app:
         controller: *app
-        nameOverride: *app
+        forceRename: *app
         ports:
           http:
             port: 4000
@@ -95,9 +103,5 @@ spec:
         type: configMap
         name: blocky-config
         globalMounts:
-        - path: /app/config.yml
-          subPath: config.yml
-
-
-
-
+          - path: /app/config.yml
+            subPath: config.yml

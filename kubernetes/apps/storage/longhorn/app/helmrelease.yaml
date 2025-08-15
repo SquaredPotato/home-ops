@@ -30,8 +30,7 @@ spec:
       defaultDataLocality: best-effort
       reclaimPolicy: Retain
     defaultSettings:
-      backupTarget: "s3://abchost-longhorn@eu-central-003/"
-      backupTargetCredentialSecret: longhorn-backblaze-access
+      backupTarget: "nfs://10.0.20.10:/mnt/main/backup/stefan/longhorn"
     ingress:
       ## Set to true to enable ingress record generation
       enabled: true

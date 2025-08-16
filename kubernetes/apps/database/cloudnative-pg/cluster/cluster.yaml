@@ -23,9 +23,9 @@ spec:
     tolerations:
       - key: "node-role.kubernetes.io/control-plane"
         operator: "Exists"
-  bootstrap:
-    recovery:
-      source: &previousCluster "production-v0"
+#  bootstrap:
+#    recovery:
+#      source: &previousCluster "production-v0"
   postgresql:
     parameters:
       max_connections: "600"
@@ -40,29 +40,29 @@ spec:
       wal:
         compression: bzip2
         maxParallel: 8
-      destinationPath: s3://cloudnative-pg/
-      endpointURL: https://s3.eu-central-003.backblazeb2.com
+      destinationPath: s3://postgres-cloudnative.mizuto.backup/
+      endpointURL: https://s3.eu-central-1.wasabisys.com
       serverName: &currentCluster production-v1
       s3Credentials:
         accessKeyId:
           name: cloudnative-pg-secret
-          key: backblaze-id
+          key: wasabi-id
         secretAccessKey:
           name: cloudnative-pg-secret
-          key: backblaze-key
+          key: wasabi-key
   # Note: externalClusters is needed when recovering from an existing cnpg cluster
-  externalClusters:
-   - name: *previousCluster
-     barmanObjectStore:
-       wal:
-         compression: bzip2
-         maxParallel: 8
-       destinationPath: s3://cloudnative-pg/
-       endpointURL: https://s3.eu-central-003.backblazeb2.com
-       s3Credentials:
-         accessKeyId:
-           name: cloudnative-pg-secret
-           key: backblaze-id
-         secretAccessKey:
-           name: cloudnative-pg-secret
-           key: backblaze-key
+#  externalClusters:
+#   - name: *previousCluster
+#     barmanObjectStore:
+#       wal:
+#         compression: bzip2
+#         maxParallel: 8
+#       destinationPath: s3://postgres-cloudnative.mizuto.backup/
+#       endpointURL: https://s3.eu-central-1.wasabisys.com
+#       s3Credentials:
+#         accessKeyId:
+#           name: cloudnative-pg-secret
+#           key: wasabi-id
+#         secretAccessKey:
+#           name: cloudnative-pg-secret
+#           key: wasabi-key

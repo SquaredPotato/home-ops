@@ -22,9 +22,7 @@ customDNS:
     bw.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
     bazarr.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     blocky.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
-    dns.abchost.nl: "${CLUSTER_BLOCKY_IP}"
     grafana.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
-    home.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
     idrac.lan: "192.168.2.126"
     immich.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
     invoice.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
@@ -33,7 +31,6 @@ customDNS:
     longhorn.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     marax.lan: "192.168.2.205"
     meals.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
-    mosquitto.abchost.nl: "${CLUSTER_MOSQUITTO_IP}"
     next.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
     outline.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
     pgadmin.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
@@ -46,13 +43,11 @@ customDNS:
     sso.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
     sonarr.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     slskd.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
-    status.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     torrent.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     truenas.abchost.nl: "${LAN_TRUENAS_IP}"
     nas.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     un.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     volumio.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
-    zigbee.abchost.nl: "${CLUSTER_INTERNAL_ROUTE_IP}"
 
 prometheus:
   enable: true

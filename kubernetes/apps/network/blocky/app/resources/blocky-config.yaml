@@ -52,7 +52,7 @@ customDNS:
     nas.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     un.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     volumio.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
-    zigbee.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+    zigbee.abchost.nl: "${CLUSTER_INTERNAL_ROUTE_IP}"
 
 prometheus:
   enable: true

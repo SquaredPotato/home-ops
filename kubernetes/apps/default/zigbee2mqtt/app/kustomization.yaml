@@ -2,11 +2,6 @@
 # yaml-language-server: $schema=https://json.schemastore.org/kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: default
-components:
-  - ../../components/common
 resources:
-  - ./echo/ks.yaml
-  - ./prowlarr/ks.yaml
-  - ./mosquitto/ks.yaml
-  - ./zigbee2mqtt/ks.yaml
+  - ./secret.sops.yaml
+  - ./helmrelease.yaml

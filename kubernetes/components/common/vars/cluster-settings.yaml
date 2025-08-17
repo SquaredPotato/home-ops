@@ -32,5 +32,6 @@ data:
   REDIS_INVOICE_NINJA_DB: "4"
 # Service URLs
   POSTGRES_HOST: "production-rw.database.svc.cluster.local"
+  POSTGRES_PORT: "5432"
   DRAGONFLY_HOST: "dragonfly.database.svc.cluster.local"
 

@@ -39,7 +39,6 @@ customDNS:
     prometheus.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     radarr.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     rancher.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
-    sh.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     sso.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
     sonarr.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     slskd.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"

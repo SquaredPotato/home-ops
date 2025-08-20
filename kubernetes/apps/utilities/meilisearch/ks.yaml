@@ -9,14 +9,9 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  components:
-    - ../../../../components/gatus/external
   interval: 1h
   path: ./kubernetes/apps/utilities/meilisearch/app
   postBuild:
-    substitute:
-      APP: *app
-      GATUS_SUBDOMAIN: sh
     substituteFrom:
       - name: cluster-secrets
         kind: Secret

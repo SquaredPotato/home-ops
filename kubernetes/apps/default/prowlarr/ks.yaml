@@ -20,7 +20,7 @@ spec:
   path: ./kubernetes/apps/default/prowlarr/app
   postBuild:
     substitute:
-      APP: *app
+      APP: Prowlarr
     substituteFrom:
       - name: cluster-secrets
         kind: Secret

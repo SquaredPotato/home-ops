@@ -18,7 +18,7 @@ spec:
   path: ./kubernetes/apps/home/zigbee2mqtt/app
   postBuild:
     substitute:
-      APP: *app
+      APP: Zigbee2MQTT
     substituteFrom:
       - name: cluster-secrets
         kind: Secret

@@ -22,7 +22,7 @@ spec:
   path: ./kubernetes/apps/home/home-assistant/app
   postBuild:
     substitute:
-      APP: *app
+      APP: "Home Assistant"
       GATUS_SUBDOMAIN: home
     substituteFrom:
       - name: cluster-secrets

@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/app-template-3.7.3/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: meilisearch
+  namespace: utilities
+spec:
+  chart:
+    spec:
+      chart: meilisearch
+      version: 0.15.0
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        namespace: flux-system
+        name: meilisearch
+  interval: 1h
+  driftDetection:
+    mode: enabled
+  values:
+    environment:
+      MEILI_ENV: production
+      MEILI_LOG_LEVEL: WARN
+    auth:
+      existingMasterKeySecret: "meili-master-key"
+    persistence:
+      enabled: true
+      existingClaim: "meilisearch"

@@ -10,7 +10,7 @@ spec:
     groupInterval: 10m
     groupWait: 1m
     receiver: discord
-    repeatInterval: 12h
+    repeatInterval: 24h
     routes:
       - receiver: "null"
         matchers:

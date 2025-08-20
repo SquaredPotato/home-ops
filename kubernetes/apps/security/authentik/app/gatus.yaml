@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: authentik-gatus-ep
+  labels:
+    gatus.io/enabled: "true"
+data:
+  config.yaml: |
+    endpoints:
+      - name: authentik
+        group: infrastructure
+        url: http://authentik-server.security.svc.cluster.local
+        interval: 1m
+        ui:
+          hide-url: true
+          hide-hostname: true
+        conditions:
+          - "[CONNECTED] == true"
+        alerts:
+          - type: discord

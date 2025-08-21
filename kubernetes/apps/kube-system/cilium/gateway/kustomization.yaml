@@ -7,3 +7,4 @@ resources:
   - ./external.yaml
   - ./external-direct.yaml
   - ./internal.yaml
+  - ./external-services/nextcloud.yaml

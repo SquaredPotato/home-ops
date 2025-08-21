@@ -22,7 +22,7 @@ connectivity:
 
 endpoints:
   - name: flux-webhook
-    group: external
+    group: External
     url: "https://flux-webhook.${SECRET_DOMAIN}"
     interval: 1m
     client:

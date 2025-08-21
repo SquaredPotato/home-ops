@@ -87,7 +87,9 @@ spec:
       name: sops-age
   postBuild:
     substitute:
-      APP: PGAdmin
+      APP: *app
+      APP_NAME: PGAdmin
+      GATUS_SUBDOMAIN: pgadmin
     substituteFrom:
       - name: cluster-secrets
         kind: Secret

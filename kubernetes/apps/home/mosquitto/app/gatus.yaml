@@ -2,14 +2,14 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: mosquitto-gatus-ep
+  name: user-apps-mosquitto-gatus-ep
   labels:
     gatus.io/enabled: "true"
 data:
   config.yaml: |
     endpoints:
-      - name: mosquitto
-        group: infrastructure
+      - name: Mosquitto
+        group: Infrastructure
         url: tcp://mosquitto.home.svc.cluster.local:1883
         interval: 1m
         ui:

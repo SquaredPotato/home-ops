@@ -18,7 +18,9 @@ spec:
   path: ./kubernetes/apps/home/zigbee2mqtt/app
   postBuild:
     substitute:
-      APP: Zigbee2MQTT
+      APP: *app
+      APP_NAME: Zigbee2MQTT
+      GATUS_SUBDOMAIN: zigbee2mqtt
     substituteFrom:
       - name: cluster-secrets
         kind: Secret

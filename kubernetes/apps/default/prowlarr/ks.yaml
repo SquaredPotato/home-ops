@@ -20,7 +20,9 @@ spec:
   path: ./kubernetes/apps/default/prowlarr/app
   postBuild:
     substitute:
-      APP: Prowlarr
+      APP: *app
+      APP_NAME: Prowlarr
+      GATUS_SUBDOMAIN: prowlarr
     substituteFrom:
       - name: cluster-secrets
         kind: Secret

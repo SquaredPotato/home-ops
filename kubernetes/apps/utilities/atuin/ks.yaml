@@ -18,7 +18,8 @@ spec:
   path: ./kubernetes/apps/utilities/atuin/app
   postBuild:
     substitute:
-      APP: Atuin
+      APP: *app
+      APP_NAME: Atuin
       GATUS_SUBDOMAIN: sh
     substituteFrom:
       - name: cluster-secrets

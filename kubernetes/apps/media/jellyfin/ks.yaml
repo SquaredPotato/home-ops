@@ -17,7 +17,8 @@ spec:
   prune: true
   postBuild:
     substitute:
-      APP: "Jellyfin"
+      APP: *app
+      APP_NAME: "Jellyfin"
       GATUS_SUBDOMAIN: jelly
     substituteFrom:
       - name: cluster-secrets

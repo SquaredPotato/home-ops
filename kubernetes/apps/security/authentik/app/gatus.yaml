@@ -8,8 +8,8 @@ metadata:
 data:
   config.yaml: |
     endpoints:
-      - name: authentik
-        group: infrastructure
+      - name: Authentik
+        group: Infrastructure
         url: http://authentik-server.security.svc.cluster.local
         interval: 1m
         ui:

@@ -1,7 +1,7 @@
 endpoints:
-  - name: "${APP:=${APP_NAME}}"
+  - name: "${APP_NAME:=${APP}}"
     group: External
-    url: "https://${APP:=${GATUS_SUBDOMAIN}}.abchost.nl${GATUS_PATH:=/}"
+    url: "https://${GATUS_SUBDOMAIN:=${APP}}.abchost.nl${GATUS_PATH:=/}"
     interval: 1m
     client:
       dns-resolver: tcp://1.1.1.1:53

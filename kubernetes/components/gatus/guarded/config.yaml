@@ -1,5 +1,5 @@
 endpoints:
-  - name: "${APP:=${APP_NAME}}"
+  - name: "${APP_NAME:=${APP}}"
     group: Guarded
     url: 1.1.1.1
     interval: 1m
@@ -7,7 +7,7 @@ endpoints:
       hide-hostname: true
       hide-url: true
     dns:
-      query-name: "${APP:=${GATUS_SUBDOMAIN}}.abchost.nl"
+      query-name: "${GATUS_SUBDOMAIN:=${APP}}.abchost.nl"
       query-type: A
     conditions:
       - "len([BODY]) == 0"

@@ -5,8 +5,8 @@ web:
 metrics: true
 
 ui:
-  title: Status | Gatus
-  header: Status
+  title: Status | Mizuto
+  header: Mizuto Cluster Status
   logo: https://avatars.githubusercontent.com/u/20231417
   link: https://github.com/squaredpotato
   buttons:
@@ -21,7 +21,7 @@ connectivity:
     interval: 1m
 
 endpoints:
-  - name: flux-webhook
+  - name: "Flux Webhook"
     group: External
     url: "https://flux-webhook.${SECRET_DOMAIN}"
     interval: 1m

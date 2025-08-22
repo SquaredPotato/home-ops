@@ -38,7 +38,7 @@ spec:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
               capabilities:
-#                drop: ["ALL"]
+                drop: ["ALL"]
                 add: ["NET_RAW", "NET_ADMIN", "NET_BIND_SERVICE"]
             resources:
               requests:
@@ -46,7 +46,7 @@ spec:
               limits:
                 memory: 2Gi
     defaultPodOptions:
-      hostNetwork: true
+#      hostNetwork: true
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000

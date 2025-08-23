@@ -38,7 +38,7 @@ metadata:
 spec:
   hostnames: ["next.${SECRET_DOMAIN}"]
   parentRefs:
-  - name: external-direct
+  - name: external
     namespace: *namespace
     sectionName: https
   rules:

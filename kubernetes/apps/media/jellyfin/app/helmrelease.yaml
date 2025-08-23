@@ -100,7 +100,7 @@ spec:
 #                urlRewrite:
 #                  hostname: http://jellyfin-jellysearch.media:5000
         parentRefs:
-          - name: external-direct
+          - name: external
             namespace: kube-system
             sectionName: https
     persistence:

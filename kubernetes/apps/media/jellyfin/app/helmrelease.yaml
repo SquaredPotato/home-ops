@@ -59,7 +59,7 @@ spec:
               requests:
                 cpu: 100m
               limits:
-#                gpu.intel.com/i915: 1
+                gpu.intel.com/i915: 1
                 memory: 8Gi
           jellysearch:
             image:
@@ -84,25 +84,42 @@ spec:
         ports:
           http:
             port: *port
+      jellysearch:
+        type: LoadBalancer
+        ports:
+          http:
+            port: &searchPort 5000
     route:
       app:
         hostnames:
           - "{{ .Release.Name }}.${SECRET_DOMAIN}"
           - "jelly.${SECRET_DOMAIN}"
-#        rules:
-#          - matches:
-#              - queryParams:
-#                  type: RegularExpression
-#                  name: searchTerm
-#                  value: "^.*$"
-#            filters:
-#              - type: URLRewrite
-#                urlRewrite:
-#                  hostname: http://jellyfin-jellysearch.media:5000
         parentRefs:
           - name: external
             namespace: kube-system
             sectionName: https
+        rules:
+          - backendRefs:
+              - identifier: app
+                port: *port
+          - backendRefs:
+              - identifier: jellysearch
+                port: *searchPort
+            matches:
+              - path:
+                  type: QueryParam
+                  name: searchTerm
+                  value: "^.*$"
+
+#        rules:
+#          - filters:
+#            - type: QueryParams:
+#                type: RegularExpression
+#                name: searchTerm
+#                value: "^.*$"
+#              backendRefs:
+#                - identifier: jellysearch
+#                  port: *searchPort
     persistence:
       config:
         existingClaim: "{{ .Release.Name }}"

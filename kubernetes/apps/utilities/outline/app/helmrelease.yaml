@@ -1,0 +1,95 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: outline
+  namespace: utilities
+spec:
+  interval: 30m
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      outline:
+        strategy: RollingUpdate
+        annotations:
+          reloader.stakater.com/auto: "true"
+        replicas: 1
+        containers:
+          app:
+            image:
+              repository: outlinewiki/outline
+              tag: 0.86.1
+            env:
+              URL: "https://outline.${SECRET_DOMAIN}"
+              PORT: &outline-port 3000
+              WEB_CONCURRENCY: 1
+              REDIS_URL: "redis://dragonfly.database:6379"
+              FILE_STORAGE: "local"
+              ENABLE_UPDATES: false
+            envFrom:
+              - secretRef:
+                  name: outline
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+              startup:
+                enabled: true
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 5
+            resources:
+              requests:
+                cpu: 500m
+                memory: 1Gi
+              limits:
+                cpu: 4
+                memory: 4Gi
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
+    service:
+      outline:
+        controller: outline
+        ports:
+          http:
+            port: *outline-port
+    route:
+      app:
+        hostnames:
+          - "{{ .Release.Name }}.${SECRET_DOMAIN}"
+          - "wiki.${SECRET_DOMAIN}"
+        parentRefs:
+          - name: external
+            namespace: kube-system
+            sectionName: https
+    persistence:
+      cache:
+        existingClaim: outline
+        advancedMounts:
+          outline:
+            app:
+              - path: /var/lib/outline/data
+      tmp:
+        type: emptyDir

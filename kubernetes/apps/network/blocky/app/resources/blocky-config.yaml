@@ -31,7 +31,7 @@ customDNS:
     marax.lan: "192.168.2.205"
     meals.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
 #    next.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
-    outline.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
+#    outline.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
     pgadmin.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     phpmyadmin.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     printer.lan: "${LAN_PRINTER_IP}"

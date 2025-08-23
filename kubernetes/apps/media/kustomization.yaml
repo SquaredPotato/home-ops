@@ -5,5 +5,5 @@ kind: Kustomization
 namespace: media
 components:
   - ../../components/common
-#resources:
-#  - ./jellyfin/ks.yaml
+resources:
+  - ./jellyfin/ks.yaml

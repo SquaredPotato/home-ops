@@ -88,38 +88,7 @@ spec:
         type: LoadBalancer
         ports:
           http:
-            port: &searchPort 5000
-    route:
-      app:
-        hostnames:
-          - "{{ .Release.Name }}.${SECRET_DOMAIN}"
-          - "jelly.${SECRET_DOMAIN}"
-        parentRefs:
-          - name: external
-            namespace: kube-system
-            sectionName: https
-        rules:
-          - backendRefs:
-              - identifier: app
-                port: *port
-          - backendRefs:
-              - identifier: jellysearch
-                port: *searchPort
-            matches:
-              - path:
-                  type: QueryParam
-                  name: searchTerm
-                  value: "^.*$"
-
-#        rules:
-#          - filters:
-#            - type: QueryParams:
-#                type: RegularExpression
-#                name: searchTerm
-#                value: "^.*$"
-#              backendRefs:
-#                - identifier: jellysearch
-#                  port: *searchPort
+            port: 5000
     persistence:
       config:
         existingClaim: "{{ .Release.Name }}"

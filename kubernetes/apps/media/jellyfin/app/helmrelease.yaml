@@ -67,7 +67,7 @@ spec:
               tag: latest
             env:
               INDEX_CRON: "0 0 0/2 ? * * *"
-              JELLYFIN_URL: "https://{{ Release.Name }}.${SECRET_DOMAIN}"
+              JELLYFIN_URL: "https://{{ .Release.Name }}.${SECRET_DOMAIN}"
               MEILI_URL: "http://meilisearch.utilities:7700"
             envFrom:
               - secretRef:
@@ -89,16 +89,16 @@ spec:
         hostnames:
           - "{{ .Release.Name }}.${SECRET_DOMAIN}"
           - "jelly.${SECRET_DOMAIN}"
-        rules:
-          - matches:
-              - queryParams:
-                  type: RegularExpression
-                  name: searchTerm
-                  value: "^.*$"
-            filters:
-              - type: URLRewrite
-                urlRewrite:
-                  hostname: http://jellyfin-jellysearch.media:5000
+#        rules:
+#          - matches:
+#              - queryParams:
+#                  type: RegularExpression
+#                  name: searchTerm
+#                  value: "^.*$"
+#            filters:
+#              - type: URLRewrite
+#                urlRewrite:
+#                  hostname: http://jellyfin-jellysearch.media:5000
         parentRefs:
           - name: external-direct
             namespace: kube-system

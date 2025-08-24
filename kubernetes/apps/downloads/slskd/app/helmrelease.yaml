@@ -37,19 +37,19 @@ spec:
             envFrom:
               - secretRef:
                   name: slskd-secret
-            probes:
-              liveness: &probes
-                enabled: true
-                custom: true
-                spec:
-                  httpGet:
-                    path: /health
-                    port: *port
-                  initialDelaySeconds: 1200
-                  periodSeconds: 30
-                  timeoutSeconds: 30
-                  failureThreshold: 10
-              readiness: *probes
+#            probes:
+#              liveness: &probes
+#                enabled: true
+#                custom: true
+#                spec:
+#                  httpGet:
+#                    path: /health
+#                    port: *port
+#                  initialDelaySeconds: 1200
+#                  periodSeconds: 30
+#                  timeoutSeconds: 30
+#                  failureThreshold: 10
+#              readiness: *probes
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true

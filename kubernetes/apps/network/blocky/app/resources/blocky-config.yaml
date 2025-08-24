@@ -18,7 +18,7 @@ customDNS:
   customTTL: 1h
   filterUnmappedTypes: true
   mapping:
-    bw.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
+#    bw.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
     grafana.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     idrac.lan: "192.168.2.126"
     immich.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"

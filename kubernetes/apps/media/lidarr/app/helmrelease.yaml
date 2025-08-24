@@ -29,9 +29,9 @@ spec:
             env:
               COMPlus_EnableDiagnostics: "0"
               LIDARR__AUTHENTICATION_METHOD: External
-              LIDARR__AUTHENTICATION_REQUIRED: DisabledForLocalAddresses
+              LIDARR__AUTH__REQUIRED: DisabledForLocalAddresses
               LIDARR__INSTANCE_NAME: "lidarr"
-              LIDARR__PORT: &port 80
+              LIDARR__SERVER__PORT: &port 80
               LIDARR__LOG_LEVEL: info
               LIDARR__THEME: "dark"
               PUID: 101000
@@ -72,6 +72,13 @@ spec:
         ports:
           http:
             port: *port
+    route:
+      app:
+        hostnames: [ "{{ .Release.Name }}.${SECRET_DOMAIN}" ]
+        parentRefs:
+          - name: internal
+            namespace: kube-system
+            sectionName: https
     persistence:
       run:
         type: emptyDir

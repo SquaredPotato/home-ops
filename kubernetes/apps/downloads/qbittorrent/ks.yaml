@@ -1,39 +1,36 @@
 ---
-# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app user-apps-prowlarr
-  namespace: &namespace default
+  name: &app user-apps-qbittorrent
+  namespace: &namespace downloads
 spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
   components:
     - ../../../../components/gatus/guarded
+  path: ./kubernetes/apps/downloads/qbittorrent/app
   dependsOn:
-    - name: cluster-apps-cloudnative-pg-cluster
-      namespace: database
     - name: cluster-apps-longhorn
       namespace: storage
-  interval: 1h
-  path: ./kubernetes/apps/default/prowlarr/app
+  prune: true
   postBuild:
     substitute:
       APP: *app
-      APP_NAME: Prowlarr
-      GATUS_SUBDOMAIN: prowlarr
+      APP_NAME: "QBittorrent"
+      GATUS_SUBDOMAIN: torrent
     substituteFrom:
       - name: cluster-secrets
         kind: Secret
       - name: cluster-settings
         kind: ConfigMap
-  prune: true
-  retryInterval: 2m
   sourceRef:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
   targetNamespace: *namespace
+  wait: true
+  interval: 1h
+  retryInterval: 1m
   timeout: 5m
-  wait: false

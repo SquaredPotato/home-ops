@@ -18,10 +18,7 @@ customDNS:
   customTTL: 1h
   filterUnmappedTypes: true
   mapping:
-    alertmanager.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     bw.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
-    bazarr.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
-    blocky.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     grafana.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     idrac.lan: "192.168.2.126"
     immich.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
@@ -35,9 +32,7 @@ customDNS:
     pgadmin.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     phpmyadmin.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     printer.lan: "${LAN_PRINTER_IP}"
-    prometheus.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     radarr.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
-    rancher.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     sonarr.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     slskd.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     torrent.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"

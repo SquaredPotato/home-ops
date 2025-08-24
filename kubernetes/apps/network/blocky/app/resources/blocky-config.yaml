@@ -32,7 +32,7 @@ customDNS:
     pgadmin.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     phpmyadmin.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     printer.lan: "${LAN_PRINTER_IP}"
-    radarr.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+#    radarr.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     sonarr.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     slskd.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
 #    torrent.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"

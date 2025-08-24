@@ -34,7 +34,7 @@ customDNS:
     printer.lan: "${LAN_PRINTER_IP}"
 #    radarr.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
 #    sonarr.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
-    slskd.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+#    slskd.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
 #    torrent.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     truenas.abchost.nl: "${LAN_TRUENAS_IP}"
     nas.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"

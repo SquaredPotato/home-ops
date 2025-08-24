@@ -1,0 +1,47 @@
+---
+directories:
+  downloads: /mnt/general/soulseek/complete
+  incomplete: /mnt/general/soulseek/incomplete
+flags:
+  no_version_check: true
+  # no_share_scan: true
+  force_share_scan: false
+metrics:
+  enabled: true
+  url: /metrics
+  authentication:
+    disabled: true
+permissions:
+  file:
+    mode: 750
+remote_configuration: false
+shares:
+  directories:
+    - /mnt/general/soulseek/shared
+  filters:
+    - \.ini$
+    - Thumbs.db$
+    - \.DS_Store$
+    - album.nfo$
+  cache:
+    storage_mode: disk
+    workers: 16
+retention:
+  search: 10080 # 7 days, in minutes
+  transfers:
+    upload:
+      succeeded: 1440 # 1 day, in minutes
+      errored: 30
+      cancelled: 5
+    download:
+      succeeded: 1440 # 1 day, in minutes
+      errored: 20160 # 2 weeks, in minutes
+      cancelled: 5
+  files:
+    complete: 20160 # 2 weeks, in minutes
+    incomplete: 43200 # 30 days, in minutes
+  logs: 180 # days
+global:
+  upload:
+    slots: 20
+    speed_limit: 1000 # in kibibytes

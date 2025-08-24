@@ -1,0 +1,85 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: mealie
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    controllers:
+      mealie:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          app:
+            image:
+              repository: ghcr.io/mealie-recipes/mealie
+              tag: pr-5235
+            env:
+              TZ: ${TIMEZONE}
+              BASE_URL: https://meals.${SECRET_DOMAIN}
+              PUID: 65534
+              PGID: 65534
+              AUTO_BACKUP_ENABLED: false
+              ALLOW_SIGNUP: false
+              DB_ENGINE: postgres
+              POSTGRES_SERVER: "${POSTGRES_HOST}"
+              POSTGRES_PORT: "${POSTGRES_PORT}"
+              POSTGRES_DB: mealie
+              OIDC_AUTH_ENABLED: true
+              OIDC_SIGNUP_ENABLED: true
+              OIDC_AUTO_REDIRECT: true
+              OIDC_ADMIN_GROUP: mealie-admins
+              OIDC_USER_GROUP: mealie-users
+              OIDC_REMEMBER_ME: true
+            envFrom:
+              - secretRef:
+                  name: mealie-secret
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
+            resources:
+              requests:
+                cpu: 100m
+                memory: 256Mi
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        runAsGroup: 65534
+        fsGroup: 65534
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile: { type: RuntimeDefault }
+    service:
+      app:
+        ports:
+          http:
+            port: 9000
+    route:
+      app:
+        hostnames:
+          - "meals.${SECRET_DOMAIN}"
+          - "recipes.${SECRET_DOMAIN}"
+        parentRefs:
+          - name: external
+            namespace: kube-system
+            sectionName: https
+    persistence:
+      data:
+        existingClaim: mealie
+        globalMounts:
+          - path: /app/data
+      tmp:
+        type: emptyDir

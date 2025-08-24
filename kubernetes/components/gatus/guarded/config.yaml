@@ -11,3 +11,4 @@ endpoints:
       query-type: A
     conditions:
       - "len([BODY]) == 0"
+      - "[STATUS] < 503"

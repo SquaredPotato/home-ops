@@ -28,11 +28,11 @@ spec:
               tag: 2.13.2.4685@sha256:af72fba52ef9e438a8c010f77a43bb3910da7c31cbf30d90cbcf0b351a82d4d6
             env:
               COMPlus_EnableDiagnostics: "0"
-              LIDARR__AUTHENTICATION_METHOD: External
+              LIDARR__AUTH__METHOD: External
               LIDARR__AUTH__REQUIRED: DisabledForLocalAddresses
-              LIDARR__INSTANCE_NAME: "lidarr"
+              LIDARR__INSTANCE__NAME: "Lidarr"
               LIDARR__SERVER__PORT: &port 80
-              LIDARR__LOG_LEVEL: info
+              LIDARR__LOG__LEVEL: info
               LIDARR__THEME: "dark"
               PUID: 101000
               PGID: 101000

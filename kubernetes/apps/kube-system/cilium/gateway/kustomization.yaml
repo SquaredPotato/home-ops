@@ -6,5 +6,6 @@ resources:
   - ./certificate.yaml
   - ./external.yaml
   - ./internal.yaml
+  - ./https-redirect.yaml
   - ./external-services/nextcloud.yaml
   - ./external-services/truenas.yaml

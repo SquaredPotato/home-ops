@@ -7,3 +7,4 @@ resources:
   - ./external.yaml
   - ./internal.yaml
   - ./external-services/nextcloud.yaml
+  - ./external-services/truenas.yaml

@@ -36,7 +36,7 @@ customDNS:
 #    slskd.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
 #    torrent.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     truenas.abchost.nl: "${LAN_TRUENAS_IP}"
-    nas.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
+#    nas.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     un.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     volumio.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
 

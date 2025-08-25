@@ -7,8 +7,8 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - name: https
-      port: &port 443
+    - name: http
+      port: &port 80
       protocol: TCP
       targetPort: *port
 ---
@@ -21,10 +21,10 @@ metadata:
     kubernetes.io/service-name: *name
 addressType: IPv4
 ports:
-  - name: https
-    appProtocol: https
+  - name: http
+    appProtocol: http
     protocol: TCP
-    port: 443
+    port: 80
 endpoints:
   - addresses:
       - "${LAN_TRUENAS_IP}"
@@ -45,4 +45,4 @@ spec:
     - backendRefs:
         - name: *name
           weight: 1
-          port: 443
+          port: 80

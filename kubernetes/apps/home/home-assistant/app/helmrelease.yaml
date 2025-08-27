@@ -46,7 +46,7 @@ spec:
               limits:
                 memory: 2Gi
     defaultPodOptions:
-      hostNetwork: true
+#      hostNetwork: true
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
@@ -57,7 +57,7 @@ spec:
       app:
         ports:
           http:
-            port: &port 8123
+            port: 8123
     route:
       app:
         hostnames:
@@ -66,10 +66,6 @@ spec:
           - name: external
             namespace: kube-system
             sectionName: https
-        rules:
-          - backendRefs:
-              - identifier: app
-                port: *port
     persistence:
       config:
         existingClaim: "{{ .Release.Name }}"

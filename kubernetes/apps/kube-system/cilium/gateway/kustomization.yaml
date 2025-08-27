@@ -9,3 +9,4 @@ resources:
   - ./https-redirect.yaml
   - ./external-services/nextcloud.yaml
   - ./external-services/truenas.yaml
+  - ./external-services/immich.yaml

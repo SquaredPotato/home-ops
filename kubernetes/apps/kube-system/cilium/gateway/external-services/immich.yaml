@@ -1,0 +1,49 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-immich-service
+  namespace: kube-system
+spec:
+  type: ClusterIP
+  ports:
+  - name: https
+    port: &port 443
+    protocol: TCP
+    appProtocol: HTTPS
+    targetPort: *port
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: &name external-immich-service
+  namespace: kube-system
+  labels:
+    kubernetes.io/service-name: *name
+addressType: IPv4
+ports:
+  - name: https
+    appProtocol: HTTPS
+    protocol: TCP
+    port: 443
+endpoints:
+  - addresses:
+    - "${CLUSTER_EXTERNAL_INGRESS_IP}"
+---
+# yaml-language-server: $schema=https://github.com/datreeio/CRDs-catalog/raw/refs/heads/main/gateway.networking.k8s.io/httproute_v1.json
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: &name external-immich-service
+  namespace: &namespace kube-system
+spec:
+  hostnames: ["immich.${SECRET_DOMAIN}"]
+  parentRefs:
+  - name: external
+    namespace: *namespace
+    sectionName: https
+  rules:
+  - backendRefs:
+    - name: *name
+      weight: 1
+      port: 443

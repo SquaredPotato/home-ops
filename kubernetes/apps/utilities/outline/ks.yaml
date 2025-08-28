@@ -10,6 +10,8 @@ spec:
   dependsOn:
     - name: cluster-apps-cloudnative-pg-cluster
       namespace: database
+    - name: cluster-apps-longhorn
+      namespace: storage
   path: ./kubernetes/apps/utilities/outline/app
   postBuild:
     substitute:

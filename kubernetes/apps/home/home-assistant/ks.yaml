@@ -18,6 +18,8 @@ spec:
       namespace: home
     - name: cluster-apps-longhorn
       namespace: storage
+    - name: cluster-apps-cloudnative-pg-cluster
+      namespace: database
   interval: 1h
   path: ./kubernetes/apps/home/home-assistant/app
   postBuild:

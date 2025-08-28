@@ -14,6 +14,8 @@ spec:
   dependsOn:
     - name: cluster-apps-longhorn
       namespace: storage
+    - name: cluster-apps-cloudnative-pg-cluster
+      namespace: database
   prune: true
   postBuild:
     substitute:

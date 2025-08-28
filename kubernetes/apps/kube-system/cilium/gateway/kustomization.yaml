@@ -5,6 +5,7 @@ kind: Kustomization
 resources:
   - ./certificate.yaml
   - ./external.yaml
+  - ./external-direct.yaml
   - ./internal.yaml
   - ./https-redirect.yaml
   - ./external-services/nextcloud.yaml

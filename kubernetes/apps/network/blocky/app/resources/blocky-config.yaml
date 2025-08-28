@@ -18,25 +18,14 @@ customDNS:
   customTTL: 1h
   filterUnmappedTypes: true
   mapping:
-#    bw.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
     grafana.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     idrac.lan: "192.168.2.126"
-    immich.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
-#    lidarr.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     longhorn.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     marax.lan: "192.168.2.205"
-#    meals.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
-#    next.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
-#    outline.abchost.nl: "${CLUSTER_EXTERNAL_INGRESS_IP}"
     pgadmin.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     phpmyadmin.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     printer.lan: "${LAN_PRINTER_IP}"
-#    radarr.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
-#    sonarr.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
-#    slskd.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
-#    torrent.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     truenas.abchost.nl: "${LAN_TRUENAS_IP}"
-#    nas.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     un.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     volumio.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
 

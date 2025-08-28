@@ -48,7 +48,7 @@ spec:
           app:
             image:
               repository: ghcr.io/immich-app/immich-server
-              tag: &immich-version v1.139.3
+              tag: &immich-version v1.139.4
             envFrom:
               - configMapRef:
                   name: immich

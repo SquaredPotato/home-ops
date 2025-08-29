@@ -85,7 +85,6 @@ spec:
           http:
             port: *port
       jellysearch:
-        type: LoadBalancer
         ports:
           http:
             port: 5000

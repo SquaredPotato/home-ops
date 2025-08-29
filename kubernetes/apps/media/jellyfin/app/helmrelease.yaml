@@ -67,7 +67,7 @@ spec:
               tag: latest
             env:
               INDEX_CRON: "0 0 0/2 ? * * *"
-              JELLYFIN_URL: "https://{{ .Release.Name }}.${SECRET_DOMAIN}"
+              JELLYFIN_URL: "https://jelly.${SECRET_DOMAIN}"
               MEILI_URL: "http://meilisearch.utilities:7700"
             envFrom:
               - secretRef:

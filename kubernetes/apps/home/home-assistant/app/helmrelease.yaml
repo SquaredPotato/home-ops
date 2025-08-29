@@ -31,7 +31,7 @@ spec:
               tag: 2025.8.3@sha256:7ef14f513e487add292b43306cccb4f1cd9dbcbd5eaf85d6438f98b197f930a4
             env:
               TZ: Europe/Amsterdam
-              HASS_HTTP_TRUSTED_PROXY_1: 192.168.0.0/21
+              HASS_HTTP_TRUSTED_PROXY_1: 10.0.2.0/23
               HASS_HTTP_TRUSTED_PROXY_2: 10.42.0.0/16
               HASS_HTTP_TRUSTED_PROXY_3: 10.43.0.0/16
             securityContext:
@@ -46,7 +46,7 @@ spec:
               limits:
                 memory: 2Gi
     defaultPodOptions:
-#      hostNetwork: true
+      hostNetwork: true
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000

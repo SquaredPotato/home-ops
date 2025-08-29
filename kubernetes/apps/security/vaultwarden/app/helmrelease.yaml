@@ -48,7 +48,6 @@ spec:
       app:
         hostnames:
           - "bw.${SECRET_DOMAIN}"
-          - "{{ .Release.Name }}.${SECRET_DOMAIN}"
         parentRefs:
           - name: external
             namespace: kube-system

@@ -96,7 +96,6 @@ spec:
       app:
         hostnames:
           - "{{ .Release.Name }}.${SECRET_DOMAIN}"
-          - "slskd.${SECRET_DOMAIN}"
         parentRefs:
           - name: internal
             namespace: kube-system

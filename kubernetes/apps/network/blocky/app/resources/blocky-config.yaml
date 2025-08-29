@@ -18,15 +18,10 @@ customDNS:
   customTTL: 1h
   filterUnmappedTypes: true
   mapping:
-    grafana.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     idrac.lan: "192.168.2.126"
-    longhorn.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     marax.lan: "192.168.2.205"
-    pgadmin.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
-    phpmyadmin.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     printer.lan: "${LAN_PRINTER_IP}"
     truenas.abchost.nl: "${LAN_TRUENAS_IP}"
-    volumio.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
 
 prometheus:
   enable: true

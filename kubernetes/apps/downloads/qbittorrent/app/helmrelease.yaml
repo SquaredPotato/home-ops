@@ -82,7 +82,6 @@ spec:
     route:
       app:
         hostnames:
-          - "{{ .Release.Name }}.${SECRET_DOMAIN}"
           - "torrent.${SECRET_DOMAIN}"
         parentRefs:
           - name: internal

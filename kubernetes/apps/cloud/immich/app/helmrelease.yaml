@@ -52,7 +52,7 @@ spec:
             envFrom:
               - configMapRef:
                   name: immich
-            env: &env
+            env:
               DB_DATABASE_NAME:
                 valueFrom:
                   secretKeyRef:
@@ -132,7 +132,30 @@ spec:
             envFrom:
               - configMapRef:
                   name: immich
-            env: *env
+            env:
+              DB_DATABASE_NAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-database
+                    key: POSTGRES_DB
+              DB_USERNAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-database
+                    key: POSTGRES_USER
+              DB_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-database
+                    key: POSTGRES_PASSWORD
+              DB_URL:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-database
+                    key: POSTGRES_URL
+              REVERSE_GEOCODING_DUMP_DIRECTORY: /geodata-cache
+              IMMICH_PORT: &server-port 2283
+              IMMICH_WORKERS_EXCLUDE: 'api'
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true

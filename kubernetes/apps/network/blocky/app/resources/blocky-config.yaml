@@ -26,7 +26,6 @@ customDNS:
     phpmyadmin.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     printer.lan: "${LAN_PRINTER_IP}"
     truenas.abchost.nl: "${LAN_TRUENAS_IP}"
-    un.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
     volumio.abchost.nl: "${CLUSTER_INTERNAL_INGRESS_IP}"
 
 prometheus:

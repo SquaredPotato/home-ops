@@ -46,4 +46,3 @@ spec:
         - name: *name
           weight: 1
           port: 443
-          appProtocol: https

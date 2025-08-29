@@ -67,7 +67,7 @@ nodes:
         routes: &routes
           - network: "0.0.0.0/0"
             gateway: "10.0.2.1"
-        mtu: 1500
+        mtu: 9000
         vip:
           ip: "10.0.2.100"
   - <<: *piNode
@@ -127,7 +127,7 @@ nodes:
         addresses:
           - "10.0.2.20/23"
         routes: *routes
-        mtu: 1500
+        mtu: 9000
   - <<: *intelNode
     hostname: "mizu-21"
     ipAddress: "10.0.2.21"

@@ -46,7 +46,7 @@ spec:
               limits:
                 memory: 2Gi
     defaultPodOptions:
-      hostNetwork: false
+      hostNetwork: true
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000

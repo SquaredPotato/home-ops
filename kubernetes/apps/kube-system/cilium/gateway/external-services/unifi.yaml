@@ -35,7 +35,8 @@ metadata:
   name: &name external-unifi-service
   namespace: &namespace kube-system
 spec:
-  hostnames: ["un.${SECRET_DOMAIN}"]
+  hostnames:
+    - "un.${SECRET_DOMAIN}"
   parentRefs:
     - name: internal
       namespace: *namespace
@@ -45,3 +46,4 @@ spec:
         - name: *name
           weight: 1
           port: 443
+          appProtocol: HTTPS

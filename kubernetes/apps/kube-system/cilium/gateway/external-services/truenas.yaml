@@ -36,7 +36,8 @@ metadata:
   name: &name external-truenas-service
   namespace: &namespace kube-system
 spec:
-  hostnames: ["nas.${SECRET_DOMAIN}"]
+  hostnames:
+    - "nas.${SECRET_DOMAIN}"
   parentRefs:
     - name: internal
       namespace: *namespace

@@ -6,22 +6,22 @@ metadata:
   name: user-apps-jellyfin-httproute
 spec:
   hostnames:
-  - "jelly.${SECRET_DOMAIN}"
+    - "jelly.${SECRET_DOMAIN}"
   parentRefs:
-  - name: external-direct
-    namespace: kube-system
-    sectionName: https
+    - name: external-direct
+      namespace: kube-system
+      sectionName: https
   rules:
-  - backendRefs:
-    - name: jellyfin-app
-      namespace: media
-      port: 8096
-  - backendRefs:
-    - name: jellyfin-jellysearch
-      namespace: media
-      port: 5000
-    matches:
-    - queryParams:
-      - type: RegularExpression
-        name: "searchTerm"
-        value: "^.*$"
+    - backendRefs:
+        - name: jellyfin-app
+          namespace: media
+          port: 8096
+    - backendRefs:
+        - name: jellyfin-jellysearch
+          namespace: media
+          port: 5000
+      matches:
+        - queryParams:
+            - type: RegularExpression
+              name: "searchTerm"
+              value: "^.*$"

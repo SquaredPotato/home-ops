@@ -24,7 +24,7 @@ spec:
         runAsGroup: 101000
         fsGroup: 101000
         fsGroupChangePolicy: OnRootMismatch
-        seccompProfile: { type: RuntimeDefault }
+        seccompProfile: {type: RuntimeDefault}
       tolerations:
         - key: "gpu-only"
           operator: "Equal"
@@ -122,8 +122,11 @@ spec:
             runAsGroup: 101000
             fsGroup: 101000
             fsGroupChangePolicy: OnRootMismatch
-            seccompProfile: { type: RuntimeDefault }
-            supplementalGroups: [ 44, 109, 993 ]
+            seccompProfile: {type: RuntimeDefault}
+            supplementalGroups:
+              - 44
+              - 109
+              - 993
         containers:
           app:
             image:
@@ -159,7 +162,7 @@ spec:
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
-              capabilities: { drop: ["ALL"] }
+              capabilities: {drop: ["ALL"]}
 
       machine-learning:
         replicas: 2
@@ -178,8 +181,11 @@ spec:
             runAsGroup: 101000
             fsGroup: 101000
             fsGroupChangePolicy: OnRootMismatch
-            seccompProfile: { type: RuntimeDefault }
-            supplementalGroups: [ 44, 109, 993 ]
+            seccompProfile: {type: RuntimeDefault}
+            supplementalGroups:
+              - 44
+              - 109
+              - 993
         containers:
           app:
             image:
@@ -221,7 +227,8 @@ spec:
             port: *maching-learning-port
     route:
       app:
-        hostnames: [ "{{ .Release.Name }}.${SECRET_DOMAIN}" ]
+        hostnames:
+          - "{{ .Release.Name }}.${SECRET_DOMAIN}"
         parentRefs:
           - name: external-direct
             namespace: kube-system

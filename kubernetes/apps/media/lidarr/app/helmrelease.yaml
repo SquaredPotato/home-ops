@@ -60,7 +60,8 @@ spec:
               runAsNonRoot: true
               fsGroup: 101000
               fsGroupChangePolicy: OnRootMismatch
-              supplementalGroups: [10000]
+              supplementalGroups:
+                - 10000
             resources:
               requests:
                 cpu: 10m
@@ -74,7 +75,8 @@ spec:
             port: *port
     route:
       app:
-        hostnames: [ "{{ .Release.Name }}.${SECRET_DOMAIN}" ]
+        hostnames:
+          - "{{ .Release.Name }}.${SECRET_DOMAIN}"
         parentRefs:
           - name: internal
             namespace: kube-system

@@ -24,7 +24,9 @@ spec:
             image:
               repository: public.ecr.aws/docker/library/eclipse-mosquitto
               tag: 2.0.22@sha256:d219d3a72847f3aed6a1d66975972d3b17f86e39e8f6f6b86b4088b879c1a2d6
-            command: [ "/bin/sh", "-c" ]
+            command:
+              - "/bin/sh"
+              - "-c"
             args:
               - |
                 cp /tmp/secret/mosquitto_pwd /mosquitto/external_config/;
@@ -40,7 +42,7 @@ spec:
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
-              capabilities: { drop: ["ALL"] }
+              capabilities: {drop: ["ALL"]}
             resources:
               requests:
                 cpu: 10m
@@ -60,7 +62,7 @@ spec:
           external-dns.alpha.kubernetes.io/hostname: "mosquitto.${SECRET_DOMAIN}"
           lbipam.cilium.io/ips: "${quote}${CLUSTER_MOSQUITTO_IP}${quote}"
         ports:
-          http :
+          http:
             port: 1883
     configMaps:
       config:

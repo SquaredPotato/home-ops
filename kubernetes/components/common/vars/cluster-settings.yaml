@@ -5,7 +5,7 @@ metadata:
   name: cluster-settings
 data:
   quote: '"' # double quote var to support substitution as quote
-# Cluster IP's (MetalLB range [192.168.4.2/24])
+  # Cluster IP's (MetalLB range [192.168.4.2/24])
   # These point to the "old" cluster unless # new
   CLUSTER_INTERNAL_INGRESS_IP: 192.168.4.199
   CLUSTER_EXTERNAL_INGRESS_IP: 192.168.4.198
@@ -24,12 +24,12 @@ data:
   LAN_NETKEEPER_IP: 192.168.5.1
   LAN_PRINTER_IP: 192.168.5.4
   LAN_ZIGBEE_ADAPTER_IP: 10.0.2.123
-# Redis DB id's
+  # Redis DB id's
   REDIS_IMMICH_DB: "1"
   REDIS_BLOCKY_DB: "2"
   REDIS_AUTHENTIK_DB: "3"
   REDIS_INVOICE_NINJA_DB: "4"
-# Service URLs
+  # Service URLs
   POSTGRES_HOST: "production-rw.database.svc.cluster.local"
   POSTGRES_PORT: "5432"
   DRAGONFLY_HOST: "dragonfly.database.svc.cluster.local"

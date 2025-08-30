@@ -36,7 +36,7 @@ spec:
             env:
               TZ: "Europe/Amsterdam"
             probes:
-              liveness:  &probe
+              liveness: &probe
                 enabled: true
                 custom: true
                 spec:

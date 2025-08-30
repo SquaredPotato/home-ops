@@ -23,9 +23,9 @@ spec:
     tolerations:
       - key: "node-role.kubernetes.io/control-plane"
         operator: "Exists"
-#  bootstrap:
-#    recovery:
-#      source: &previousCluster "production-v0"
+        #  bootstrap:
+        #    recovery:
+        #      source: &previousCluster "production-v0"
   postgresql:
     parameters:
       max_connections: "600"
@@ -50,19 +50,18 @@ spec:
         secretAccessKey:
           name: cloudnative-pg-secret
           key: wasabi-key
-  # Note: externalClusters is needed when recovering from an existing cnpg cluster
-#  externalClusters:
-#   - name: *previousCluster
-#     barmanObjectStore:
-#       wal:
-#         compression: bzip2
-#         maxParallel: 8
-#       destinationPath: s3://postgres-cloudnative.mizuto.backup/
-#       endpointURL: https://s3.eu-central-1.wasabisys.com
-#       s3Credentials:
-#         accessKeyId:
-#           name: cloudnative-pg-secret
-#           key: wasabi-id
-#         secretAccessKey:
-#           name: cloudnative-pg-secret
-#           key: wasabi-key
+          #  externalClusters:
+          #   - name: *previousCluster
+          #     barmanObjectStore:
+          #       wal:
+          #         compression: bzip2
+          #         maxParallel: 8
+          #       destinationPath: s3://postgres-cloudnative.mizuto.backup/
+          #       endpointURL: https://s3.eu-central-1.wasabisys.com
+          #       s3Credentials:
+          #         accessKeyId:
+          #           name: cloudnative-pg-secret
+          #           key: wasabi-id
+          #         secretAccessKey:
+          #           name: cloudnative-pg-secret
+          #           key: wasabi-key

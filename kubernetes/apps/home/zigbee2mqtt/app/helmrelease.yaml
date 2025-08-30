@@ -73,8 +73,10 @@ spec:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
               capabilities:
-                drop: ["ALL"]
-                add: [ "NET_BIND_SERVICE" ]
+                drop:
+                  - "ALL"
+                add:
+                  - "NET_BIND_SERVICE"
             resources:
               requests:
                 cpu: 10m
@@ -94,7 +96,9 @@ spec:
             port: *port
     route:
       app:
-        hostnames: ["{{ .Release.Name }}.${SECRET_DOMAIN}","zigbee.${SECRET_DOMAIN}"]
+        hostnames:
+          - "{{ .Release.Name }}.${SECRET_DOMAIN}"
+          - "zigbee.${SECRET_DOMAIN}"
         parentRefs:
           - name: internal
             namespace: kube-system

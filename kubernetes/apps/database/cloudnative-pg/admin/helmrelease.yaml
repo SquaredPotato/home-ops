@@ -26,7 +26,11 @@ spec:
             image:
               repository: dpage/pgadmin4
               tag: "9.7"
-            command: [ "/bin/chown", "-R", "5050:5050", "/var/lib/pgadmin" ]
+            command:
+              - "/bin/chown"
+              - "-R"
+              - "5050:5050"
+              - "/var/lib/pgadmin"
             securityContext:
               runAsUser: 0
         containers:
@@ -76,7 +80,8 @@ spec:
             port: *port
     route:
       app:
-        hostnames: ["pgadmin.${SECRET_DOMAIN}"]
+        hostnames:
+          - "pgadmin.${SECRET_DOMAIN}"
         parentRefs:
           - name: internal
             namespace: kube-system

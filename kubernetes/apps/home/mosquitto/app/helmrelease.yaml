@@ -60,7 +60,7 @@ spec:
           external-dns.alpha.kubernetes.io/hostname: "mosquitto.${SECRET_DOMAIN}"
           lbipam.cilium.io/ips: "${quote}${CLUSTER_MOSQUITTO_IP}${quote}"
         ports:
-          mqtt :
+          http :
             port: 1883
     configMaps:
       config:

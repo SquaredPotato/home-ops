@@ -66,6 +66,16 @@
       },
     },
     {
+      "description": "Immich Group",
+      "groupName": "Immich",
+      "matchPackagePatterns": ["immich"],
+      "matchDatasources": ["docker"],
+      "group": {
+        "commitMessageTopic": "{{{groupName}}} group"
+      },
+      "separateMinorPatch": true
+    },
+    {
       description: "Auto-merge GitHub Actions",
       matchManagers: ["github-actions"],
       automerge: true,

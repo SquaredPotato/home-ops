@@ -24,7 +24,7 @@ envoy:
        enabled: true
 gatewayAPI:
   enabled: true
-  appProtocol: true
+  enableAppProtocol: true
 hubble:
   enabled: false
 ipam:

@@ -86,6 +86,8 @@ spec:
         ports:
           http:
             port: *port
+          metrics:
+            port: 8080
     serviceAccount:
       dragonfly-operator:
         enabled: true

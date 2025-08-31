@@ -31,6 +31,9 @@ spec:
       reclaimPolicy: Retain
     defaultSettings:
       backupTarget: "s3://longhorn.mizuto.backup@eu-central-1/"
+    metrics:
+      serviceMonitor:
+        enabled: true
     ingress:
       ## Set to true to enable ingress record generation
       enabled: true

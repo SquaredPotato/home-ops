@@ -1,9 +1,8 @@
 [env]
 _.python.venv = { path = "{{config_root}}/.venv", create = true }
-#KUBECONFIG = "{{config_root}}/kubeconfig"
+KUBECONFIG = "{{config_root}}/kubeconfig"
 SOPS_AGE_KEY_FILE = "{{config_root}}/age.key"
 TALOSCONFIG = "{{config_root}}/talos/clusterconfig/talosconfig"
-LEFTHOOK_OUTPUT = "false"
 
 [tools]
 "python" = "3.13"
@@ -20,8 +19,8 @@ LEFTHOOK_OUTPUT = "false"
 "aqua:helm/helm" = "3.18.6"
 "aqua:helmfile/helmfile" = "1.1.5"
 "aqua:jqlang/jq" = "1.8.1"
-"aqua:kubernetes-sigs/kustomize" = "5.7.1"
-"aqua:kubernetes/kubectl" = "1.33.3"
+"aqua:kubernetes-sigs/kustomize" = "5.7.0"
+"aqua:kubernetes/kubectl" = "1.33.2"
 "aqua:mikefarah/yq" = "4.47.1"
-"aqua:siderolabs/talos" = "1.11.0-beta.1"
+"aqua:siderolabs/talos" = "1.10.7"
 "aqua:yannh/kubeconform" = "0.7.0"

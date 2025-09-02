@@ -5,6 +5,7 @@ namespace: longhorn-system
 resources:
   - ./namespace.yaml
   - ./helmrelease.yaml
+  - ./storageClassV2.yaml
   - ./httproute.yaml
   - ./longhorn-wasabi-secret.sops.yaml
   - ./longhorn-backblaze-secret.sops.yaml

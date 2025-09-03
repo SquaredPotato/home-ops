@@ -168,12 +168,12 @@ spec:
           gnetId: 10852
           revision: 1
           datasource: Prometheus
-          #        smartctl-exporter:
-          #          # renovate: depName="SMARTctl Exporter Dashboard"
-          #          gnetId: 22604
-          #          revision: 2
-          #          datasource:
-          #            - { name: DS_PROMETHEUS, value: Prometheus }
+        smartctl-exporter:
+          # renovate: depName="SMARTctl Exporter Dashboard"
+          gnetId: 22604
+          revision: 2
+          datasource:
+            - { name: DS_PROMETHEUS, value: Prometheus }
     sidecar:
       image:
         registry: ghcr.io

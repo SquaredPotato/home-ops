@@ -9,5 +9,6 @@ resources:
   - ./bazarr/ks.yaml
   - ./jellyfin/ks.yaml
   - ./lidarr/ks.yaml
+  - ./lidarr-cache-warmer/ks.yaml
   - ./radarr/ks.yaml
   - ./sonarr/ks.yaml

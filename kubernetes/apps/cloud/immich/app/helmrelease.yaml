@@ -43,7 +43,7 @@ spec:
               whenUnsatisfiable: DoNotSchedule
               labelSelector:
                 matchLabels:
-                  app.kubernetes.io/component: server
+                  app.kubernetes.io/controller: server
         containers:
           app:
             image:
@@ -115,7 +115,7 @@ spec:
               whenUnsatisfiable: DoNotSchedule
               labelSelector:
                 matchLabels:
-                  app.kubernetes.io/component: microservices
+                  app.kubernetes.io/controller: microservices
           securityContext:
             runAsNonRoot: true
             runAsUser: 101000
@@ -174,7 +174,7 @@ spec:
               whenUnsatisfiable: DoNotSchedule
               labelSelector:
                 matchLabels:
-                  app.kubernetes.io/component: machine-learning
+                  app.kubernetes.io/controller: machine-learning
           securityContext:
             runAsNonRoot: true
             runAsUser: 101000

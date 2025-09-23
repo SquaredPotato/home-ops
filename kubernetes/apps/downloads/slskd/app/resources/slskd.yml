@@ -26,6 +26,9 @@ shares:
   cache:
     storage_mode: disk
     workers: 16
+soulseek:
+  description: |
+    A slskd user. Follow me on Listenbrainz! https://listenbrainz.org/user/hubberbeen/
 retention:
   search: 10080 # 7 days, in minutes
   transfers:

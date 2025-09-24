@@ -25,7 +25,7 @@ spec:
           app:
             image:
               repository: ghcr.io/mealie-recipes/mealie
-              tag: pr-5235
+              tag: v3.2.1
             env:
               TZ: ${TIMEZONE}
               BASE_URL: https://meals.${SECRET_DOMAIN}

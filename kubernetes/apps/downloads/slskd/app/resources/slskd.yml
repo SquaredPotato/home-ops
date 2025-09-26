@@ -46,8 +46,8 @@ retention:
   logs: 180 # days
 global:
   upload:
-    slots: 5
-    speed_limit: 30000 # in kibibytes
+    slots: 10
+    speed_limit: 35000 # in kibibytes
 groups:
   default:
     upload:

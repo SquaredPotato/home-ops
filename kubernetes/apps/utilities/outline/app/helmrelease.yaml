@@ -32,7 +32,7 @@ spec:
               repository: outlinewiki/outline
               tag: 0.87.4
             env:
-              URL: "https://outline.${SECRET_DOMAIN}"
+              URL: "https://wiki.${SECRET_DOMAIN}"
               PORT: &outline-port 3000
               WEB_CONCURRENCY: 1
               REDIS_URL: "redis://dragonfly.database:6379"
@@ -78,7 +78,6 @@ spec:
     route:
       app:
         hostnames:
-          - "{{ .Release.Name }}.${SECRET_DOMAIN}"
           - "wiki.${SECRET_DOMAIN}"
         parentRefs:
           - name: external

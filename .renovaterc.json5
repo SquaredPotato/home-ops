@@ -11,16 +11,16 @@
   ],
   dependencyDashboard: true,
   dependencyDashboardTitle: "Renovate Dashboard 🤖",
-  assignees: ["SquaredPotato"],
+  schedule: ["every weekend"],
   ignorePaths: ["**/*.sops.*"],
   flux: {
     managerFilePatterns: ["/(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$/"],
   },
-  "helm-values": {
-    managerFilePatterns: ["/(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$/"],
-  },
   helmfile: {
-    managerFilePatterns: ["/(^|/)helmfile\\.ya?ml(?:\\.j2)?$/"],
+    managerFilePatterns: [
+      "/(^|/)helmfile\\.ya?ml(?:\\.gotmpl)?(?:\\.j2)?$/",
+      "/(^|/)helmfile\\.d/.+\\.ya?ml(?:\\.gotmpl)?(?:\\.j2)?$/",
+    ],
   },
   kubernetes: {
     managerFilePatterns: ["/(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$/"],
@@ -30,50 +30,20 @@
   },
   packageRules: [
     {
-      description: "Cert-Manager Group",
-      groupName: "Cert-Manager",
+      description: "Override Helmfile Dependency Name",
       matchDatasources: ["docker"],
-      matchPackageNames: ["/cert-manager/"],
-      group: {
-        commitMessageTopic: "{{{groupName}}} group",
-      },
-    },
-    {
-      description: "CoreDNS Group",
-      groupName: "CoreDNS",
-      matchDatasources: ["docker"],
-      matchPackageNames: ["/coredns/"],
-      group: {
-        commitMessageTopic: "{{{groupName}}} group",
-      },
+      matchManagers: ["helmfile"],
+      overrideDepName: "{{packageName}}",
     },
     {
       description: "Flux Operator Group",
-      groupName: "Flux Operator",
-      matchPackageNames: ["/flux-operator/", "/flux-instance/"],
+      groupName: "flux-operator",
       matchDatasources: ["docker"],
+      matchPackageNames: ["/flux-operator/", "/flux-instance/", "/flux-operator-manifests/"],
       group: {
         commitMessageTopic: "{{{groupName}}} group",
       },
-    },
-    {
-      description: "Spegel Group",
-      groupName: "Spegel",
-      matchDatasources: ["docker"],
-      matchPackageNames: ["/spegel/"],
-      group: {
-        commitMessageTopic: "{{{groupName}}} group",
-      },
-    },
-    {
-      "description": "Immich Group",
-      "groupName": "Immich",
-      "matchPackagePatterns": ["immich"],
-      "matchDatasources": ["docker"],
-      "group": {
-        "commitMessageTopic": "{{{groupName}}} group"
-      },
-      "separateMinorPatch": true
+      minimumGroupSize: 3,
     },
     {
       description: "Auto-merge GitHub Actions",
@@ -96,22 +66,22 @@
       matchUpdateTypes: ["major"],
       semanticCommitType: "feat",
       commitMessagePrefix: "{{semanticCommitType}}({{semanticCommitScope}})!:",
-      commitMessageExtra: "( {{currentVersion}} → {{newVersion}} )",
+      commitMessageExtra: "( {{currentVersion}} ➔ {{newVersion}} )",
     },
     {
       matchUpdateTypes: ["minor"],
       semanticCommitType: "feat",
-      commitMessageExtra: "( {{currentVersion}} → {{newVersion}} )",
+      commitMessageExtra: "( {{currentVersion}} ➔ {{newVersion}} )",
     },
     {
       matchUpdateTypes: ["patch"],
       semanticCommitType: "fix",
-      commitMessageExtra: "( {{currentVersion}} → {{newVersion}} )",
+      commitMessageExtra: "( {{currentVersion}} ➔ {{newVersion}} )",
     },
     {
       matchUpdateTypes: ["digest"],
       semanticCommitType: "chore",
-      commitMessageExtra: "( {{currentDigestShort}} → {{newDigestShort}} )",
+      commitMessageExtra: "( {{currentDigestShort}} ➔ {{newDigestShort}} )",
     },
     {
       matchDatasources: ["docker"],
@@ -190,6 +160,17 @@
         "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\n.+/(?<currentValue>(v|\\d)[^/]+)",
       ],
       datasourceTemplate: "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
+    },
+    {
+      customType: "regex",
+      description: "Process OCI dependencies",
+      managerFilePatterns: [
+        "/\\.yaml(?:\\.j2)?$/",
+      ],
+      matchStrings: [
+        "oci://(?<depName>[^:]+):(?<currentValue>\\S+)",
+      ],
+      datasourceTemplate: "docker",
     },
   ],
 }

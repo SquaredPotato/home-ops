@@ -46,13 +46,13 @@ retention:
   logs: 180 # days
 global:
   upload:
-    slots: 10
-    speed_limit: 35000 # in kibibytes
+    slots: 15
+    speed_limit: 40000 # in kibibytes
 groups:
   default:
     upload:
       priority: 500
-      strategy: roundrobin
+      strategy: firstinfirstout
       slots: 10
     limits:
       queued:

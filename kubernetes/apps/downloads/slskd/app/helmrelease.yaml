@@ -106,7 +106,12 @@ spec:
                 port: *port
     persistence:
       config:
-        existingClaim: slskd
+        type: persistentVolumeClaim
+        accessMode: ReadWriteOnce
+        storageClass: local-hostpath
+        size: 5Gi
+        globalMounts:
+          - path: /config
       config-file:
         type: configMap
         name: slskd-configmap

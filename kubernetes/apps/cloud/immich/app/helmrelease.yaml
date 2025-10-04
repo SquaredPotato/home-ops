@@ -163,6 +163,11 @@ spec:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
               capabilities: {drop: ["ALL"]}
+            resources:
+              requests:
+                gpu.intel.com/i915: 1
+              limits:
+                gpu.intel.com/i915: 1
 
       machine-learning:
         replicas: 2
@@ -209,9 +214,11 @@ spec:
                 enabled: true
             resources:
               requests:
+                gpu.intel.com/i915: 1
                 cpu: 100m
                 memory: 1Gi
               limits:
+                gpu.intel.com/i915: 1
                 cpu: 3000m
                 memory: 6Gi
     service:

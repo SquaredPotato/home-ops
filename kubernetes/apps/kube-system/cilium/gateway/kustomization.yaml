@@ -11,3 +11,4 @@ resources:
   - ./external-services/nextcloud.yaml
   - ./external-services/truenas.yaml
   - ./external-services/unifi.yaml
+  - ./external-services/default-redirect.yaml

@@ -4,6 +4,10 @@ web:
 
 metrics: true
 
+storage:
+  type: postgres
+  path: "postgres://gatus:${GATUS_POSTGRES_PASS}@${POSTGRES_HOST}:${POSTGRES_PORT}/gatus"
+
 ui:
   title: Status | Mizuto
   header: Mizuto Cluster Status

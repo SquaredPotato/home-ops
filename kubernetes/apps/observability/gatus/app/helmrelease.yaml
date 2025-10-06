@@ -33,9 +33,6 @@ spec:
               RESOURCE: both
               UNIQUE_FILENAMES: true
               METHOD: WATCH
-            envFrom:
-              - secretRef:
-                  name: "{{ .Release.Name }}-secret"
             restartPolicy: Always
             resources:
               requests:
@@ -52,9 +49,6 @@ spec:
               GATUS_CONFIG_PATH: /config
               GATUS_DELAY_START_SECONDS: 5
               GATUS_WEB_PORT: &port 8080
-            envFrom:
-              - secretRef:
-                  name: "{{ .Release.Name }}-secret"
             probes:
               liveness: &probes
                 enabled: true

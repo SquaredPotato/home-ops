@@ -54,12 +54,6 @@ groups:
       priority: 500
       strategy: firstinfirstout
       slots: 10
-    limits:
-      queued:
-        files: 150
-      daily: ~ # no daily limits (weekly still apply)
-      weekly:
-        files: 1500
   blacklisted:
     members:
      - Eagle1001hitchallenge

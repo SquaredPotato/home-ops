@@ -14,6 +14,7 @@ conditional:
   fallbackUpstream: true
   mapping:
     solid-optics.com: 10.2.0.2
+    alturna.direct: 10.2.0.2
 
 customDNS:
   customTTL: 1h

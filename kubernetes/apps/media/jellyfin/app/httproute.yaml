@@ -13,15 +13,15 @@ spec:
       sectionName: https
   rules:
     - backendRefs:
-        - name: jellyfin-app
+        - name: jellyfin
           namespace: media
           port: 8096
-    - backendRefs:
-        - name: jellyfin-jellysearch
-          namespace: media
-          port: 5000
-      matches:
-        - queryParams:
-            - type: RegularExpression
-              name: "searchTerm"
-              value: "^.*$"
+#    - backendRefs:
+#        - name: jellyfin-jellysearch
+#          namespace: media
+#          port: 5000
+#      matches:
+#        - queryParams:
+#            - type: RegularExpression
+#              name: "searchTerm"
+#              value: "^.*$"

@@ -61,17 +61,17 @@ spec:
               limits:
                 gpu.intel.com/i915: 1
                 memory: 8Gi
-          jellysearch:
-            image:
-              repository: domistyle/jellysearch
-              tag: latest
-            env:
-              INDEX_CRON: "0 0 0/2 ? * * *"
-              JELLYFIN_URL: "https://jelly.${SECRET_DOMAIN}"
-              MEILI_URL: "http://meilisearch.utilities:7700"
-            envFrom:
-              - secretRef:
-                  name: meili-master-key
+#          jellysearch:
+#            image:
+#              repository: domistyle/jellysearch
+#              tag: latest
+#            env:
+#              INDEX_CRON: "0 0 0/2 ? * * *"
+#              JELLYFIN_URL: "https://jelly.${SECRET_DOMAIN}"
+#              MEILI_URL: "http://meilisearch.utilities:7700"
+#            envFrom:
+#              - secretRef:
+#                  name: meili-master-key
     defaultPodOptions:
       securityContext:
         runAsNonRoot: true
@@ -84,10 +84,10 @@ spec:
         ports:
           http:
             port: *port
-      jellysearch:
-        ports:
-          http:
-            port: 5000
+#      jellysearch:
+#        ports:
+#          http:
+#            port: 5000
     persistence:
       config:
         existingClaim: "{{ .Release.Name }}"

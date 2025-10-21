@@ -66,3 +66,12 @@ spec:
           for: 1m
           labels:
             severity: warning
+        - alert: ReplicaFailingReplication
+          expr: |-
+            cnpg_pg_replication_in_recovery > cnpg_pg_replication_is_wal_receiver_up
+          for: 5m
+          annotations:
+            summary: >-
+              Replica {{ $labels.pod }} is failing to replicate
+          labels:
+            severity: critical

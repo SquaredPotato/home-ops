@@ -8,3 +8,4 @@ resources:
   - https://raw.githubusercontent.com/dragonflydb/dragonfly-operator/v1.3.0/manifests/crd.yaml
   - rbac.yaml
   - helmrelease.yaml
+  - grafanaDashboard.yaml

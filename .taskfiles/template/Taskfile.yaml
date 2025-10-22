@@ -15,7 +15,7 @@ tasks:
     desc: Initialize configuration files
     cmds:
       - task: generate-template-config
-#      - task: generate-age-key
+      - task: generate-age-key
       - task: generate-deploy-key
       - task: generate-push-token
 
@@ -27,18 +27,18 @@ tasks:
     status:
       - test -f {{.TEMPLATE_CONFIG_FILE}}
       - test -f {{.TEMPLATE_NODE_CONFIG_FILE}}
-#
-#  generate-age-key:
-#    internal: true
-#    cmd: age-keygen --output {{.SOPS_AGE_KEY_FILE}}
-#    status:
-#      - test -f {{.SOPS_AGE_KEY_FILE}}
-#    preconditions:
-#      - which age-keygen
+
+  generate-age-key:
+    internal: true
+    cmd: age-keygen --output {{.SOPS_AGE_KEY_FILE}}
+    status:
+      - test -f {{.SOPS_AGE_KEY_FILE}}
+    preconditions:
+      - which age-keygen
 
   generate-deploy-key:
     internal: true
-    cmd: ssh-keygen -t ecdsa -b 521 -C "deploy-key" -f {{.ROOT_DIR}}/github-deploy.key -q -P ""
+    cmd: ssh-keygen -t ed25519 -C "deploy-key" -f {{.ROOT_DIR}}/github-deploy.key -q -P ""
     status:
       - test -f {{.ROOT_DIR}}/github-deploy.key
     preconditions:
@@ -60,14 +60,14 @@ tasks:
       - task: validate-kubernetes-config
       - task: validate-talos-config
     preconditions:
-#      - msg: An existing Age key interferes with the age key in this repository, rename or delete ~/.config/sops/age/keys.txt
-#        sh: '! test -f ~/.config/sops/age/keys.txt'
+      - msg: An existing Age key interferes with the age key in this repository, rename or delete ~/.config/sops/age/keys.txt
+        sh: '! test -f ~/.config/sops/age/keys.txt'
       - msg: File cluster.yaml not found, did you run `task init`?
         sh: test -f {{.TEMPLATE_CONFIG_FILE}}
       - msg: File nodes.yaml not found, did you run `task init`?
         sh: test -f {{.TEMPLATE_NODE_CONFIG_FILE}}
-      - msg: File cloudflare-tunnel.json not found, see the README for information on creating it.
-        sh: test -f {{.ROOT_DIR}}/cloudflare-tunnel.json
+  #      - msg: File cloudflare-tunnel.json not found, see the README for information on creating it.
+  #        sh: test -f {{.ROOT_DIR}}/cloudflare-tunnel.json
 
   validate-schemas:
     internal: true

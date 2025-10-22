@@ -1,0 +1,49 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-nextcloud-service
+  namespace: network
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: &port 80
+      protocol: TCP
+      targetPort: *port
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: &name external-nextcloud-service
+  namespace: network
+  labels:
+    kubernetes.io/service-name: *name
+addressType: IPv4
+ports:
+  - name: http
+    appProtocol: http
+    protocol: TCP
+    port: 80
+endpoints:
+  - addresses:
+      - "${LAN_NEXTCLOUD_IP}"
+---
+# yaml-language-server: $schema=https://github.com/datreeio/CRDs-catalog/raw/refs/heads/main/gateway.networking.k8s.io/httproute_v1.json
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: &name external-nextcloud-service
+  namespace: &namespace network
+spec:
+  hostnames:
+    - "next.${SECRET_DOMAIN}"
+  parentRefs:
+    - name: external-direct
+      namespace: *namespace
+      sectionName: https
+  rules:
+    - backendRefs:
+        - name: *name
+          weight: 1
+          port: 80

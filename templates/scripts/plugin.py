@@ -24,8 +24,8 @@ def nthhost(value: str, query: int) -> str:
     return False
 
 
-# Return the age public or private key from age.key.bak
-def age_key(key_type: str, file_path: str = 'age.key.bak') -> str:
+# Return the age public or private key from age.key
+def age_key(key_type: str, file_path: str = 'age.key') -> str:
     try:
         with open(file_path, 'r') as file:
             file_content = file.read().strip()

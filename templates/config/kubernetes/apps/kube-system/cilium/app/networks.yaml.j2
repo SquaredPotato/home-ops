@@ -1,6 +1,6 @@
 ---
-# yaml-language-server: $schema=https://datreeio.github.io/CRDs-catalog/cilium.io/ciliumloadbalancerippool_v2alpha1.json
-apiVersion: cilium.io/v2alpha1
+# yaml-language-server: $schema=https://datreeio.github.io/CRDs-catalog/cilium.io/ciliumloadbalancerippool_v2.json
+apiVersion: cilium.io/v2
 kind: CiliumLoadBalancerIPPool
 metadata:
   name: pool
@@ -9,8 +9,8 @@ spec:
   blocks:
     - cidr: "#{ node_cidr }#"
 ---
-# yaml-language-server: $schema=https://datreeio.github.io/CRDs-catalog/cilium.io/ciliuml2announcementpolicy_v2alpha1.json
-apiVersion: cilium.io/v2alpha1
+# yaml-language-server: $schema=https://datreeio.github.io/CRDs-catalog/cilium.io/ciliuml2announcementpolicy_v2.json
+apiVersion: cilium.io/v2
 kind: CiliumL2AnnouncementPolicy
 metadata:
   name: l2-policy
@@ -25,8 +25,8 @@ spec:
       kubernetes.io/os: linux
 #% if cilium_bgp_enabled %#
 ---
-# yaml-language-server: $schema=https://datreeio.github.io/CRDs-catalog/cilium.io/ciliumbgpadvertisement_v2alpha1.json
-apiVersion: cilium.io/v2alpha1
+# yaml-language-server: $schema=https://datreeio.github.io/CRDs-catalog/cilium.io/ciliumbgpadvertisement_v2.json
+apiVersion: cilium.io/v2
 kind: CiliumBGPAdvertisement
 metadata:
   name: bgp-advertisement-config
@@ -42,8 +42,8 @@ spec:
         matchExpressions:
           - { key: somekey, operator: NotIn, values: ["never-used-value"] }
 ---
-# yaml-language-server: $schema=https://datreeio.github.io/CRDs-catalog/cilium.io/ciliumbgppeerconfig_v2alpha1.json
-apiVersion: cilium.io/v2alpha1
+# yaml-language-server: $schema=https://datreeio.github.io/CRDs-catalog/cilium.io/ciliumbgppeerconfig_v2.json
+apiVersion: cilium.io/v2
 kind: CiliumBGPPeerConfig
 metadata:
   name: bgp-peer-config-v4
@@ -55,8 +55,8 @@ spec:
         matchLabels:
           advertise: bgp
 ---
-# yaml-language-server: $schema=https://datreeio.github.io/CRDs-catalog/cilium.io/ciliumbgpclusterconfig_v2alpha1.json
-apiVersion: cilium.io/v2alpha1
+# yaml-language-server: $schema=https://datreeio.github.io/CRDs-catalog/cilium.io/ciliumbgpclusterconfig_v2.json
+apiVersion: cilium.io/v2
 kind: CiliumBGPClusterConfig
 metadata:
   name: bgp-cluster-config

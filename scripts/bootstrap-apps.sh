@@ -59,8 +59,8 @@ function apply_sops_secrets() {
 
     local -r secrets=(
         "${ROOT_DIR}/bootstrap/github-deploy-key.sops.yaml"
+        "${ROOT_DIR}/bootstrap/sops-age.sops.yaml"
         "${ROOT_DIR}/kubernetes/components/common/vars/cluster-secrets.sops.yaml"
-        "${ROOT_DIR}/kubernetes/components/common/vars/sops-age.sops.yaml"
     )
 
     for secret in "${secrets[@]}"; do
@@ -86,6 +86,8 @@ function apply_sops_secrets() {
 
 # CRDs to be applied before the helmfile charts are installed
 function apply_crds() {
+    log debug "Applying CRDs"
+
     local -r helmfile_file="${ROOT_DIR}/bootstrap/helmfile.d/00-crds.yaml"
 
     if [[ ! -f "${helmfile_file}" ]]; then

@@ -1,4 +1,3 @@
----
 machine:
   nodeTaints:
     node-role.kubernetes.io/control-plane: PreferNoSchedule

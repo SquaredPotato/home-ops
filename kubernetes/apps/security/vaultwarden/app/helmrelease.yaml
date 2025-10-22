@@ -50,7 +50,7 @@ spec:
           - "bw.${SECRET_DOMAIN}"
         parentRefs:
           - name: external
-            namespace: kube-system
+            namespace: network
             sectionName: https
     persistence:
       config:

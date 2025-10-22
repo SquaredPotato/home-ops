@@ -81,7 +81,7 @@ spec:
           - "wiki.${SECRET_DOMAIN}"
         parentRefs:
           - name: external-direct
-            namespace: kube-system
+            namespace: network
             sectionName: https
     persistence:
       cache:

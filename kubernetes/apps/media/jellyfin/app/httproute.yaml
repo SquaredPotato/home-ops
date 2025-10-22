@@ -9,7 +9,7 @@ spec:
     - "jelly.${SECRET_DOMAIN}"
   parentRefs:
     - name: external-direct
-      namespace: kube-system
+      namespace: network
       sectionName: https
   rules:
     - backendRefs:

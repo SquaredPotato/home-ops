@@ -74,7 +74,7 @@ spec:
           - "recipes.${SECRET_DOMAIN}"
         parentRefs:
           - name: external
-            namespace: kube-system
+            namespace: network
             sectionName: https
     persistence:
       data:

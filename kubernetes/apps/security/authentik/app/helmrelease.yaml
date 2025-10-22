@@ -42,7 +42,7 @@ spec:
           enabled: true
           parentRefs:
             - name: external
-              namespace: kube-system
+              namespace: network
               sectionName: https
           hostnames:
             - "sso.${SECRET_DOMAIN}"

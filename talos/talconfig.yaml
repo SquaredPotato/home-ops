@@ -40,6 +40,7 @@ nodes:
         systemExtensions:
           officialExtensions:
             - siderolabs/nfsd
+            - siderolabs/nfsrahead
             - siderolabs/util-linux-tools
             - siderolabs/nvme-cli
     volumes:
@@ -115,6 +116,7 @@ nodes:
             - siderolabs/i915
             - siderolabs/intel-ucode
             - siderolabs/nfsd
+            - siderolabs/nfsrahead
             - siderolabs/util-linux-tools
             - siderolabs/nvme-cli
             - siderolabs/iscsi-tools

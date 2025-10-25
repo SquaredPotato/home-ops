@@ -9,3 +9,4 @@ resources:
   - ./prometheusrule.yaml
   - ./service.yaml
   - ./secret.sops.yaml
+  - ./grafanaDashboard.yaml

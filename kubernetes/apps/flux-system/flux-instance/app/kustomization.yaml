@@ -8,3 +8,4 @@ resources:
   - ./secret.sops.yaml
   - ./httproute.yaml
   - ./receiver.yaml
+  - ./grafanaDashboard.yaml

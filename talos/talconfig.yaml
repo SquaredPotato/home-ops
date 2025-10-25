@@ -105,6 +105,8 @@ nodes:
     ipAddress: "10.0.2.20"
     installDisk: "/dev/sda"
     controlPlane: false
+    nodeLabels:
+      nodeType: "worker"
     machineSpec:
       secureboot: false
       arch: "amd64"

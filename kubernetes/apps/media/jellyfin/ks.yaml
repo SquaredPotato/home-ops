@@ -8,8 +8,6 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  components:
-    - ../../../../components/gatus/external
   path: ./kubernetes/apps/media/jellyfin/app
   dependsOn:
     - name: cluster-apps-longhorn
@@ -18,8 +16,6 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      APP_NAME: "Jellyfin"
-      GATUS_SUBDOMAIN: jelly
     substituteFrom:
       - name: cluster-secrets
         kind: Secret

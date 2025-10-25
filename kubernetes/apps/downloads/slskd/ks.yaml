@@ -8,8 +8,6 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  components:
-    - ../../../../components/gatus/guarded
   path: ./kubernetes/apps/downloads/slskd/app
   dependsOn:
     - name: cluster-apps-longhorn
@@ -18,8 +16,6 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      APP_NAME: "SoulSeekD"
-      GATUS_SUBDOMAIN: slskd
     substituteFrom:
       - name: cluster-secrets
         kind: Secret

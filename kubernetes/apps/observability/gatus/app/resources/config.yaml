@@ -24,12 +24,3 @@ connectivity:
     target: 1.1.1.1:53
     interval: 1m
 
-endpoints:
-  - name: "Flux Webhook"
-    group: External
-    url: "https://flux-webhook.${SECRET_DOMAIN}"
-    interval: 1m
-    client:
-      dns-resolver: tcp://1.1.1.1:53
-    conditions:
-      - "[STATUS] == 404"

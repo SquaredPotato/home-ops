@@ -88,8 +88,6 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      APP_NAME: PGAdmin
-      GATUS_SUBDOMAIN: pgadmin
     substituteFrom:
       - name: cluster-secrets
         kind: Secret
@@ -100,8 +98,6 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  components:
-    - ../../../../components/gatus/guarded
   dependsOn:
     - name: cluster-apps-cloudnative-pg
     - name: cluster-apps-cloudnative-pg-cluster

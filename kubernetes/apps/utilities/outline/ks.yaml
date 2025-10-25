@@ -5,8 +5,6 @@ metadata:
   name: &app user-apps-outline
   namespace: &namespace utilities
 spec:
-  components:
-    - ../../../../components/gatus/external
   dependsOn:
     - name: cluster-apps-cloudnative-pg-cluster
       namespace: database
@@ -16,8 +14,6 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      APP_NAME: Outline
-      GATUS_SUBDOMAIN: wiki
     substituteFrom:
       - name: cluster-secrets
         kind: Secret

@@ -9,8 +9,6 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  components:
-    - ../../../../components/gatus/external
   dependsOn:
     - name: cluster-apps-cloudnative-pg-cluster
       namespace: database
@@ -19,8 +17,6 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      APP_NAME: Atuin
-      GATUS_SUBDOMAIN: sh
     substituteFrom:
       - name: cluster-secrets
         kind: Secret

@@ -77,6 +77,10 @@ spec:
             port: *outline-port
     route:
       app:
+        annotations:
+          gatus.home-operations.com/endpoint: |-
+            name: Outline
+            group: External
         hostnames:
           - "wiki.${SECRET_DOMAIN}"
         parentRefs:

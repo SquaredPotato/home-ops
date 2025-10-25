@@ -5,8 +5,6 @@ metadata:
   name: &app user-apps-mealie
   namespace: &namespace utilities
 spec:
-  components:
-    - ../../../../components/gatus/external
   dependsOn:
     - name: cluster-apps-cloudnative-pg-cluster
       namespace: database
@@ -16,8 +14,6 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      APP_NAME: Mealie
-      GATUS_SUBDOMAIN: meals
     substituteFrom:
       - name: cluster-secrets
         kind: Secret

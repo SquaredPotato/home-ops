@@ -7,10 +7,8 @@ metadata:
   annotations:
     gatus.home-operations.com/endpoint: |-
       name: "Grafana"
-      group: internal
+      group: Internal
       guarded: true
-      ui:
-        hide-url: true
 spec:
   hostnames:
     - grafana.${SECRET_DOMAIN}

@@ -69,6 +69,10 @@ spec:
             port: 9000
     route:
       app:
+        annotations:
+          gatus.home-operations.com/endpoint: |-
+            name: Mealie
+            group: External
         hostnames:
           - "meals.${SECRET_DOMAIN}"
           - "recipes.${SECRET_DOMAIN}"

@@ -39,6 +39,10 @@ spec:
           enabled: true
       route:
         main:
+          annotations:
+            gatus.home-operations.com/endpoint: |-
+              name: Authentik
+              group: External
           enabled: true
           parentRefs:
             - name: external

@@ -22,8 +22,6 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      APP_NAME: "Sonarr"
-      GATUS_SUBDOMAIN: sonarr
     substituteFrom:
       - name: cluster-secrets
         kind: Secret

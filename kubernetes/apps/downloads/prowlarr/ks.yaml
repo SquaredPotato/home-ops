@@ -9,8 +9,6 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  components:
-    - ../../../../components/gatus/guarded
   dependsOn:
     - name: cluster-apps-cloudnative-pg-cluster
       namespace: database
@@ -21,8 +19,6 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      APP_NAME: Prowlarr
-      GATUS_SUBDOMAIN: prowlarr
     substituteFrom:
       - name: cluster-secrets
         kind: Secret

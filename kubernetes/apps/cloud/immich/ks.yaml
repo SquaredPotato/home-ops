@@ -9,8 +9,6 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  components:
-    - ../../../../components/gatus/external
   dependsOn:
     - name: cluster-apps-longhorn
       namespace: storage
@@ -21,8 +19,6 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      APP_NAME: "Immich"
-      GATUS_SUBDOMAIN: immich
     substituteFrom:
       - name: cluster-secrets
         kind: Secret

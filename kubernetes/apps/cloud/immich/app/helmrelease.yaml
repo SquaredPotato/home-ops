@@ -234,6 +234,11 @@ spec:
             port: *maching-learning-port
     route:
       app:
+        annotations:
+          gatus.home-operations.com/enabled: "true"
+          gatus.home-operations.com/endpoint: |-
+            name: "Immich"
+            group: External
         hostnames:
           - "{{ .Release.Name }}.${SECRET_DOMAIN}"
         parentRefs:

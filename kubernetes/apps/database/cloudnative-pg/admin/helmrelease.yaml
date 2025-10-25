@@ -80,6 +80,12 @@ spec:
             port: *port
     route:
       app:
+        annotations:
+          gatus.home-operations.com/enabled: "true"
+          gatus.home-operations.com/endpoint: |-
+            name: "PGAdmin"
+            group: Internal
+            guarded: true
         hostnames:
           - "pgadmin.${SECRET_DOMAIN}"
         parentRefs:

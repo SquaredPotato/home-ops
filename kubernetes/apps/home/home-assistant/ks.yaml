@@ -9,8 +9,6 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  components:
-    - ../../../../components/gatus/external
   dependsOn:
     - name: user-apps-mosquitto
       namespace: home
@@ -25,8 +23,6 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      APP_NAME: "Home Assistant"
-      GATUS_SUBDOMAIN: home
     substituteFrom:
       - name: cluster-secrets
         kind: Secret

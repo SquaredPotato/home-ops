@@ -46,6 +46,10 @@ spec:
             port: 80
     route:
       app:
+        annotations:
+          gatus.home-operations.com/endpoint: |-
+            name: Vaultwarden
+            group: External
         hostnames:
           - "bw.${SECRET_DOMAIN}"
         parentRefs:

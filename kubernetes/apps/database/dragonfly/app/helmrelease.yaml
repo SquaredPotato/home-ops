@@ -28,7 +28,7 @@ spec:
               tag: v1.3.0@sha256:ee0daee0bb11185c984bbea92b0e8cc17a06ae4cd246e0d311c814f6948fd27e
             args:
               - "--health-probe-bind-address=:8081"
-              - "--metrics-bind-address=127.0.0.1:8080"
+              - "--metrics-bind-address=:8080"
             command:
               - "/manager"
             securityContext:

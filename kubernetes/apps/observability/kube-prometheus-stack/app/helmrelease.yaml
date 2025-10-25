@@ -33,7 +33,7 @@ spec:
           name: alertmanager
         externalUrl: https://alertmanager.${SECRET_DOMAIN}
         nodeSelector:
-          node-type: "worker"
+          nodeType: "worker"
         storage:
           volumeClaimTemplate:
             spec:
@@ -89,7 +89,7 @@ spec:
           limits:
             memory: 2000Mi
         nodeSelector:
-          node-type: "worker"
+          nodeType: "worker"
         storageSpec:
           volumeClaimTemplate:
             spec:

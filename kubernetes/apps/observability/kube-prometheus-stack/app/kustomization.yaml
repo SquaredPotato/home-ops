@@ -6,4 +6,5 @@ resources:
   - ./alertmanagerconfig.yaml
   - ./secret.sops.yaml
   - ./GrafanaDashboard.yaml
+  - ./ocirepository.yaml
   - ./helmrelease.yaml

@@ -62,7 +62,7 @@ spec:
                 claimName: grafana-pvc
   persistentVolumeClaim:
     spec:
-      storageClassName: longhorn
+      storageClassName: longhorn-v2
       accessModes:
         - ReadWriteOnce
       resources:

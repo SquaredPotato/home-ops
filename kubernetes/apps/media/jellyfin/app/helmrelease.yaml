@@ -98,6 +98,12 @@ spec:
             jellysearch:
               - path: /config
                 readOnly: true
+      trickplay:
+        type: nfs
+        server: "${LAN_TRUENAS_IP}"
+        path: /mnt/fast/storage/trickplay
+        globalMounts:
+          - path: /var/lib/jellyfin/data/trickplay
       config-cache:
         existingClaim: "{{ .Release.Name }}-cache"
         globalMounts:

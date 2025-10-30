@@ -118,8 +118,5 @@ spec:
         path: /mnt/MAIN/media/
         globalMounts:
           - path: /mnt/general/
-      vuetorrent:
-        type: image
-        image: vuetorrent/vuetorrent-lsio-mod:2.28.2@sha256:d910003f1f303d8645eb587f876c74de4a41910dc62d9d22ab6b110dcb5d8e12
       tmp:
         type: emptyDir

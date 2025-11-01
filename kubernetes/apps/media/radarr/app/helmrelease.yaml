@@ -90,6 +90,8 @@ spec:
             namespace: network
             sectionName: https
     persistence:
+      tmp:
+        type: emptyDir
       time:
         enabled: true
         type: hostPath

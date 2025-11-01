@@ -68,7 +68,7 @@ spec:
             fsGroup: 101000
             fsGroupChangePolicy: OnRootMismatch
             supplementalGroups:
-              - 10000
+              - 1000
     service:
       app:
         controller: sonarr
@@ -99,3 +99,10 @@ spec:
         path: /mnt/MAIN/media/
         globalMounts:
           - path: /mnt/general/
+      anne:
+        type: nfs
+        server: "10.0.20.10"
+        path: /mnt/main/medialibrary/
+        globalMounts:
+          - path: /mnt/anne
+            readOnly: true

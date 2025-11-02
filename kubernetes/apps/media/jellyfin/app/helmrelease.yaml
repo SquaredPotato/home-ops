@@ -60,7 +60,6 @@ spec:
                 cpu: 100m
               limits:
                 gpu.intel.com/i915: 1
-                memory: 8Gi
 #          jellysearch:
 #            image:
 #              repository: domistyle/jellysearch

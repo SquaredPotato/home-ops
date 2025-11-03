@@ -89,6 +89,8 @@ spec:
             namespace: network
             sectionName: https
     persistence:
+      tmp:
+        type: emptyDir
       config:
         type: nfs
         server: "${LAN_TRUENAS_IP}"

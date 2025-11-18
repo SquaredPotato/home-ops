@@ -48,6 +48,15 @@ global:
   upload:
     slots: 15
     speed_limit: 400000 # in kibibytes
+  limits:
+    queued:
+      files: 500
+    daily:
+      files: 1000
+      failures: 200
+    weekly:
+      files: 5000
+      failures: 1000
 groups:
   default:
     upload:

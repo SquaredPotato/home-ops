@@ -10,3 +10,4 @@ resources:
   - ./mealie/ks.yaml
   - ./meilisearch/ks.yaml
   - ./outline/ks.yaml
+  - ./stirling/ks.yaml

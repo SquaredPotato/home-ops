@@ -97,6 +97,9 @@ spec:
         existingClaim: *app
         globalMounts:
           - path: /configs
+            subpath: configs
+          - path: /usr/share/tessdata
+            subpath: tessdata
       tmpfs:
         type: emptyDir
         globalMounts:
@@ -104,7 +107,5 @@ spec:
             subPath: logs
           - path: /pipeline
             subPath: pipeline
-          - path: /usr/share/tessdata
-            subPath: tessdata
           - path: /tmp
             subPath: tmp

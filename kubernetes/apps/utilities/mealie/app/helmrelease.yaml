@@ -72,7 +72,7 @@ spec:
         annotations:
           gatus.home-operations.com/endpoint: |-
             name: Mealie
-            group: External
+            group: external
         hostnames:
           - "meals.${SECRET_DOMAIN}"
           - "recipes.${SECRET_DOMAIN}"

@@ -7,7 +7,7 @@ metadata:
   annotations:
     gatus.home-operations.com/endpoint: |-
       conditions: ["[STATUS] == 404"]
-      group: External
+      group: external
       name: "Flux Webhook"
 spec:
   hostnames:

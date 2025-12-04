@@ -74,6 +74,9 @@ spec:
             port: 8080
     route:
       app:
+        gatus.home-operations.com/endpoint: |-
+          group: external
+          name: Stirling PDF
         hostnames:
           - "pdf.${SECRET_DOMAIN}"
         parentRefs:

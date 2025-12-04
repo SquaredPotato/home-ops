@@ -80,7 +80,7 @@ spec:
         annotations:
           gatus.home-operations.com/endpoint: |-
             name: Outline
-            group: External
+             group: external
         hostnames:
           - "wiki.${SECRET_DOMAIN}"
         parentRefs:

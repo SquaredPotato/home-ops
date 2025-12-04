@@ -42,7 +42,7 @@ spec:
           annotations:
             gatus.home-operations.com/endpoint: |-
               name: Authentik
-              group: External
+              group: external
           enabled: true
           parentRefs:
             - name: external

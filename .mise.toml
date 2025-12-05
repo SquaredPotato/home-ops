@@ -6,7 +6,7 @@ TALOSCONFIG = "{{config_root}}/talos/clusterconfig/talosconfig"
 LEFTHOOK_OUTPUT = "false"
 
 [tools]
-"python" = "3.14.1"
+"python" = "3.14.2"
 "pipx:makejinja" = "2.8.2"
 "aqua:cilium/cilium-cli" = "0.18.9"
 "aqua:cli/cli" = "2.83.1"

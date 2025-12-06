@@ -49,6 +49,7 @@ spec:
               SYSTEM_DATASOURCE_TYPE: "postgresql"
               SYSTEM_DATASOURCE_HOSTNAME: "${POSTGRES_HOST}"
               SYSTEM_DATASOURCE_PORT: "${POSTGRES_PORT}"
+              SYSTEM_FRONTENDURL: "https://pdf.${SECRET_DOMAIN}"
             envFrom:
               - secretRef:
                   name: *app
@@ -66,6 +67,19 @@ spec:
               limits:
                 memory: 2Gi
 
+    defaultPodOptions:
+      dnsPolicy: "None"
+      dnsConfig:
+        nameservers:
+          - "10.0.2.121"
+        searches:
+          - utilities.svc.cluster.local
+          - svc.cluster.local
+          - cluster.local
+        options:
+          - name: "ndots"
+            value: "5"
+
     service:
       app:
         controller: *app
@@ -74,9 +88,10 @@ spec:
             port: 8080
     route:
       app:
-        gatus.home-operations.com/endpoint: |-
-          group: external
-          name: Stirling PDF
+        annotations:
+          gatus.home-operations.com/endpoint: |-
+            group: external
+            name: Stirling PDF
         hostnames:
           - "pdf.${SECRET_DOMAIN}"
         parentRefs:
@@ -97,9 +112,10 @@ spec:
         existingClaim: *app
         globalMounts:
           - path: /configs
-            subpath: configs
+      tessdata:
+        existingClaim: stirling-tessdata
+        globalMounts:
           - path: /usr/share/tessdata
-            subpath: tessdata
       tmpfs:
         type: emptyDir
         globalMounts:

@@ -41,9 +41,9 @@ retention:
       errored: 20160 # 2 weeks, in minutes
       cancelled: 5
   files:
-    complete: 20160 # 2 weeks, in minutes
-    incomplete: 43200 # 30 days, in minutes
-  logs: 180 # days
+    complete: 5760 # 4 days, in minutes
+    incomplete: 5760 # 4 days, in minutes
+  logs: 90 # days
 global:
   upload:
     slots: 15

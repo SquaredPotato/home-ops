@@ -3,7 +3,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: ScheduledBackup
 metadata:
-  name: production
+  name: production-backup
   namespace: database
 spec:
   schedule: "@daily"
@@ -11,3 +11,7 @@ spec:
   backupOwnerReference: self
   cluster:
     name: production
+  method: plugin
+  target: "prefer-standby"
+  pluginConfiguration:
+    name: barman-cloud.cloudnative-pg.io

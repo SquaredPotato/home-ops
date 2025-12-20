@@ -22,6 +22,7 @@ spec:
     environment:
       MEILI_ENV: production
       MEILI_LOG_LEVEL: WARN
+      MEILI_EXPERIMENTAL_DUMPLESS_UPGRADE: TRUE
     auth:
       existingMasterKeySecret: "meili-master-key"
     persistence:

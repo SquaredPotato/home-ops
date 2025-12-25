@@ -1,0 +1,86 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: music-assistant
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    controllers:
+      music-assistant:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          app:
+            image:
+              repository: ghcr.io/music-assistant/server
+              tag: 2.7.2@sha256:8fc7f780a0a30594e170d5a71138852b1a1e7ce33d2d460e50bf8cadf9eda74f
+            env:
+              TZ: Europe/Amsterdam
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: false
+              capabilities:
+                drop:
+                  - "ALL"
+                add:
+                  - "NET_RAW"
+                  - "NET_ADMIN"
+                  - "NET_BIND_SERVICE"
+                  - "DAC_READ_SEARCH"
+            resources:
+              requests:
+                cpu: 10m
+                memory: 2Gi
+              limits:
+                memory: 5Gi
+    defaultPodOptions:
+      hostNetwork: true
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
+    service:
+      app:
+        ports:
+          http:
+            port: &uiPort 8095
+      stream:
+        ports:
+          stream:
+            port: 8097
+    route:
+      app:
+        annotations:
+          gatus.home-operations.com/endpoint: |-
+            group: internal
+            name: Music Assistant
+            conditions: ["[STATUS] == 200"]
+        hostnames:
+          - "music.${SECRET_DOMAIN}"
+        parentRefs:
+          - name: internal
+            namespace: network
+            sectionName: https
+        rules:
+          - backendRefs:
+              - identifier: app
+                port: *uiPort
+    persistence:
+      config:
+        existingClaim: "{{ .Release.Name }}"
+        globalMounts:
+          - path: /data

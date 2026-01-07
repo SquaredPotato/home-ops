@@ -50,7 +50,6 @@ spec:
               limits:
                 memory: 2Gi
     defaultPodOptions:
-      hostNetwork: true
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
@@ -62,6 +61,12 @@ spec:
         ports:
           http:
             port: 8123
+          coiot:
+            port: 5683
+        annotations:
+          lbipam.cilium.io/ips: "${quote}${CLUSTER_HOME_ASSISTANT_IP}${quote}"
+        type: LoadBalancer
+
     route:
       app:
         annotations:
@@ -69,6 +74,14 @@ spec:
             group: external
             name: Home Assistant
             conditions: ["[STATUS] == 200"]
+        rules:
+          - matches:
+              - path:
+                  type: PathPrefix
+                  value: /
+            backendRefs:
+              - identifier: app
+                port: 8123
         hostnames:
           - "home.${SECRET_DOMAIN}"
         parentRefs:

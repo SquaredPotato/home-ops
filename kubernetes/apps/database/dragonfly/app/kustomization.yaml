@@ -5,7 +5,7 @@ kind: Kustomization
 namespace: database
 resources:
   # renovate: datasource=github-releases depName=dragonflydb/dragonfly-operator
-  - https://raw.githubusercontent.com/dragonflydb/dragonfly-operator/v1.3.1/manifests/crd.yaml
+  - https://raw.githubusercontent.com/dragonflydb/dragonfly-operator/v1.4.0/manifests/crd.yaml
   - rbac.yaml
   - helmrelease.yaml
   - grafanaDashboard.yaml

@@ -29,7 +29,7 @@ spec:
     image:
       registry: ghcr.io
       repository: cloudnative-pg/plugin-barman-cloud
-      tag: &pluginVersion "v0.10.0"
+      tag: &pluginVersion "v0.11.0"
     sidecarImage:
       registry: ghcr.io
       repository: cloudnative-pg/plugin-barman-cloud-sidecar

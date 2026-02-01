@@ -60,7 +60,7 @@ function apply_sops_secrets() {
     local -r secrets=(
         "${ROOT_DIR}/bootstrap/github-deploy-key.sops.yaml"
         "${ROOT_DIR}/bootstrap/sops-age.sops.yaml"
-        "${ROOT_DIR}/kubernetes/components/common/vars/cluster-secrets.sops.yaml"
+        "${ROOT_DIR}/kubernetes/components/sops/cluster-secrets.sops.yaml"
     )
 
     for secret in "${secrets[@]}"; do
@@ -94,7 +94,7 @@ function apply_crds() {
         log fatal "File does not exist" "file" "${helmfile_file}"
     fi
 
-    if ! crds=$(helmfile --file "${helmfile_file}" template --quiet) || [[ -z "${crds}" ]]; then
+    if ! crds=$(helmfile --file "${helmfile_file}" template --quiet | yq eval-all --exit-status 'select(.kind == "CustomResourceDefinition")') || [[ -z "${crds}" ]]; then
         log fatal "Failed to render CRDs from Helmfile" "file" "${helmfile_file}"
     fi
 

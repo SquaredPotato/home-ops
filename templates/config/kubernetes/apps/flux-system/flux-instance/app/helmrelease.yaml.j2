@@ -1,30 +1,17 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2.json
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: flux-instance
 spec:
-  interval: 1h
   chartRef:
     kind: OCIRepository
     name: flux-instance
-  install:
-    remediation:
-      retries: -1
-  upgrade:
-    cleanupOnFail: true
-    remediation:
-      strategy: rollback
-      retries: 3
-  dependsOn:
-    - name: flux-operator
-      namespace: flux-system
+  interval: 1h
   values:
     instance:
       distribution:
         artifact: oci://ghcr.io/controlplaneio-fluxcd/flux-operator-manifests:v0.40.0
-        version: 2.x
       cluster:
         networkPolicy: false
       components:
@@ -141,3 +128,11 @@ spec:
             target:
               kind: Deployment
               name: (helm-controller|kustomize-controller)
+          - # Cancel health checks on new Kustomizations revisions
+            patch: |-
+              - op: add
+                path: /spec/template/spec/containers/0/args/-
+                value: --feature-gates=CancelHealthCheckOnNewRevision=true
+            target:
+              kind: Deployment
+              name: kustomize-controller

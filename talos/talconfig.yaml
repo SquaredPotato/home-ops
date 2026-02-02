@@ -48,6 +48,8 @@ nodes:
           - security=none # Less security, faster puter
           - sysctl.kernel.kexec_load_disabled=1 # Meteor Lake CPU & Intel iGPU
           - talos.auditd.disabled=1 # Less security, faster puter
+          - cpufreq.default_governor=ondemand # Default is powersave
+          - iommu.passthrough=1 # Less security, faster puter
         systemExtensions:
           officialExtensions:
             - siderolabs/nfsd
@@ -138,6 +140,8 @@ nodes:
           - security=none # Less security, faster puter
           - sysctl.kernel.kexec_load_disabled=1 # Meteor Lake CPU & Intel iGPU
           - talos.auditd.disabled=1 # Less security, faster puter
+          - cpufreq.default_governor=ondemand # Default is powersave
+          - iommu.passthrough=1 # Less security, faster puter
         systemExtensions:
           officialExtensions:
             - siderolabs/i915

@@ -58,6 +58,11 @@ spec:
       ## then you can access the UI by using the following full path {{host}}+{{path}}
       path: /
 
+      defaultBackupStore:
+        backupTarget: "s3://longhorn.mizuto.backup@eu-central-1/"
+        backupTargetCredentialSecret: longhorn-wasabi-access
+        pollInterval: 300
+
       ## Ingress annotations done as key:value pairs
       ## If you're using kube-lego, you will want to add:
       ## kubernetes.io/tls-acme: true

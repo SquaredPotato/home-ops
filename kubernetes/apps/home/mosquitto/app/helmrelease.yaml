@@ -78,8 +78,8 @@ spec:
             persistence true
             persistence_location /config
     persistence:
-#      config:
-#        existingClaim: "{{ .Release.Name }}"
+      config:
+        existingClaim: "{{ .Release.Name }}"
       config-file:
         type: configMap
         name: mosquitto

@@ -83,7 +83,7 @@ nodes:
         routes: &routes
           - network: "0.0.0.0/0"
             gateway: "10.0.2.1"
-        mtu: 9000
+#        mtu: 9000
         vip:
           ip: "10.0.2.100"
   - <<: *piNode
@@ -140,7 +140,7 @@ nodes:
           - security=none # Less security, faster puter
           - sysctl.kernel.kexec_load_disabled=1 # Meteor Lake CPU & Intel iGPU
           - talos.auditd.disabled=1 # Less security, faster puter
-          - cpufreq.default_governor=ondemand # Default is powersave
+          - cpufreq.default_governor=performance # Default is powersave
           - iommu.passthrough=1 # Less security, faster puter
         systemExtensions:
           officialExtensions:
@@ -154,6 +154,12 @@ nodes:
     userVolumes:
       - name: openebs-data
         provisioning: *ebsVolume
+#      - name: longhorn-data
+#        provisioning:
+#          diskSelector:
+#            match: disk.transport == 'nvme'
+#          minSize: 300GiB
+#          maxSize: 600GiB
     networkInterfaces:
       - &intelInterface
         deviceSelector:
@@ -162,7 +168,7 @@ nodes:
         addresses:
           - "10.0.2.20/23"
         routes: *routes
-        mtu: 9000
+#        mtu: 9000
   - <<: *intelNode
     hostname: "mizu-21"
     ipAddress: "10.0.2.21"

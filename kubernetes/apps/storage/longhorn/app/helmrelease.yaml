@@ -30,6 +30,10 @@ spec:
       defaultDataLocality: best-effort
       reclaimPolicy: Retain
     defaultSettings:
+      dataEngine: v2
+      v1DataEngine: false
+      v2DataEngine: true
+      allowRecurringJobWhileVolumeDetached: true
       orphanResourceAutoDeletion: "replicaData;replicaInstance;engineInstance"
       backupTarget: "s3://longhorn.mizuto.backup@eu-central-1/"
     metrics:

@@ -27,10 +27,6 @@ spec:
             name: *secret
       volumes:
         - name: authentik
-    authentik:
-      redis:
-        host: ${DRAGONFLY_HOST}
-        db: ${REDIS_AUTHENTIK_DB}
     server:
       replicas: 2
       metrics:

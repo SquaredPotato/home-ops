@@ -10,6 +10,8 @@ spec:
       namespace: database
     - name: cluster-apps-longhorn
       namespace: storage
+    - name: user-apps-authentik
+      namespace: security
   path: ./kubernetes/apps/utilities/stirling/app
   postBuild:
     substitute:

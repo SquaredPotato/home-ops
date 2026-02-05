@@ -14,6 +14,7 @@ spec:
   dependsOn:
     - name: cluster-apps-longhorn
       namespace: storage
+    - name: user-apps-mosquitto
   interval: 1h
   path: ./kubernetes/apps/home/zigbee2mqtt/app
   postBuild:

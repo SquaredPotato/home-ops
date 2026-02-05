@@ -12,8 +12,6 @@ spec:
   dependsOn:
     - name: cluster-apps-cloudnative-pg-cluster
       namespace: database
-    - name: cluster-apps-dragonfly-cluster
-      namespace: database
     - name: cluster-apps-longhorn
       namespace: storage
   prune: true

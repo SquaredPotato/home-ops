@@ -16,6 +16,8 @@ spec:
       namespace: database
     - name: user-apps-qbittorrent
       namespace: downloads
+    - name: user-apps-prowlarr
+      namespace: downloads
   prune: true
   postBuild:
     substitute:

@@ -12,6 +12,8 @@ spec:
   dependsOn:
     - name: cluster-apps-longhorn
       namespace: storage
+    - name: user-apps-authentik
+      namespace: security
   prune: true
   postBuild:
     substitute:

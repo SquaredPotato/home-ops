@@ -14,6 +14,9 @@ spec:
       name: sops-age
   interval: 1h
   path: ./kubernetes/apps/network/blocky
+  dependsOn:
+    - name: cluster-apps-redis
+      namespace: database
   postBuild:
     substituteFrom:
       - name: cluster-secrets

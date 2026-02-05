@@ -118,9 +118,11 @@ blocking:
 redis:
   required: true
   database: ${REDIS_BLOCKY_DB}
-  sentinelPassword: ${REDIS_PASS}
+  address: redis-master
   sentinelAddresses:
-    - dragonfly.database.svc.cluster.local:6379
+    - redis-node-0.redis-headless.database.svc.cluster.local:26379
+    - redis-node-1.redis-headless.database.svc.cluster.local:26379
+    - redis-node-2.redis-headless.database.svc.cluster.local:26379
 
 queryLog:
   type: postgresql

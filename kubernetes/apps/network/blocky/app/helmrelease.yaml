@@ -17,7 +17,7 @@ spec:
     remediation:
       retries: 3
   dependsOn:
-    - name: dragonfly-operator
+    - name: cluster-apps-redis
       namespace: database
     - name: cloudnative-pg
       namespace: database

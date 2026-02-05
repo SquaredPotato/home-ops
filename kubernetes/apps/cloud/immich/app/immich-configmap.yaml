@@ -9,7 +9,6 @@ data:
   IMMICH_WEB_URL: http://immich-web:3000
   DB_HOSTNAME: immich-database
   DB_PORT: "5432"
-  REDIS_HOSTNAME: "dragonfly.database.svc.cluster.local"
-  REDIS_PORT: "6379"
+  REDIS_URL: "ioredis://ewogICJzZW50aW5lbHMiOiBbCiAgICB7CiAgICAgICJob3N0IjogInJlZGlzLW5vZGUtMC5yZWRpcy1oZWFkbGVzcy5kYXRhYmFzZS5zdmMuY2x1c3Rlci5sb2NhbCIsCiAgICAgICJwb3J0IjogMjYzNzkKICAgIH0sCiAgICB7CiAgICAgICJob3N0IjogInJlZGlzLW5vZGUtMS5yZWRpcy1oZWFkbGVzcy5kYXRhYmFzZS5zdmMuY2x1c3Rlci5sb2NhbCIsCiAgICAgICJwb3J0IjogMjYzNzkKICAgIH0sCiAgICB7CiAgICAgICJob3N0IjogInJlZGlzLW5vZGUtMi5yZWRpcy1oZWFkbGVzcy5kYXRhYmFzZS5zdmMuY2x1c3Rlci5sb2NhbCIsCiAgICAgICJwb3J0IjogMjYzNzkKICAgIH0KICBdLAogICJuYW1lIjogInJlZGlzLW1hc3RlciIKfQ=="
   REDIS_DBINDEX: "1"
   TZ: Europe/Amsterdam

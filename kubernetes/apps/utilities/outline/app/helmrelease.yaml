@@ -35,7 +35,7 @@ spec:
               URL: "https://wiki.${SECRET_DOMAIN}"
               PORT: &outline-port 3000
               WEB_CONCURRENCY: 1
-              REDIS_URL: "redis://dragonfly.database:6379"
+              REDIS_URL: "ioredis://ewogICJzZW50aW5lbHMiOiBbCiAgICB7CiAgICAgICJob3N0IjogInJlZGlzLW5vZGUtMC5yZWRpcy1oZWFkbGVzcy5kYXRhYmFzZS5zdmMuY2x1c3Rlci5sb2NhbCIsCiAgICAgICJwb3J0IjogMjYzNzkKICAgIH0sCiAgICB7CiAgICAgICJob3N0IjogInJlZGlzLW5vZGUtMS5yZWRpcy1oZWFkbGVzcy5kYXRhYmFzZS5zdmMuY2x1c3Rlci5sb2NhbCIsCiAgICAgICJwb3J0IjogMjYzNzkKICAgIH0sCiAgICB7CiAgICAgICJob3N0IjogInJlZGlzLW5vZGUtMi5yZWRpcy1oZWFkbGVzcy5kYXRhYmFzZS5zdmMuY2x1c3Rlci5sb2NhbCIsCiAgICAgICJwb3J0IjogMjYzNzkKICAgIH0KICBdLAogICJkYiI6IDMsCiAgIm5hbWUiOiAicmVkaXMtbWFzdGVyIgp9"
               FILE_STORAGE: "local"
               ENABLE_UPDATES: false
             envFrom:

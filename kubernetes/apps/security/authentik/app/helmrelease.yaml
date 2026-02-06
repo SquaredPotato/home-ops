@@ -20,6 +20,7 @@ spec:
     global:
       podAnnotations:
         secret.reloader.stakater.com/reload: &secret authentik-secret
+      podAntiAffinity: hard
       deploymentStrategy:
         type: RollingUpdate
       envFrom:
@@ -33,6 +34,10 @@ spec:
         enabled: true
         serviceMonitor:
           enabled: true
+    worker:
+      replicas: 2
+      metrics:
+        enabled: true
       route:
         main:
           annotations:

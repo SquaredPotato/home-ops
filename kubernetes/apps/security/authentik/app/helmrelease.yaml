@@ -34,10 +34,6 @@ spec:
         enabled: true
         serviceMonitor:
           enabled: true
-    worker:
-      replicas: 2
-      metrics:
-        enabled: true
       route:
         main:
           annotations:
@@ -52,6 +48,10 @@ spec:
           hostnames:
             - "sso.${SECRET_DOMAIN}"
           https: false
+    worker:
+      replicas: 2
+      metrics:
+        enabled: true
     prometheus:
       rules:
         enabled: true

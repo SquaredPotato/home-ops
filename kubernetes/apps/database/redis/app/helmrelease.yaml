@@ -22,14 +22,17 @@ spec:
       enabled: false
       sentinel: false
     master:
+      resourcesPreset: "small"
       persistence:
         enabled: false
     replica:
+      resourcesPreset: "small"
       persistence:
         enabled: false
     architecture: replication
     sentinel:
       enabled: true
+      resourcesPreset: "small"
       masterSet: redis-master
 #      getMasterTimeout: 90
 #      startupProbe:
@@ -38,5 +41,6 @@ spec:
         enabled: false
     metrics:
       enabled: true
+      resourcesPreset: "small"
       serviceMonitor:
         enabled: true

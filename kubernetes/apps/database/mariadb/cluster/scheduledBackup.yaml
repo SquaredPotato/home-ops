@@ -1,0 +1,23 @@
+apiVersion: k8s.mariadb.com/v1alpha1
+kind: PhysicalBackup
+metadata:
+  name: mariadb-scheduled-backup
+spec:
+  mariaDbRef:
+    name: mariadb-cluster
+    waitForIt: true
+  storage:
+    s3:
+      bucket: s3://postgres-cloudnative.mizuto.backup/
+      endpoint: https://s3.eu-central-1.wasabisys.com
+      accessKeyIdSecretKeyRef:
+        name: mariadb-backup-secret
+        key: wasabi-id
+      secretAccessKeySecretKeyRef:
+        name: mariadb-backup-secret
+        key: wasabi-key
+  schedule:
+    cron: "0 3 * * *"
+    suspend: false
+    immediate: true
+  compression: gzip

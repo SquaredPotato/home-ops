@@ -8,3 +8,4 @@ resources:
   - ./database.yaml
   - ./grant.yaml
   - ./user.yaml
+  - ./scheduledBackup.yaml

@@ -53,3 +53,11 @@ spec:
 #        name: mariadb-backup-secret
 #        key: wasabi-key
 #    backupContentType: Physical
+#    stagingStorage:
+#      persistentVolumeClaim:
+#        storageClassName: local-hostpath
+#        resources:
+#          requests:
+#            storage: 5Gi
+#        accessModes:
+#          - ReadWriteOnce

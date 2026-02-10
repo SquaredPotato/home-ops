@@ -8,19 +8,14 @@ spec:
   rootPasswordSecretKeyRef:
     name: mariadb-cluster-secret
     key: mariadb-root-password
-
   image: mariadb:11.5 # highest supported by wordpress
-
   port: 3306
-
   replicas: 3
   replication:
     enabled: true
-
   storage:
     size: 8Gi
     storageClassName: local-hostpath
-
   myCnf: |
     [mariadb]
     bind-address=*
@@ -34,20 +29,27 @@ spec:
 
     [client]
     default-character-set=utf8mb4
-
   resources:
     requests:
       cpu: 100m
       memory: 256Mi
     limits:
       memory: 1Gi
-
   metrics:
     enabled: true
-
   podMetadata:
     annotations:
       reloader.stakater.com/auto: "true"
-
   updateStrategy:
     type: ReplicasFirstPrimaryLast
+#  bootstrapFrom:
+#    s3:
+#      bucket: s3://postgres-cloudnative.mizuto.backup/
+#      endpoint: https://s3.eu-central-1.wasabisys.com
+#      accessKeyIdSecretKeyRef:
+#        name: mariadb-backup-secret
+#        key: wasabi-id
+#      secretAccessKeySecretKeyRef:
+#        name: mariadb-backup-secret
+#        key: wasabi-key
+#    backupContentType: Physical

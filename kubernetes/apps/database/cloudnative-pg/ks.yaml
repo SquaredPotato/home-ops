@@ -43,6 +43,8 @@ spec:
   targetNamespace: *namespace
   dependsOn:
     - name: cluster-apps-cloudnative-pg
+    - name: cluster-apps-open-ebs
+      namespace: storage
   path: ./kubernetes/apps/database/cloudnative-pg/cluster
   commonMetadata:
     labels:

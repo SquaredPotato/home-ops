@@ -8,7 +8,7 @@ spec:
   rootPasswordSecretKeyRef:
     name: mariadb-cluster-secret
     key: mariadb-root-password
-  image: mariadb:11.5 # highest supported by wordpress
+  image: mariadb:12.1 # highest supported by wordpress
   port: 3306
   replicas: 3
   replication:

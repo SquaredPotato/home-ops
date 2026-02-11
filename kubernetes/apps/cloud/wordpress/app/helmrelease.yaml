@@ -1,0 +1,66 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: wordpress
+spec:
+  interval: 1h
+  chart:
+    spec:
+      chart: wordpress
+      version: 28.1.5
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: flux-system
+      interval: 1h
+  values:
+    existingSecret: wordpress-secret
+    wordpressConfigureCache: true
+    service:
+      type: ClusterIP
+    persistence:
+      enabled: true
+      storageClass: "longhorn"
+      existingClaim: "wordpress"
+    mariadb:
+      enabled: false
+    externalDatabase:
+      host: "mariadb-cluster-primary.database"
+      port: 3306
+      user: wordpress
+      database: wordpress
+      existingSecret: wordpress-secret
+    smtpHost: ${SMTP_HOST}
+    smtpPort: ${SMTP_PORT}
+    smtpUser: ${SMTP_USERNAME}
+    smtpPassword: ${SMTP_PASSWORD}
+    smtpProtocol: tls
+    smtpFromName: "admin"
+    multisite:
+      enable: true
+      host: "mizu.to"
+    replicaCount: 2
+    updateStrategy:
+      type: RollingUpdate
+    resourcePreset: "medium"
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+    memcached:
+      enabled: true
+      resourcePreset: small
+      service:
+        port: 11211
+    extraVolumeMounts:
+      - name: wordpress-config
+        mountPath: /opt/bitnami/php/etc/conf.d/php-custom.ini
+        subPath: php-custom.ini
+      - name: wordpress-config
+        mountPath: /opt/bitnami/apache/conf.default/vhosts/remoteip.conf
+        subPath: remoteip.conf
+    extraVolumes:
+      - name: wordpress-config
+        configMap:
+          defaultMode: 420
+          name: wordpress-config

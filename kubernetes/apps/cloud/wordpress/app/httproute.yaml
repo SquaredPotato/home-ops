@@ -18,7 +18,7 @@ spec:
   rules:
     - backendRefs:
         - name: wordpress
-          port: 8080
+          port: 80
 #    - backendRefs:
 #        - name: jellyfin-jellysearch
 #          namespace: media

@@ -36,9 +36,6 @@ spec:
     smtpPassword: ${SMTP_PASSWORD}
     smtpProtocol: tls
     smtpFromName: "admin"
-    multisite:
-      enable: true
-      host: "mizu.to"
     replicaCount: 2
     updateStrategy:
       type: RollingUpdate
@@ -49,7 +46,7 @@ spec:
         enabled: true
     memcached:
       enabled: true
-      resourcePreset: small
+      resourcePreset: medium
       service:
         port: 11211
     extraVolumeMounts:

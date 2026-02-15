@@ -40,14 +40,14 @@ spec:
     replicaCount: 2
     updateStrategy:
       type: RollingUpdate
-    resourcePreset: "medium"
+    resourcesPreset: "medium"
     metrics:
       enabled: true
       serviceMonitor:
         enabled: true
     memcached:
       enabled: true
-      resourcePreset: medium
+      resourcesPreset: medium
       service:
         port: 11211
     extraVolumeMounts:

@@ -5,7 +5,5 @@ kind: Kustomization
 resources:
   - ./secret.sops.yaml
   - ./cluster.yaml
-  - ./database.yaml
-  - ./grant.yaml
-  - ./user.yaml
   - ./scheduledBackup.yaml
+  - ./default

@@ -28,3 +28,18 @@ spec:
   dnsNames:
     - "mizu.to"
     - "*.mizu.to"
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cert-manager.io/certificate_v1.json
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: "riva-va-nl-production"
+spec:
+  secretName: "riva-va-nl-production-tls"
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "riva-va.nl"
+  dnsNames:
+    - "riva-va.nl"
+    - "*.riva-va.nl"

@@ -12,7 +12,7 @@ spec:
   hostnames:
     - "riva-va.nl"
   parentRefs:
-    - name: internal
+    - name: external
       namespace: network
       sectionName: https
   rules:

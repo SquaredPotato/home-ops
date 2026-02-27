@@ -96,6 +96,23 @@ spec:
           dns-tls-udp:
             port: 853
             protocol: UDP
+    route:
+      app:
+        annotations:
+          gatus.home-operations.com/endpoint: |-
+            name: "Blocky"
+            group: Internal
+            guarded: true
+        hostnames:
+          - "{{ .Release.Name }}.${SECRET_DOMAIN}"
+        rules:
+          - backendRefs:
+              - identifier: app
+                port: 4000
+        parentRefs:
+          - name: internal
+            namespace: network
+            sectionName: https
     serviceMonitor:
       app:
         enabled: true

@@ -25,6 +25,8 @@ spec:
       news_feed_enabled: "false"
     plugins:
       plugin_admin_enabled: "false"
+    panels:
+      disable_sanitize_html: "true"
     security:
       angular_support_enabled: "true"
     server:

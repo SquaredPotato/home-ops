@@ -101,10 +101,10 @@ spec:
         path: /mnt/MAIN/media/
         globalMounts:
           - path: /mnt/general/
-      anne:
-        type: nfs
-        server: "10.0.20.10"
-        path: /mnt/main/medialibrary/
-        globalMounts:
-          - path: /mnt/anne
-            readOnly: true
+#      anne:
+#        type: nfs
+#        server: "10.0.20.10"
+#        path: /mnt/main/medialibrary/
+#        globalMounts:
+#          - path: /mnt/anne
+#            readOnly: true

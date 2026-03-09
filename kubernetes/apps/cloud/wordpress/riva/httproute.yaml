@@ -11,6 +11,7 @@ metadata:
 spec:
   hostnames:
     - "riva-va.nl"
+    - "www.riva-va.nl"
   parentRefs:
     - name: external-direct
       namespace: network

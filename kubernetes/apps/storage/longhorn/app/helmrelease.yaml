@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: longhorn
-      version: "1.10.1"
+      version: "1.11.0"
       sourceRef:
         kind: HelmRepository
         name: longhorn
@@ -26,6 +26,12 @@ spec:
     keepHistory: false
   # https://github.com/longhorn/longhorn/blob/master/chart/values.yaml
   values:
+    image:
+      longhorn:
+        instanceManager:
+          tag: v1.11.0-hotfix-2
+        manager:
+          tag: v1.11.0-hotfix-1
     persistence:
       defaultDataLocality: best-effort
       reclaimPolicy: Retain
@@ -34,7 +40,7 @@ spec:
       v1DataEngine: false
       v2DataEngine: true
       allowRecurringJobWhileVolumeDetached: true
-      orphanResourceAutoDeletion: "replicaData;replicaInstance;engineInstance"
+      orphanResourceAutoDeletion: "replica-data;instance"
       backupTarget: "s3://longhorn.mizuto.backup@eu-central-1/"
     metrics:
       serviceMonitor:

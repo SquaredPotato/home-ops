@@ -111,7 +111,7 @@ spec:
           - path: /mnt/general/
 #      anne:
 #        type: nfs
-#        server: "10.0.20.10"
+#        server: "10.20.20.10"
 #        path: /mnt/main/medialibrary/
 #        globalMounts:
 #          - path: /mnt/anne

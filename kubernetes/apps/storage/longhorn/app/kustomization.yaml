@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: longhorn-system
 resources:
   - ./namespace.yaml
+  - ./helmrepository.yaml
   - ./helmrelease.yaml
   - ./storageClassV2.yaml
   - ./httproute.yaml

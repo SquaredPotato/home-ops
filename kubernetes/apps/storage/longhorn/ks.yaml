@@ -3,8 +3,9 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: cluster-apps-longhorn
-  namespace: storage
+  namespace: &namespace storage
 spec:
+  targetNamespace: *namespace
   path: ./kubernetes/apps/storage/longhorn/app
   sourceRef:
     kind: GitRepository

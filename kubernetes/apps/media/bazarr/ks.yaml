@@ -11,7 +11,7 @@ spec:
   path: ./kubernetes/apps/media/bazarr/app
   dependsOn:
     - name: cluster-apps-longhorn
-      namespace: storage
+      namespace: flux-system
     - name: cluster-apps-cloudnative-pg-cluster
       namespace: database
   prune: true

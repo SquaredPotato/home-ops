@@ -11,7 +11,7 @@ spec:
   path: ./kubernetes/apps/media/lidarr-cache-warmer/app
   dependsOn:
     - name: cluster-apps-longhorn
-      namespace: storage
+      namespace: flux-system
   prune: true
   postBuild:
     substituteFrom:

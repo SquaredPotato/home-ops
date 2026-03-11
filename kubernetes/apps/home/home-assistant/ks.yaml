@@ -15,7 +15,7 @@ spec:
     - name: user-apps-zigbee2mqtt
       namespace: home
     - name: cluster-apps-longhorn
-      namespace: storage
+      namespace: flux-system
     - name: cluster-apps-cloudnative-pg-cluster
       namespace: database
   interval: 1h

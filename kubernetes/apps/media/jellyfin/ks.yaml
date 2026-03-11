@@ -11,7 +11,7 @@ spec:
   path: ./kubernetes/apps/media/jellyfin/app
   dependsOn:
     - name: cluster-apps-longhorn
-      namespace: storage
+      namespace: flux-system
     - name: user-apps-authentik
       namespace: security
   prune: true

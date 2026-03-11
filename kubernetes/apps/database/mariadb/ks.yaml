@@ -44,7 +44,7 @@ spec:
   dependsOn:
     - name: cluster-apps-mariadb
     - name: cluster-apps-open-ebs
-      namespace: storage
+      namespace: flux-system
   prune: true
   sourceRef:
     kind: GitRepository

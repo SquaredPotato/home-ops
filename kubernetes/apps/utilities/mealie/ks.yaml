@@ -9,7 +9,7 @@ spec:
     - name: cluster-apps-cloudnative-pg-cluster
       namespace: database
     - name: cluster-apps-longhorn
-      namespace: storage
+      namespace: flux-system
     - name: user-apps-authentik
       namespace: security
   path: ./kubernetes/apps/utilities/mealie/app

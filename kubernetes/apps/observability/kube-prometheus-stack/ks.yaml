@@ -25,7 +25,7 @@ spec:
         kind: ConfigMap
   dependsOn:
     - name: cluster-apps-longhorn
-      namespace: storage
+      namespace: flux-system
   prune: true
   retryInterval: 2m
   sourceRef:

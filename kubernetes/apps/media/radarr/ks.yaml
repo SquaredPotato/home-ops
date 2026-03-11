@@ -11,7 +11,7 @@ spec:
   path: ./kubernetes/apps/media/radarr/app
   dependsOn:
     - name: cluster-apps-longhorn
-      namespace: storage
+      namespace: flux-system
     - name: cluster-apps-cloudnative-pg-cluster
       namespace: database
     - name: user-apps-qbittorrent

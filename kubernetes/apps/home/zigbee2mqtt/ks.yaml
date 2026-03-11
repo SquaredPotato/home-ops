@@ -13,7 +13,7 @@ spec:
     - ../../../../components/gatus/guarded
   dependsOn:
     - name: cluster-apps-longhorn
-      namespace: storage
+      namespace: flux-system
     - name: user-apps-mosquitto
   interval: 1h
   path: ./kubernetes/apps/home/zigbee2mqtt/app

@@ -121,13 +121,13 @@ spec:
         path: /mnt/MAIN/miscellaneous/music
         globalMounts:
           - path: /mnt/general/music
-      anne:
-        type: nfs
-        server: "10.20.20.10"
-        path: /mnt/main/medialibrary/
-        globalMounts:
-          - path: /mnt/anne
-            readOnly: true
+#      anne:
+#        type: nfs
+#        server: "10.20.20.10"
+#        path: /mnt/main/medialibrary/
+#        globalMounts:
+#          - path: /mnt/anne
+#            readOnly: true
       tmpfs:
         type: emptyDir
         advancedMounts:

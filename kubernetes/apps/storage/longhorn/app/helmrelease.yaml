@@ -26,12 +26,6 @@ spec:
     keepHistory: false
   # https://github.com/longhorn/longhorn/blob/master/chart/values.yaml
   values:
-    image:
-      longhorn:
-        instanceManager:
-          tag: v1.11.0-hotfix-2
-        manager:
-          tag: v1.11.0-hotfix-1
     persistence:
       defaultDataLocality: best-effort
       reclaimPolicy: Retain

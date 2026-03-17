@@ -15,6 +15,9 @@ conditional:
   mapping:
     solid-optics.com: 10.2.0.2
     alturna.direct: 10.2.0.2
+    abrondijk.com: 10.20.50.120
+    brondijk.dev: 10.20.50.120
+    infinigon.systems: 10.20.50.120
 
 customDNS:
   customTTL: 1h

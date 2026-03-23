@@ -67,3 +67,15 @@ groups:
     members:
      - Eagle1001hitchallenge
      - ZipZapZen
+  user_defined:
+    override:
+       upload:
+         priority: 250
+         strategy: firstinfirstout
+         slots: 10
+         limits:
+           queued: ~
+           daily: ~
+           weekly: ~
+       members:
+           - urix

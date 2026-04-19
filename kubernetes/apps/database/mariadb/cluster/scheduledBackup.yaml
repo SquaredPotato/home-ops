@@ -23,7 +23,7 @@ spec:
   compression: gzip
   stagingStorage:
     persistentVolumeClaim:
-      storageClassName: local-hostpath
+      storageClassName: longhorn-static
       resources:
         requests:
           storage: 5Gi

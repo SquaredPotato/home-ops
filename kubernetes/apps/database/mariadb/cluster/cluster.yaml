@@ -13,6 +13,9 @@ spec:
   replicas: 3
   replication:
     enabled: true
+    primary:
+      autoFailover: true
+      autoFailoverDelay: 5s
   storage:
     size: 8Gi
     storageClassName: local-hostpath

@@ -16,6 +16,12 @@ spec:
     primary:
       autoFailover: true
       autoFailoverDelay: 5s
+    replica:
+      recovery:
+        enabled: true
+      bootstrapFrom:
+        physicalBackupTemplateRef:
+          name: mariadb-scheduled-backup
   storage:
     size: 8Gi
     storageClassName: local-hostpath

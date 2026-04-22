@@ -85,6 +85,16 @@
       "separateMinorPatch": true
     },
     {
+      description: "Redis Sentinal Group",
+      groupName: "redis-sentinel",
+      matchDatasources: ["docker"],
+      matchPackageNames: ["bitnami/redis-sentinel", "bitnami/redis-exporter", "bitnami/redis"],
+      group: {
+        commitMessageTopic: "{{{groupName}}} group",
+      },
+      minimumGroupSize: 3,
+    },
+    {
       description: "Auto-merge GitHub Actions",
       matchManagers: ["github-actions"],
       automerge: true,

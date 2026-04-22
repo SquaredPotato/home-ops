@@ -32,15 +32,26 @@ spec:
     architecture: replication
     sentinel:
       enabled: true
+      image:
+        repository: bitnami/redis-sentinel
+        tag: "latest@sha256:bbfa30811b4df9050d08a1ba4daaa329e1b562213f655ab2d040396275bc7cf9"
       resourcesPreset: "small"
       masterSet: redis-master
-#      getMasterTimeout: 90
-#      startupProbe:
-#        failureThreshold: 2
+      #      getMasterTimeout: 90
+      #      startupProbe:
+      #        failureThreshold: 2
       persistence:
         enabled: false
+    image:
+      repository: bitnami/redis
+      tag: "latest@sha256:f3d94ad232c4ace445696beef70e8ebd798fbe1a338b56698db3185fbd68c573"
+      pullPolicy: IfNotPresent
     metrics:
       enabled: true
+      image:
+        repository: bitnami/redis-exporter
+        tag: "latest@sha256:828b7303cbb90a7f534e985bca7b9c9d450b41bcf5dc4c409819511e92d2d037"
+        pullPolicy: IfNotPresent
       resourcesPreset: "small"
       serviceMonitor:
         enabled: true

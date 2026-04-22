@@ -25,7 +25,7 @@ spec:
           app:
             image:
               repository: ghcr.io/slskd/slskd
-              tag: 0.24.5@sha256:17ef977563be206f3b5932080b1e23883b2cb39dc9010640f6f39b4eaec887e3
+              tag: 0.25.1@sha256:ab9ed50e028b524cefdb7c1dd8ebca368a076e18441ee8ac2326473eb850b4c3
             env:
               DOTNET_BUNDLE_EXTRACT_BASE_DIR: /tmp/.net
               TZ: Europe/Amsterdam
@@ -37,19 +37,6 @@ spec:
             envFrom:
               - secretRef:
                   name: slskd-secret
-                  #            probes:
-                  #              liveness: &probes
-                  #                enabled: true
-                  #                custom: true
-                  #                spec:
-                  #                  httpGet:
-                  #                    path: /health
-                  #                    port: *port
-                  #                  initialDelaySeconds: 1200
-                  #                  periodSeconds: 30
-                  #                  timeoutSeconds: 30
-                  #                  failureThreshold: 10
-                  #              readiness: *probes
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
@@ -63,7 +50,7 @@ spec:
     defaultPodOptions:
       securityContext:
         runAsNonRoot: true
-        runAsUser: 101000
+        runAsUser: 1000
         runAsGroup: 101000
         fsGroup: 101000
         fsGroupChangePolicy: OnRootMismatch

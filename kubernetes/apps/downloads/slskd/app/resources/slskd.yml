@@ -44,39 +44,37 @@ retention:
     complete: 5760 # 4 days, in minutes
     incomplete: 5760 # 4 days, in minutes
   logs: 90 # days
-global:
-  upload:
-    slots: 15
-    speed_limit: 400000 # in kibibytes
-  limits:
-    queued:
-      files: 500
-    daily:
-      files: 1000
-      failures: 200
-    weekly:
-      files: 5000
-      failures: 1000
-groups:
-  default:
-    upload:
-      priority: 500
-      strategy: firstinfirstout
-      slots: 10
-  blacklisted:
-    members:
-     - Eagle1001hitchallenge
-     - ZipZapZen
-  user_defined:
-    override:
-       upload:
-         priority: 250
-         strategy: firstinfirstout
-         slots: 10
-         limits:
-           queued: ~
-           daily: ~
-           weekly: ~
-       members:
-           - urix
-           - MrLasagnaSlskd
+transfers:
+  groups:
+    default:
+      upload:
+        priority: 500
+        strategy: firstinfirstout
+        speed_limit: 400000 # in kibibytes
+        slots: 15
+        limits:
+          queued:
+            files: 500
+          daily:
+            files: 1000
+            failures: 200
+          weekly:
+            files: 5000
+            failures: 1000
+    blacklisted:
+      members:
+       - Eagle1001hitchallenge
+       - ZipZapZen
+    user_defined:
+      override:
+         upload:
+           priority: 250
+           strategy: firstinfirstout
+           slots: 10
+           limits:
+             queued: ~
+             daily: ~
+             weekly: ~
+         members:
+             - urix
+             - MrLasagnaSlskd

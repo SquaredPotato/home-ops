@@ -30,7 +30,7 @@ spec:
           app:
             image:
               repository: outlinewiki/outline
-              tag: 1.6.1
+              tag: 1.7.0
             env:
               URL: "https://wiki.${SECRET_DOMAIN}"
               PORT: &outline-port 3000

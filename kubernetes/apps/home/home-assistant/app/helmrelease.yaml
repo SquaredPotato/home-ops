@@ -37,7 +37,7 @@ spec:
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
-              hostNetwork: false
+              hostNetwork: true
               capabilities:
                 drop:
                   - "ALL"
@@ -51,7 +51,7 @@ spec:
               limits:
                 memory: 2Gi
     defaultPodOptions:
-      hostNetwork: false
+      hostNetwork: true
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000

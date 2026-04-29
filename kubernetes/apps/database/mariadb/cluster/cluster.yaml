@@ -51,22 +51,22 @@ spec:
       reloader.stakater.com/auto: "true"
   updateStrategy:
     type: ReplicasFirstPrimaryLast
-#  bootstrapFrom:
-#    s3:
-#      bucket: postgres-cloudnative.mizuto.backup
-#      endpoint: s3.eu-central-1.wasabisys.com
-#      accessKeyIdSecretKeyRef:
-#        name: mariadb-backup-secret
-#        key: wasabi-id
-#      secretAccessKeySecretKeyRef:
-#        name: mariadb-backup-secret
-#        key: wasabi-key
-#    backupContentType: Physical
-#    stagingStorage:
-#      persistentVolumeClaim:
-#        storageClassName: longhorn-v2
-#        resources:
-#          requests:
-#            storage: 8Gi
-#        accessModes:
-#          - ReadWriteOnce
+  bootstrapFrom:
+    s3:
+      bucket: postgres-cloudnative.mizuto.backup
+      endpoint: s3.eu-central-1.wasabisys.com
+      accessKeyIdSecretKeyRef:
+        name: mariadb-backup-secret
+        key: wasabi-id
+      secretAccessKeySecretKeyRef:
+        name: mariadb-backup-secret
+        key: wasabi-key
+    backupContentType: Physical
+    stagingStorage:
+      persistentVolumeClaim:
+        storageClassName: longhorn-v2
+        resources:
+          requests:
+            storage: 8Gi
+        accessModes:
+          - ReadWriteOnce

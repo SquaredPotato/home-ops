@@ -37,7 +37,7 @@ spec:
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
-              hostNetwork: true
+              hostNetwork: false
               capabilities:
                 drop:
                   - "ALL"
@@ -51,7 +51,7 @@ spec:
               limits:
                 memory: 2Gi
     defaultPodOptions:
-      hostNetwork: true
+      hostNetwork: false
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
@@ -67,9 +67,12 @@ spec:
         ports:
           coiot:
             port: 5683
+            protocol: UDP
+            targetPort: 5683
         annotations:
           lbipam.cilium.io/ips: "${quote}${CLUSTER_HOME_ASSISTANT_IP}${quote}"
         type: LoadBalancer
+        externalTrafficPolicy: Cluster
 
     route:
       app:

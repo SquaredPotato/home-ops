@@ -73,7 +73,7 @@ spec:
 #                  name: meili-master-key
     defaultPodOptions:
       securityContext:
-        runAsNonRoot: true
+        runAsNonRoot: false
         runAsUser: 101000
         runAsGroup: 101000
         supplementalGroups:

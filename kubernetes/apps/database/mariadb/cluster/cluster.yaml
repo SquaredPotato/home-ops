@@ -64,7 +64,7 @@ spec:
     backupContentType: Physical
     stagingStorage:
       persistentVolumeClaim:
-        storageClassName: longhorn-v2
+        storageClassName: longhorn-static
         resources:
           requests:
             storage: 8Gi

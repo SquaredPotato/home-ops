@@ -33,7 +33,10 @@ spec:
       dataEngine: v2
       v1DataEngine: false
       v2DataEngine: true
+      defaultDataPath: /dev/disk/by-partlabel/r-longhorn-data
       allowRecurringJobWhileVolumeDetached: true
+      snapshotDataIntegrity: "enabled"
+      restoreVolumeRecurringJobs: true
       node-down-pod-deletion-policy: "delete-both-statefulset-and-deployment-pod"
       node-drain-policy: "block-for-eviction-if-contains-last-replica"
       orphanResourceAutoDeletion: "replica-data;instance"

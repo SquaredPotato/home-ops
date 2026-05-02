@@ -10,9 +10,9 @@ spec:
     key: mariadb-root-password
   image: mariadb:12.2
   port: 3306
-  replicas: 1
+  replicas: 3
   replication:
-    enabled: false
+    enabled: true
     primary:
       autoFailover: true
       autoFailoverDelay: 5s

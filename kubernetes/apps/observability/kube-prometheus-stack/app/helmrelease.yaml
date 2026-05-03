@@ -26,7 +26,7 @@ spec:
             - alertmanager.${SECRET_DOMAIN}
           parentRefs:
             - name: internal
-              namespace: kube-system
+              namespace: network
               sectionName: https
       alertmanagerSpec:
         alertmanagerConfiguration:
@@ -130,4 +130,8 @@ spec:
                 expr: (kube_pod_container_status_restarts_total - kube_pod_container_status_restarts_total offset 10m >= 1) and ignoring (reason) min_over_time(kube_pod_container_status_last_terminated_reason{reason="OOMKilled"}[10m]) == 1
                 labels:
                   severity: critical
-
+    defaultRules:
+      create: true
+      rules:
+        # We don't have a kube-proxy
+        kubeProxy: false

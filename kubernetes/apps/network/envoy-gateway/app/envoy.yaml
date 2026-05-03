@@ -219,6 +219,17 @@ spec:
     alpnProtocols:
       - h2
       - http/1.1
+  headers:
+    lateResponseHeaders:
+      addIfAbsent:
+        - name: "Strict-Transport-Security"
+          value: "max-age=31536000; includeSubDomains; preload"
+        - name: "X-Content-Type-Options"
+          value: "nosniff"
+        - name: "X-Frame-Options"
+          value: "DENY"
+        - name: "Referrer-Policy"
+          value: "strict-origin-when-cross-origin"
 ---
 # yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/gateway.networking.k8s.io/httproute_v1.json
 apiVersion: gateway.networking.k8s.io/v1

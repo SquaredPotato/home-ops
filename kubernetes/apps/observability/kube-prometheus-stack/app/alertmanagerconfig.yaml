@@ -17,6 +17,11 @@ spec:
       - receiver: "null"
         matchers:
           - name: alertname
+            matchType: "="
+            value: Watchdog
+      - receiver: "null"
+        matchers:
+          - name: alertname
             value: InfoInhibitor
             matchType: =
       - receiver: discord

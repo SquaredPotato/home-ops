@@ -96,6 +96,9 @@ spec:
             port: *port
     route:
       app:
+        annotations:
+          gatus.home-operations.com/endpoint: |-
+            name: Zigbee2MQTT
         hostnames:
           - "{{ .Release.Name }}.${SECRET_DOMAIN}"
           - "zigbee.${SECRET_DOMAIN}"

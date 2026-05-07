@@ -49,7 +49,6 @@ spec:
         annotations:
           gatus.home-operations.com/endpoint: |-
             name: Vaultwarden
-            group: external
         hostnames:
           - "bw.${SECRET_DOMAIN}"
         parentRefs:

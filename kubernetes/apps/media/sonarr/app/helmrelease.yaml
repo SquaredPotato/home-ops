@@ -80,8 +80,6 @@ spec:
         annotations:
           gatus.home-operations.com/endpoint: |-
             name: Sonarr
-            group: Internal
-            guarded: true
         hostnames:
           - "{{ .Release.Name }}.${SECRET_DOMAIN}"
         parentRefs:

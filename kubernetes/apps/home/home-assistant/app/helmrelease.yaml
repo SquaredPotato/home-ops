@@ -78,9 +78,7 @@ spec:
       app:
         annotations:
           gatus.home-operations.com/endpoint: |-
-            group: external
             name: Home Assistant
-            conditions: ["[STATUS] == 200"]
         rules:
           - matches:
               - path:

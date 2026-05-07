@@ -48,6 +48,9 @@ spec:
       create: true
       rules:
         kubeProxy: false
+    crds:
+      upgradeJob:
+        enabled: true
     prometheus:
       route:
         main:

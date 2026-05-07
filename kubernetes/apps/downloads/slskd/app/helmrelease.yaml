@@ -84,8 +84,6 @@ spec:
         annotations:
           gatus.home-operations.com/endpoint: |-
             name: "SLSKD"
-            guarded: true
-            group: Internal
         hostnames:
           - "{{ .Release.Name }}.${SECRET_DOMAIN}"
         parentRefs:

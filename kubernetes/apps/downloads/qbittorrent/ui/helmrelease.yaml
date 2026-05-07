@@ -66,7 +66,6 @@ spec:
         annotations:
           gatus.home-operations.com/endpoint: |-
             name: "QBittorrent UI"
-            guarded: true
         hostnames:
           - "tui.${SECRET_DOMAIN}"
           - "{{ .Release.Name }}.${SECRET_DOMAIN}"

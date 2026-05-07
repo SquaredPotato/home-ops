@@ -83,7 +83,6 @@ spec:
           gatus.home-operations.com/enabled: "true"
           gatus.home-operations.com/endpoint: |-
             name: Atuin
-            group: external
         hostnames:
           - "{{ .Release.Name }}.${SECRET_DOMAIN}"
           - "sh.${SECRET_DOMAIN}"

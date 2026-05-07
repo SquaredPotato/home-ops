@@ -236,7 +236,6 @@ spec:
       app:
         annotations:
           gatus.home-operations.com/name: "Immich"
-          gatus.home-operations.com/group: "External"
         hostnames:
           - "{{ .Release.Name }}.${SECRET_DOMAIN}"
         parentRefs:

@@ -84,8 +84,6 @@ spec:
         annotations:
           gatus.home-operations.com/endpoint: |-
             name: "QBittorrent"
-            guarded: true
-            group: Internal
         hostnames:
           - "torrent.${SECRET_DOMAIN}"
         parentRefs:

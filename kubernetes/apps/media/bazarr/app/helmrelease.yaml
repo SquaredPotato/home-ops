@@ -88,8 +88,6 @@ spec:
         annotations:
           gatus.home-operations.com/endpoint: |-
             name: Bazarr
-            group: Internal
-            guarded: true
         hostnames:
           - "{{ .Release.Name }}.${SECRET_DOMAIN}"
         parentRefs:

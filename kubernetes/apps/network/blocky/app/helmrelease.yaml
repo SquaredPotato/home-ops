@@ -101,8 +101,6 @@ spec:
         annotations:
           gatus.home-operations.com/endpoint: |-
             name: "Blocky"
-            group: Internal
-            guarded: true
         hostnames:
           - "{{ .Release.Name }}.${SECRET_DOMAIN}"
         rules:

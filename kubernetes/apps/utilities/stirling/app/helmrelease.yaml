@@ -90,7 +90,6 @@ spec:
       app:
         annotations:
           gatus.home-operations.com/endpoint: |-
-            group: external
             name: Stirling PDF
         hostnames:
           - "pdf.${SECRET_DOMAIN}"

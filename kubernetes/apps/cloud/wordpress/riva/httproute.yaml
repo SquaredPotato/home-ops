@@ -7,7 +7,6 @@ metadata:
   annotations:
     gatus.home-operations.com/endpoint: |-
       name: Riva
-      group: external
 spec:
   hostnames:
     - "riva-va.nl"

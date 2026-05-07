@@ -7,8 +7,6 @@ metadata:
   annotations:
     gatus.home-operations.com/endpoint: |-
       name: Longhorn Dashboard
-      group: Internal
-      guarded: true
 spec:
   hostnames:
     - "longhorn.abchost.nl"

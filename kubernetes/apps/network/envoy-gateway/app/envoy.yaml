@@ -142,8 +142,8 @@ metadata:
       client:
         dns-resolver: tcp://10.0.2.121:53
       ui:
-        hide-hostname: true
-        hide-url: true
+        hide-hostname: false
+        hide-url: false
 spec:
   gatewayClassName: envoy
   infrastructure:

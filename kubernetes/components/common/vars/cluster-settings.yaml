@@ -6,6 +6,7 @@ metadata:
 data:
   quote: '"' # double quote var to support substitution as quote
   # Cluster IP's (Cilium range [10.0.2.0/23])
+  CLUSTER_K8S_GATEWAY_IP: 10.0.2.3
   CLUSTER_INTERNAL_ROUTE_IP: 10.0.2.101
   CLUSTER_EXTERNAL_ROUTE_IP: 10.0.2.102
   CLUSTER_BLOCKY_IP: 10.0.2.121

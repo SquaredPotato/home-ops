@@ -124,6 +124,9 @@ nodes:
       secureboot: false
       arch: "amd64"
       mode: "metal"
+    kernelModules:
+      - name: vfio_pci
+      - name: uio_pci_generic
     schematic:
       customization:
         extraKernelArgs:

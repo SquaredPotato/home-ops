@@ -187,7 +187,7 @@ nodes:
     networkInterfaces:
       - <<: *intelInterface
         deviceSelector:
-          hardwareAddr: "8c:04:ba:9d:41:19"
+          hardwareAddr: "a4:bb:6d:71:c0:be"
         addresses:
           - "10.0.2.22/23"
 

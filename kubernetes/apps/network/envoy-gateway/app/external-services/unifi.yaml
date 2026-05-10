@@ -12,6 +12,27 @@ spec:
       appProtocol: HTTPS
       targetPort: *port
 ---
+apiVersion: gateway.networking.k8s.io/v1
+kind: BackendTLSPolicy
+metadata:
+  name: external-unifi-service-backend-tls
+  namespace: network
+spec:
+  targetRefs:
+    - name: external-unifi-service
+      kind: Service
+      group: ""
+      sectionName: https
+  validation:
+    hostname: unifi.local
+    subjectAltNames:
+      - type: "Hostname"
+        hostname: "unifi.local"
+    caCertificateRefs:
+      - group: ""
+        kind: Secret
+        name: un-cert
+---
 apiVersion: discovery.k8s.io/v1
 kind: EndpointSlice
 metadata:
@@ -46,3 +67,4 @@ spec:
         - name: *name
           weight: 1
           port: 443
+

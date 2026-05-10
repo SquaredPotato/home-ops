@@ -11,5 +11,6 @@ resources:
   - ./ocirepository.yaml
   - ./external-services/nextcloud.yaml
   - ./external-services/truenas.yaml
-  - ./external-services/unifi.yaml
+#  - ./external-services/un-cert.sops.yaml
+#  - ./external-services/unifi.yaml
   - ./external-services/default-redirect.yaml

@@ -22,7 +22,6 @@ spec:
       enabled: false
       sentinel: false
     master:
-      resourcesPreset: "small"
       persistence:
         enabled: false
     replica:
@@ -32,9 +31,10 @@ spec:
     architecture: replication
     sentinel:
       enabled: true
+      automateClusterRecovery: true
       image:
         repository: bitnami/redis-sentinel
-        tag: "latest@sha256:96317ad4ce459771b81271607afb9c35a7bb50acb7cad26a273e3c1b5fac581e"
+        tag: "8.6.3@sha256:96317ad4ce459771b81271607afb9c35a7bb50acb7cad26a273e3c1b5fac581e"
       resourcesPreset: "small"
       masterSet: redis-master
       #      getMasterTimeout: 90
@@ -44,13 +44,13 @@ spec:
         enabled: false
     image:
       repository: bitnami/redis
-      tag: "latest@sha256:1347d526ecec0c6537e99eac09e7c3405c21664f6044ff60e78b0898da37abd2"
+      tag: "8.6.3@sha256:1347d526ecec0c6537e99eac09e7c3405c21664f6044ff60e78b0898da37abd2"
       pullPolicy: IfNotPresent
     metrics:
       enabled: true
       image:
         repository: bitnami/redis-exporter
-        tag: "latest@sha256:839260c04bc3858980157da2f69219681bdcd8874fdb0a58c40b396050b5100d"
+        tag: "1.83.0@sha256:839260c04bc3858980157da2f69219681bdcd8874fdb0a58c40b396050b5100d"
         pullPolicy: IfNotPresent
       resourcesPreset: "small"
       serviceMonitor:

@@ -1,0 +1,47 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: vector
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: vector
+  interval: 15m
+  timeout: 5m
+  releaseName: vector
+  values:
+    controllers:
+      main:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          main:
+            image:
+              repository: timberio/vector
+              tag: 0.29.X-debian@sha256:7c94922f8fa27d5709a335e12867f23d34187e12efd1ecb1e60c4729f7853200
+            args: ["--config", "/etc/vector/vector.yaml"]
+
+    service:
+      main:
+        controller: main
+        type: LoadBalancer
+        annotations:
+          lbipam.cilium.io/ips: "${VECTOR_LOAD_BALANCER_IP}"
+        ports:
+          talos-kernel-log-input:
+            port: 5170
+            protocol: UDP
+          talos-service-log-input:
+            port: 5171
+            protocol: UDP
+
+    persistence:
+      config:
+        enabled: true
+        type: configMap
+        name: vector-config
+        advancedMounts:
+          main:
+            main:
+              - path: /etc/vector/vector.yaml
+                subPath: vector.yaml

@@ -1,0 +1,90 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: loki
+spec:
+  interval: 5m
+  chartRef:
+    kind: OCIRepository
+    name: loki
+  values:
+    deploymentMode: SingleBinary
+    defaults:
+      podAnnotations:
+        reloader.stakater.com/auto: "true"
+    loki:
+      analytics:
+        reporting_enabled: false
+      auth_enabled: false
+      storage:
+        type: filesystem
+      schemaConfig:
+        configs:
+          - from: "2026-05-01"
+            object_store: filesystem
+            store: tsdb
+            schema: v13
+            index:
+              prefix: index_
+              period: 24h
+      commonConfig:
+        replication_factor: 1
+      limits_config:
+        retention_period: 7d
+      rulerConfig:
+        enable_api: true
+        enable_alertmanager_v2: true
+        alertmanager_url: http://kube-prometheus-stack-alertmanager:9093
+        rule_path: /rules/fake
+        storage:
+          type: local
+          local:
+            directory: /rules
+    sidecar:
+      enableUniqueFilenames: true
+      rules:
+        searchNamespace: ALL
+        label: loki_rule
+        folder: /rules/fake
+    write:
+      replicas: 0
+    read:
+      replicas: 0
+    backend:
+      replicas: 0
+    singleBinary:
+      replicas: 1
+      persistence:
+        size: 8Gi
+        storageClass: longhorn-v2
+    test:
+      enabled: false
+    monitoring:
+      selfMonitoring:
+        enabled: false
+      lokiCanary:
+        enabled: false
+      dashboards:
+        enabled: false
+      serviceMonitor:
+        enabled: true
+    resultsCache:
+      enabled: false
+    chunksCache:
+      enabled: false
+    gateway:
+      route:
+        main:
+          enabled: true
+          kind: HTTPRoute
+          annotations:
+            gatus.home-operations.com/endpoint: |-
+              name: "Loki"
+              conditions: ["[STATUS] == 200"]
+          hostnames:
+            - loki.${SECRET_DOMAIN}
+          parentRefs:
+            - name: internal
+              namespace: network
+              sectionName: https

@@ -1,0 +1,81 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vector-config
+data:
+  vector.yaml: |-
+    # Sources
+    sources:
+      talos_kernel_logs:
+        address: 0.0.0.0:5170
+        type: socket
+        mode: udp
+        max_length: 102400
+        decoding:
+          codec: json
+        host_key: __host
+    
+      talos_service_logs:
+        address: 0.0.0.0:5171
+        type: socket
+        mode: udp
+        max_length: 102400
+        decoding:
+          codec: json
+        host_key: __host
+      
+    # Delete timestamp field from talos logs using transforms
+    transforms:
+      talos_service_transform:
+        type: remap
+        inputs:
+          - talos_service_logs
+        source: |
+          .timestamp = del(."talos-time")
+      
+      talos_kernel_transform:
+        type: remap
+        inputs:
+          - talos_kernel_logs
+        source: |
+          .timestamp = del(."talos-time")
+    
+    # Send transformed logs to Loki
+    sinks:
+      talos_kernel:
+        type: loki
+        inputs:
+          - talos_kernel_transform
+        endpoint: http://loki:3100
+        encoding:
+          codec: json
+          except_fields:
+            - __host
+        batch:
+          max_bytes: 1048576
+        out_of_order_action: rewrite_timestamp
+        labels:
+          hostname: >-
+            `{{ __host }}`
+          facility: >-
+            `{{ facility }}`
+          namespace: "talos:service"
+    
+      talos_service:
+        type: loki
+        inputs:
+          - talos_service_transform
+        endpoint: http://loki:3100
+        encoding:
+          codec: json
+          except_fields:
+            - __host
+        batch:
+          max_bytes: 400000
+        out_of_order_action: rewrite_timestamp
+        labels:
+          hostname: >-
+            `{{ __host }}`
+          service: >-
+            `{{ "talos-service" }}`
+          namespace: "talos:kernel"

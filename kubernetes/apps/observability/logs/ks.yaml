@@ -1,0 +1,69 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app cluster-apps-loki
+  namespace: &namespace observability
+spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  dependsOn:
+    - name: cluster-apps-grafana
+    - name: cluster-apps-longhorn
+      namespace: storage
+  interval: 1h
+  path: ./kubernetes/apps/observability/logs/loki
+  prune: true
+  retryInterval: 2m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: *namespace
+  timeout: 5m
+  wait: false
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: cluster-apps-alloy
+  namespace: &namespace observability
+spec:
+  path: ./kubernetes/apps/observability/logs/alloy
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    namespace: flux-system
+    name: flux-system
+  dependsOn:
+    - name: cluster-apps-grafana
+    - name: cluster-apps-longhorn
+      namespace: storage
+    - name: cluster-apps-loki
+  wait: true
+  interval: 30m
+  retryInterval: 1m
+  timeout: 10m
+  targetNamespace: *namespace
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: cluster-apps-vector
+  namespace: &namespace observability
+spec:
+  path: ./kubernetes/apps/observability/logs/vector
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    namespace: flux-system
+    name: flux-system
+  dependsOn:
+    - name: cluster-apps-loki
+  wait: true
+  interval: 30m
+  retryInterval: 1m
+  timeout: 10m
+  targetNamespace: *namespace

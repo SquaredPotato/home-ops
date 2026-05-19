@@ -12,6 +12,7 @@ spec:
   imageName: ghcr.io/tensorchord/cloudnative-vectorchord:18.3-1.1.1
   enableSuperuserAccess: true
   primaryUpdateStrategy: unsupervised
+  primaryUpdateMethod: switchover
   storage:
     size: 20Gi
     storageClass: local-hostpath

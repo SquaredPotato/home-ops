@@ -71,6 +71,9 @@ spec:
         trustCRDsExist: true
     rollOutCiliumPods: true
     routingMode: native
+    socketLB:
+      enabled: true
+      hostNamespaceOnly: false
     securityContext:
       capabilities:
         ciliumAgent:

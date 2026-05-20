@@ -23,7 +23,7 @@ spec:
     namespace: flux-system
   targetNamespace: *namespace
   timeout: 5m
-  wait: false
+  wait: true
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -42,7 +42,7 @@ spec:
     - name: cluster-apps-longhorn
       namespace: storage
     - name: cluster-apps-loki
-  wait: true
+  wait: false
   interval: 30m
   retryInterval: 1m
   timeout: 10m
@@ -62,7 +62,7 @@ spec:
     name: flux-system
   dependsOn:
     - name: cluster-apps-loki
-  wait: true
+  wait: false
   interval: 30m
   retryInterval: 1m
   timeout: 10m

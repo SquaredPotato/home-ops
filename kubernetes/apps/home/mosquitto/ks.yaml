@@ -18,12 +18,6 @@ spec:
       namespace: storage
   interval: 1h
   path: ./kubernetes/apps/home/mosquitto/app
-  postBuild:
-    substituteFrom:
-      - name: cluster-secrets
-        kind: Secret
-      - name: cluster-settings
-        kind: ConfigMap
   prune: true
   retryInterval: 2m
   sourceRef:
@@ -32,4 +26,4 @@ spec:
     namespace: flux-system
   targetNamespace: *namespace
   timeout: 5m
-  wait: false
+  wait: true

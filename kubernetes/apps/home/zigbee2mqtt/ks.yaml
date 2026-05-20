@@ -9,24 +9,12 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  components:
-    - ../../../../components/gatus/guarded
   dependsOn:
     - name: cluster-apps-longhorn
       namespace: storage
     - name: user-apps-mosquitto
   interval: 1h
   path: ./kubernetes/apps/home/zigbee2mqtt/app
-  postBuild:
-    substitute:
-      APP: *app
-      APP_NAME: Zigbee2MQTT
-      GATUS_SUBDOMAIN: zigbee2mqtt
-    substituteFrom:
-      - name: cluster-secrets
-        kind: Secret
-      - name: cluster-settings
-        kind: ConfigMap
   prune: true
   retryInterval: 2m
   sourceRef:
@@ -35,4 +23,4 @@ spec:
     namespace: flux-system
   targetNamespace: *namespace
   timeout: 5m
-  wait: false
+  wait: true

@@ -11,10 +11,6 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
   prune: true
   sourceRef:
     kind: GitRepository
@@ -37,10 +33,6 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
   dependsOn:
     - name: cluster-apps-mariadb
     - name: cluster-apps-open-ebs

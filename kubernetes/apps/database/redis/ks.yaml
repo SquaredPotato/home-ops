@@ -6,7 +6,6 @@ metadata:
   name: &app cluster-apps-redis
   namespace: &namespace database
 spec:
-  targetNamespace: *namespace
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
@@ -16,5 +15,6 @@ spec:
     namespace: flux-system
     name: flux-system
   prune: true
-  wait: false
+  wait: true
   interval: 10m
+  targetNamespace: *namespace

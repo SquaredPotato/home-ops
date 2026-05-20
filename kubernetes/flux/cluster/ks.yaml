@@ -52,12 +52,16 @@ spec:
         spec:
           decryption:
             provider: sops
+            secretRef:
+              name: sops-age
           postBuild:
             substituteFrom:
               - name: cluster-secrets
                 kind: Secret
+                optional: false
               - name: cluster-settings
                 kind: ConfigMap
+                optional: false
       target:
         group: kustomize.toolkit.fluxcd.io
         kind: Kustomization

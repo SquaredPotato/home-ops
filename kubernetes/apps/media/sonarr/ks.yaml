@@ -8,8 +8,6 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  components:
-    - ../../../../components/gatus/guarded
   path: ./kubernetes/apps/media/sonarr/app
   dependsOn:
     - name: cluster-apps-longhorn
@@ -21,20 +19,12 @@ spec:
     - name: user-apps-prowlarr
       namespace: downloads
   prune: true
-  postBuild:
-    substitute:
-      APP: *app
-    substituteFrom:
-      - name: cluster-secrets
-        kind: Secret
-      - name: cluster-settings
-        kind: ConfigMap
   sourceRef:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  targetNamespace: *namespace
   wait: true
   interval: 1h
   retryInterval: 1m
   timeout: 5m
+  targetNamespace: *namespace

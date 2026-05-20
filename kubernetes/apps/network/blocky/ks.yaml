@@ -10,6 +10,12 @@ spec:
   dependsOn:
     - name: cluster-apps-redis
       namespace: database
+  ################################################
+  ## DONT REMOVE DECRYPTION AND POSTBUILD BLOCK ##
+  ## CONFIGMAPGENERATOR DOESN'T RUN AFTER FLUX  ##
+  ## PATCHES ARE APPLIED - AFTER IT ALREADY     ##
+  ## STARTED THE KUSTOMIZATION                  ##
+  ################################################
   decryption:
     provider: sops
     secretRef:

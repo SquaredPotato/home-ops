@@ -11,6 +11,12 @@ spec:
       app.kubernetes.io/name: *app
   interval: 1h
   path: ./kubernetes/apps/network/cloudflare-tunnel
+  ################################################
+  ## DONT REMOVE DECRYPTION AND POSTBUILD BLOCK ##
+  ## CONFIGMAPGENERATOR DOESN'T RUN AFTER FLUX  ##
+  ## PATCHES ARE APPLIED - AFTER IT ALREADY     ##
+  ## STARTED THE KUSTOMIZATION                  ##
+  ################################################
   decryption:
     provider: sops
     secretRef:

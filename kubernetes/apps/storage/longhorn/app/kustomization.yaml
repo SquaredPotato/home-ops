@@ -8,3 +8,4 @@ resources:
   - ./storageClassV2.yaml
   - ./httproute.yaml
   - ./longhorn-wasabi-secret.sops.yaml
+  - ./grafanaDashboard.yaml

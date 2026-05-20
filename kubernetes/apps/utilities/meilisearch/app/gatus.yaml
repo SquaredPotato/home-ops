@@ -15,7 +15,4 @@ data:
         ui:
           hide-url: true
           hide-hostname: true
-        conditions:
-          - "[CONNECTED] == true"
-        alerts:
-          - type: discord
+        conditions: ["[STATUS] == 200"]

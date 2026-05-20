@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - ./helmrelease.yaml
   - ./grafanaDashboard.yaml
-  - ./helmrepository.yaml
+  - ./repository.yaml

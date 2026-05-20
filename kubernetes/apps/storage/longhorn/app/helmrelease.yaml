@@ -44,6 +44,18 @@ spec:
     metrics:
       serviceMonitor:
         enabled: true
+    httproute:
+      enabled: true
+      parentRefs:
+        - name: internal
+          namespace: network
+          sectionName: https
+      hostnames:
+        - "longhorn.${SECRET_DOMAIN}"
+      annotations:
+        gatus.home-operations.com/endpoint: |-
+          name: Longhorn Dashboard
+          conditions: ["[STATUS] == 200"]
     ingress:
       enabled: false
     defaultBackupStore:

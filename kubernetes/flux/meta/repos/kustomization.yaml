@@ -17,7 +17,6 @@ resources:
   - ./itzg.yaml
   - ./jetstack.yaml
   - ./k8s-at-home.yaml
-  - ./longhorn.yaml
   - ./meilisearch.yaml
   - ./metrics-server.yaml
   - ./nextcloud.yaml

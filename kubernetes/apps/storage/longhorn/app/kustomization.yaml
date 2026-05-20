@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: longhorn-system
 resources:
   - ./namespace.yaml
+  - ./repository.yaml
   - ./helmrelease.yaml
   - ./storageClassV2.yaml
   - ./longhorn-wasabi-secret.sops.yaml

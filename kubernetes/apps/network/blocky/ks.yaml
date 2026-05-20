@@ -10,7 +10,17 @@ spec:
   dependsOn:
     - name: cluster-apps-redis
       namespace: database
-  prune: true
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  postBuild:
+    substituteFrom:
+      - name: cluster-secrets
+        kind: Secret
+      - name: cluster-settings
+        kind: ConfigMap
+        optional: false
   retryInterval: 2m
   sourceRef:
     kind: GitRepository
@@ -19,3 +29,4 @@ spec:
   targetNamespace: *namespace
   timeout: 5m
   wait: true
+  prune: true

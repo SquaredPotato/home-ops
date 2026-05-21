@@ -9,6 +9,12 @@ logging {
 // 1. Kubernetes service discovery
 discovery.kubernetes "pods" {
     role = "pod"
+
+    // Restrict to pods on the node to reduce cpu & memory usage
+    selectors {
+        role = "pod"
+        field = "spec.nodeName=" + coalesce(sys.env("HOSTNAME"), constants.hostname)
+    }
 }
 
 discovery.kubernetes "services" {
@@ -21,6 +27,12 @@ discovery.kubernetes "endpoints" {
 
 discovery.kubernetes "nodes" {
     role = "node"
+
+    // Restrict to the local node to reduce cpu & memory usage
+    selectors {
+        role = "node"
+        field = "spec.nodeName=" + coalesce(sys.env("HOSTNAME"), constants.hostname)
+    }
 }
 
 // 2. Node metrics with Alloy's Unix exporter

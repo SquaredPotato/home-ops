@@ -8,8 +8,10 @@ upstreams:
   strategy: parallel_best
   groups:
     default:
-      - 1.1.1.1
+      - 1.1.1.1 # Cloudflare
       - 1.0.0.1
+      - 84.200.69.80 # dns.watch
+      - 84.200.70.40
 
 conditional:
   fallbackUpstream: true

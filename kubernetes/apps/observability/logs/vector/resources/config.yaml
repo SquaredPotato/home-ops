@@ -56,9 +56,9 @@ data:
         out_of_order_action: rewrite_timestamp
         labels:
           hostname: >-
-            `{{ __host }}`
+            {{ __host }}
           facility: >-
-            `{{ facility }}`
+            {{ facility }}
           namespace: "talos:service"
     
       talos_service:
@@ -75,7 +75,7 @@ data:
         out_of_order_action: rewrite_timestamp
         labels:
           hostname: >-
-            `{{ __host }}`
+            {{ __host }}
           service: >-
-            `{{ "talos-service" }}`
+            {{ "talos-service" }}
           namespace: "talos:kernel"

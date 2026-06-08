@@ -3,13 +3,13 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: authentik
+  name: &name authentik
   namespace: security
 spec:
   interval: 30m
   chartRef:
     kind: OCIRepository
-    name: authentik
+    name: *name
   values:
     global:
       podAnnotations:
@@ -20,8 +20,13 @@ spec:
       envFrom:
         - secretRef:
             name: *secret
+      volumeMounts:
+        - name: *name
+          mountPath: /data/media/public/branding
       volumes:
-        - name: authentik
+        - name: *name
+          persistentVolumeClaim:
+            claimName: *name
     server:
       replicas: 2
       metrics:

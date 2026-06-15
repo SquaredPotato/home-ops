@@ -17,9 +17,10 @@ conditional:
   fallbackUpstream: true
   mapping:
     abchost.nl: "${CLUSTER_K8S_GATEWAY_IP}"
-    solid-optics.com: 10.2.0.2
-    solid-optics.eu: 10.2.0.2
-    alturna.direct: 10.2.0.2
+    solid-optics.com: 100.108.0.51
+    solid-optics.eu: 100.108.0.51
+    alturna.direct: 100.108.0.51
+    alturna.networks: 100.108.0.51
     abrondijk.com: 10.20.50.120
     brondijk.dev: 10.20.50.120
     infinigon.systems: 10.20.50.120

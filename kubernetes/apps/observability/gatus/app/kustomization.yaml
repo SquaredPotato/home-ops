@@ -6,6 +6,7 @@ resources:
   - ./repository.yaml
   - ./helmrelease.yaml
   - ./prometheusrule.yaml
+  - ./secret.sops.yaml
 configMapGenerator:
   - name: gatus-configmap
     files:
@@ -13,4 +14,4 @@ configMapGenerator:
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
-    kustomize.toolkit.fluxcd.io/substitute: enabled
+    kustomize.toolkit.fluxcd.io/substitute: disabled

@@ -8,14 +8,13 @@
 /github-deploy.key.pub
 /github-push-token.txt
 # Template config files
-/cluster.yaml
-/nodes.yaml
+/cluster.toml
 # Kubernetes
 kubeconfig
 talosconfig
 # Misc.
+.claude/
 .private/
-.task/
 .venv/
 .DS_Store
 Thumbs.db

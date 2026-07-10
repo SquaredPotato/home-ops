@@ -127,6 +127,8 @@ nodes:
     kernelModules:
       - name: vfio_pci
       - name: uio_pci_generic
+      - name: nvme_tcp
+      - name: ublk_drv
     schematic:
       customization:
         extraKernelArgs:
@@ -154,6 +156,7 @@ nodes:
             - siderolabs/util-linux-tools
             - siderolabs/nvme-cli
             - siderolabs/iscsi-tools
+            - siderolabs/fuse3
     userVolumes:
       - name: openebs-data
         provisioning: *ebsVolume

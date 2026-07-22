@@ -11,6 +11,8 @@ spec:
     wordpressUsername: aEu8162BN
     existingSecret: riva-secret
     wordpressConfigureCache: true
+    wordpressScheme: https
+    wordpressHost: "riva-va.nl"
     service:
       type: ClusterIP
     persistence:

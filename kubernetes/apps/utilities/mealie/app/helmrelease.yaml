@@ -27,7 +27,7 @@ spec:
               repository: ghcr.io/mealie-recipes/mealie
               tag: v3.20.1
             env:
-              TZ: ${TIMEZONE}
+              TZ: "Europe/Amsterdam"
               BASE_URL: https://meals.${SECRET_DOMAIN}
               PUID: 65534
               PGID: 65534

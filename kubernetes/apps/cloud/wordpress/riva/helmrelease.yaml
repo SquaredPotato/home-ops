@@ -56,5 +56,5 @@ spec:
     extraVolumes:
       - name: wordpress-config
         configMap:
-          defaultMode: 760
+          defaultMode: 0420
           name: wordpress-config

@@ -24,4 +24,4 @@ spec:
     keepHistory: false
   values:
     topologyUpdater:
-      updateInterval: 1800
+      updateInterval: "1800"

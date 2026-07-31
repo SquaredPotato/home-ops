@@ -43,6 +43,7 @@ spec:
               OIDC_ADMIN_GROUP: mealie-admins
               OIDC_USER_GROUP: mealie-users
               OIDC_REMEMBER_ME: true
+              OIDC_REQUIRES_EMAIL_VERIFICATION: false
             envFrom:
               - secretRef:
                   name: mealie-secret

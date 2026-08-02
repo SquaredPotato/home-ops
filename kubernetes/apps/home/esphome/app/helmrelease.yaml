@@ -1,0 +1,83 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: esphome
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+  values:
+    controllers:
+      esphome:
+        pod:
+          hostNetwork: true
+          annotations:
+            reloader.stakater.com/auto: "true"
+        containers:
+          app:
+            image:
+              repository: ghcr.io/home-operations/esphome
+              tag: 2026.7.2@sha256:ff3aaa840f8cc971a65f1a1d369d7c1362a5a2a97588c8040f5ebdb0a22b1289
+            envFrom:
+              - secretRef:
+                  name: esphome
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+              startup:
+                enabled: true
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 5
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: false # ESPHome writes basically everywhere
+              capabilities:
+                add: ["NET_RAW", "NET_ADMIN"]
+                drop: ["ALL"]
+            resources:
+              requests:
+                memory: 128M
+                cpu: 20m
+              limits:
+                memory: 4Gi
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
+    service:
+      app:
+        ports:
+          http:
+            port: 6052
+    route:
+      app:
+        annotations:
+          gatus.home-operations.com/endpoint: |-
+            name: ESPHome
+        hostnames: ["esphome.${SECRET_DOMAIN}"]
+        parentRefs:
+          - name: internal
+            namespace: network
+            sectionName: https
+    persistence:
+      config:
+        existingClaim: esphome
+      platformio:
+        type: emptyDir
+        advancedMounts:
+          esphome:
+            app:
+              - path: /.platformio
+                subPath: platformio
+              - path: /tmp
+                subPath: tmp
+              - path: /cache
+                subPath: cache

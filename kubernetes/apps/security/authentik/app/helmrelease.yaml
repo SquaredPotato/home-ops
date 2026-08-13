@@ -40,7 +40,7 @@ spec:
               name: Authentik
           enabled: true
           parentRefs:
-            - name: external-direct
+            - name: external
               namespace: network
               sectionName: https
           hostnames:

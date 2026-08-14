@@ -17,7 +17,7 @@ conditional:
   fallbackUpstream: true
   mapping:
     abchost.nl: "${CLUSTER_K8S_GATEWAY_IP}"
-    fschokker.nl: 192.168.0.20
+    fschokker.nl: 192.168.0.23
     solid-optics.com: 100.108.0.51
     solid-optics.eu: 100.108.0.51
     alturna.direct: 100.108.0.51

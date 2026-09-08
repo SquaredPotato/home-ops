@@ -35,7 +35,7 @@ spec:
               JELLYFIN_CONFIG_DIR: /var/lib/jellyfin/config
             probes:
               liveness: &probes
-                enabled: true
+                enabled: false
                 custom: true
                 spec:
                   httpGet:
@@ -46,11 +46,11 @@ spec:
                   timeoutSeconds: 3
                   failureThreshold: 5
               readiness: *probes
-#              startup:
-#                enabled: true
-#                spec:
-#                  failureThreshold: 30
-#                  periodSeconds: 10
+              startup:
+                enabled: false
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 60
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: false

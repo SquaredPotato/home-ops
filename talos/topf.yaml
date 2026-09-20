@@ -1,0 +1,22 @@
+---
+clusterName: hypernetes
+clusterEndpoint: https://100.108.10.240:6443
+
+# renovate: datasource=github-releases depName=siderolabs/talos
+talosVersion: v1.14.1
+# renovate: datasource=docker depName=ghcr.io/siderolabs/kubelet
+kubernetesVersion: v1.36.1
+
+secretsPath: talsecret.sops.yaml
+
+nodes:
+  - &controlNode
+    host: "mizu-10"
+    ip: "10.0.2.10"
+    role: control-plane
+    secureboot: false
+    schematicId: "@schematic.yaml.tpl"
+    data:
+      installDiskSelector: 'disk.dev_path == "/dev/nvme0n1"'
+      macAddr: "e4:5f:01:e5:ed:8c"
+      mtu: 1500

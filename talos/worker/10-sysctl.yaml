@@ -1,0 +1,5 @@
+apiVersion: v1alpha1
+kind: SysctlConfig
+# Used to configure the machine's sysctls (kernel parameters under `/proc/sys`).
+params:
+  vm.nr_hugepages: "1024"

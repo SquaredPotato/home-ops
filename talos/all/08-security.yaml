@@ -1,0 +1,8 @@
+---
+apiVersion: v1alpha1
+kind: SecurityProfileConfig
+workloadIsolation: false
+# workloadIsolation prevents pods from accessing host resources
+# such as logs, and prevents iscsi from working
+# See https://docs.siderolabs.com/talos/v1.14/getting-started/what's-new-in-talos#workload-isolation-sandboxd
+# for more details

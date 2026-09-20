@@ -1,0 +1,25 @@
+---
+apiVersion: v1alpha1
+kind: UserVolumeConfig
+name: openebs-data
+volumeType: partition
+provisioning:
+  diskSelector:
+    match: "disk.transport == 'nvme'"
+  grow: true
+  minSize: 10GiB
+  maxSize: 100GiB
+  filesystem:
+    type: xfs
+---
+apiVersion: v1alpha1
+kind: KubeletConfig
+config:
+  extraMounts:
+    - destination: /var/mnt/openebs-data
+      type: bind
+      source: /var/mnt/openebs-data
+      options:
+        - bind
+        - rshared
+        - rw

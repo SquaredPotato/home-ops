@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: zone-configurator
+stringData:
+  HA_LONG_LIVED_TOKEN: ENC[AES256_GCM,data:VSRo+09MkIxgftAvXQtdCLTLAOtcU/dlZ9lhIG+TjNv33bjNPPeHqR4c2bKrZLiCNvItSaY2p5jjTig/mEESB9DVSZworHP0H561uUio4SWneirx8aPH7P1MafPox8KoTlvWVm4R0aG8eRpkTquJiNXq0IhA1dS2Xx80XZ3mHb/PeooqXaTBWH4J9Xz6/D/Cc3h4QncBSSSZMyeZNpH30+oSmkj+Ffp8zOsL1ydLotb/IK+hmmWJ,iv:Nth7ztdfPPov8L5+mji44RmxTqpeJFmB8dqTliBkQ4E=,tag:enGsgz6V0tsU/68jaZ1NGw==,type:str]
+sops:
+  age:
+    - enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBQNWxlTlM3MU5UbW5VaVBY
+        VUJnTzVQNFVVVCtiL2I2NVAzTlV0WVIyWHpnCitKYlZDMEpBK2NTRmVhVCtZTzFK
+        d0VrNk5yQkVxQjkybkFXMm1RTEtkVkEKLS0tIHZ6dEhzeGRPeVlQTUg1azRhcWVh
+        UU5tRklva2UzNTBCUzEvbnh0WHVaVUEK1OMDK5XMIB/wwgO6caSdknXAPdIrZi5K
+        D5DJxEoc0rsGvZFFmm6gPAzIk/aPd/VVvA1bIW25sEaTQWgqGkkYuA==
+        -----END AGE ENCRYPTED FILE-----
+      recipient: age16rly7ap0jy4cmtkl0ylxly88jegwavlj3kdxh4ua8tfaduaw5p7qc4nafy
+  encrypted_regex: ^(data|stringData)$
+  lastmodified: "2026-09-25T11:37:00Z"
+  mac: ENC[AES256_GCM,data:DOum/jGQOq5DXIqghJNPiCtbnHt8BO9yYtZW3o7SmPfvW8wdO6NqTjhVLMn8GJEerD9zxveRD+Xt9V1/nPfRuKph+9Eu/WM282PpS3aRMBFiORhixBbrskihftCE0mP2aWaRqic+1/6a+7HEexgXIXYXsD41V72ioQXTjncJTdQ=,iv:jmnYhzHwAe1ZZm46hjwCq4kYzyraEcD4CQXaIgwPtgU=,tag:ObBcsGosw4fX8eLmEizkjQ==,type:str]
+  mac_only_encrypted: true
+  version: 3.13.3

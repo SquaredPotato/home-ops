@@ -17,6 +17,7 @@ nodes:
     secureboot: false
     schematicId: "@schematic.yaml.tpl"
     data:
+      kernelModules: []
       installDiskSelector: 'disk.dev_path == "/dev/nvme0n1"'
       macAddr: "e4:5f:01:e5:ed:8c"
       mtu: 1500

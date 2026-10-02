@@ -37,7 +37,6 @@ spec:
       node-down-pod-deletion-policy: "delete-both-statefulset-and-deployment-pod"
       node-drain-policy: "block-for-eviction-if-contains-last-replica"
       orphanResourceAutoDeletion: "replica-data;instance"
-      backupTarget: "s3://longhorn.mizuto.backup@eu-central-1/"
     metrics:
       serviceMonitor:
         enabled: true

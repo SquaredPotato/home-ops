@@ -183,7 +183,7 @@ spec:
                 matchLabels:
                   app.kubernetes.io/controller: machine-learning
           securityContext:
-            runAsNonRoot: true
+            runAsNonRoot: false
             runAsUser: 101000
             runAsGroup: 101000
             fsGroup: 101000

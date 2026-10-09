@@ -76,6 +76,7 @@ spec:
               REVERSE_GEOCODING_DUMP_DIRECTORY: /geodata-cache
               IMMICH_PORT: &server-port 2283
               IMMICH_WORKERS_INCLUDE: 'api'
+              MACHINE_LEARNING_MODEL_REVISION: 'v2'
             probes:
               liveness: &server-probes
                 enabled: true
@@ -159,6 +160,7 @@ spec:
               REVERSE_GEOCODING_DUMP_DIRECTORY: /geodata-cache
               IMMICH_PORT: &server-port 2283
               IMMICH_WORKERS_EXCLUDE: 'api'
+              MACHINE_LEARNING_MODEL_REVISION: 'v2'
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
@@ -202,6 +204,7 @@ spec:
             env:
               TRANSFORMERS_CACHE: /cache
               IMMICH_PORT: &maching-learning-port 3003
+              MACHINE_LEARNING_MODEL_REVISION: 'v2'
             probes:
               startup:
                 enabled: true

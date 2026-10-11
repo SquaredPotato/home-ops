@@ -32,6 +32,7 @@ spec:
       dataEngineCPUIsolationEnabled: true
       defaultDataPath: /dev/disk/by-partlabel/r-longhorn-data
       allowRecurringJobWhileVolumeDetached: true
+      rwxVolumeFastFailover: true
       snapshotDataIntegrity: "enabled"
       restoreVolumeRecurringJobs: true
       nodeDownPodDeletionPolicy: "delete-both-statefulset-and-deployment-pod"

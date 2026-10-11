@@ -34,8 +34,8 @@ spec:
       allowRecurringJobWhileVolumeDetached: true
       snapshotDataIntegrity: "enabled"
       restoreVolumeRecurringJobs: true
-      node-down-pod-deletion-policy: "delete-both-statefulset-and-deployment-pod"
-      node-drain-policy: "block-for-eviction-if-contains-last-replica"
+      nodeDownPodDeletionPolicy: "delete-both-statefulset-and-deployment-pod"
+      nodeDrainPolicy: "block-for-eviction-if-contains-last-replica"
       orphanResourceAutoDeletion: "replica-data;instance"
     metrics:
       serviceMonitor:

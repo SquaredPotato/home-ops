@@ -28,7 +28,7 @@ spec:
       dataEngine: v2
       v1DataEngine: false
       v2DataEngine: true
-      data-engine-cpu-mask: '{"v2":"0x3"}'
+      dataEngineInterruptModeEnabled: true
       dataEngineCPUIsolationEnabled: true
       defaultDataPath: /dev/disk/by-partlabel/r-longhorn-data
       allowRecurringJobWhileVolumeDetached: true

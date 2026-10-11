@@ -222,7 +222,6 @@ spec:
                 memory: 1Gi
               limits:
                 gpu.intel.com/i915: 1
-                cpu: 3000m
                 memory: 6Gi
     service:
       server:

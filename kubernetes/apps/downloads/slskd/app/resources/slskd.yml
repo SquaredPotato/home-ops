@@ -12,6 +12,8 @@ metrics:
   authentication:
     disabled: true
 remote_configuration: false
+logger:
+  no_disk: true
 shares:
   directories:
     - /mnt/general/soulseek/shared/Music

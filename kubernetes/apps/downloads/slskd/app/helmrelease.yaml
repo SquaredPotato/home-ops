@@ -25,7 +25,7 @@ spec:
           app:
             image:
               repository: ghcr.io/slskd/slskd
-              tag: 0.26.0@sha256:ce9340e324d9389472609d4f303a0b72fce26ee4731ca111d4f2c1314d8775a3
+              tag: 0.26.0@sha256:ecd4026d4f8fb504e2cc55323efa2c1f5b56d20d3686b018249cc36b48ea17a6
             env:
               DOTNET_BUNDLE_EXTRACT_BASE_DIR: /tmp/.net
               TZ: Europe/Amsterdam

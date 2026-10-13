@@ -14,7 +14,7 @@ metrics:
 remote_configuration: false
 shares:
   directories:
-    - /mnt/general/soulseek/shared
+    - /mnt/general/soulseek/shared/Music
   filters:
     - \.ini$
     - Thumbs.db$

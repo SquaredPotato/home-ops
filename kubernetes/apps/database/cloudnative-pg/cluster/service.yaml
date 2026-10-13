@@ -5,7 +5,7 @@ metadata:
   name: production-lb
   namespace: database
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: production.abchost.nl
+    external-dns.kubernetes.io/hostname: production.abchost.nl
     lbipam.cilium.io/ips: ${CLUSTER_CLOUDNATIVE_PG_17_IP}
 spec:
   type: LoadBalancer

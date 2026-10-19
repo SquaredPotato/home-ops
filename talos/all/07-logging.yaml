@@ -1,0 +1,11 @@
+---
+apiVersion: v1alpha1
+kind: KmsgLogConfig
+name: remote-log
+url: udp://10.0.2.128:5170
+---
+machine:
+  logging:
+    destinations:
+      - endpoint: udp://10.0.2.128:5171
+        format: json_lines

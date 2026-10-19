@@ -4,6 +4,6 @@ kind: RawVolumeConfig
 name: longhorn-data
 provisioning:
   diskSelector:
-    match: disk.transport == 'nvme'
+    match: {{ .Node.Data.longhornDiskSelector }}
   minSize: 300GiB
   maxSize: 600GiB

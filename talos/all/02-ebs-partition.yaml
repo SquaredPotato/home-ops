@@ -1,0 +1,14 @@
+---
+apiVersion: v1alpha1
+kind: UserVolumeConfig
+name: openebs-data
+volumeType: partition
+provisioning:
+  diskSelector:
+    match: "disk.transport == 'nvme'"
+  grow: true
+  minSize: 10GiB
+  maxSize: 100GiB
+filesystem:
+  type: xfs
+

@@ -8,12 +8,4 @@ config:
   serializeImagePulls: false
   shutdownGracePeriod: 90s
   shutdownGracePeriodCriticalPods: 60s
-  serverTLSBootstrap: true
----
-apiVersion: v1alpha1
-kind: KubeNodeConfig
-nodeIP:
-  validSubnets:
-    - 10.0.2.0/23
-labels:
-  node.kubernetes.io/exclude-from-external-load-balancers: ""
+  serverTLSBootstrap: false

@@ -8,6 +8,7 @@ config:
   serializeImagePulls: false
   shutdownGracePeriod: 90s
   shutdownGracePeriodCriticalPods: 60s
+  serverTLSBootstrap: true
 ---
 apiVersion: v1alpha1
 kind: KubeNodeConfig

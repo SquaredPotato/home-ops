@@ -50,6 +50,7 @@ nodes:
     host: "mizu-20"
     ip: "10.0.2.20"
     role: worker
+    schematicId: "@schematic.yaml.tpl"
     data:
       kernelModules: ["vfio_pci", "uio_pci_generic", "nvme_tcp", "ublk_drv"]
       installDiskSelector: 'disk.dev_path == "/dev/sda"'

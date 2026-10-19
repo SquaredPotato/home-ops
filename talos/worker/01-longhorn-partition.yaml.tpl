@@ -1,7 +1,7 @@
 ---
 apiVersion: v1alpha1
 kind: RawVolumeConfig
-name: longhorn-system-data
+name: longhorn-data
 provisioning:
   diskSelector:
     match: {{ .Node.Data.longhornDiskSelector }}

@@ -1,0 +1,133 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: "E2E"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
+  cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+  validator-tests:
+    if: ${{ github.repository == 'onedr0p/cluster-template' }}
+    name: validator-tests
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup mise
+        uses: jdx/mise-action@6be3c7ed4c21d4f76b208d351d95aac273ebb76d # v5.2.4
+        with:
+          install_args: uv
+
+      - name: Run validator tests
+        run: uv run --quiet --locked pytest ./template/scripts/test_validate.py
+
+  validate-valid:
+    if: ${{ github.repository == 'onedr0p/cluster-template' }}
+    name: accept-valid (${{ matrix.fixture }})
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        fixture:
+          - public
+          - private
+          - selfhosted
+          - no-webhook
+          - internal
+          - direct
+          - single-node
+          - multi-controller
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup mise
+        uses: jdx/mise-action@6be3c7ed4c21d4f76b208d351d95aac273ebb76d # v5.2.4
+        with:
+          experimental: true
+
+      - name: Run init task
+        run: mise run init
+
+      - name: Prepare files
+        env:
+          FIXTURE: ${{ matrix.fixture }}
+        run: |
+          cp "./.github/template-tests/valid/$FIXTURE.toml" cluster.toml
+          echo '{"AccountTag":"fake","TunnelSecret":"fake","TunnelID":"fake"}' > cloudflare-tunnel.json
+          touch kubeconfig
+
+      - name: Assert cluster.toml passes the JSON Schema
+        run: taplo check --schema "file://$PWD/cluster.schema.json" ./cluster.toml
+
+      - name: Run configure task
+        run: mise run configure
+
+      # tasks validate only sees the current project and the root, so it runs
+      # once per monorepo project.
+      - name: Validate mise tasks
+        run: |
+          for project in bootstrap kubernetes talos template; do
+            (cd "$project" && mise tasks validate)
+          done
+
+      # Rendered output must already match the format-yaml pre-commit hook,
+      # otherwise every `mise run configure` shows up as formatting churn.
+      - name: Assert rendered output is formatted
+        run: oxfmt --check ./.sops.yaml ./bootstrap ./kubernetes ./talos
+
+      - name: Install flate
+        uses: home-operations/flate/action@631b76b69c4e58c6f4d1cb01e23616fa61aebafa # v0.6.5
+        with:
+          base: ""
+
+      - name: Run flate test
+        run: flate test all -p ./kubernetes/apps
+
+      - name: Render bootstrap helmfile charts
+        run: mise run //template:test-helmfile
+
+      - name: Dry run bootstrap talos task
+        run: mise run --dry-run //bootstrap:talos
+
+      - name: Create talos secret
+        run: mise run //bootstrap:talos-secret
+
+      - name: Render talos configs
+        run: mise run //talos:render
+
+      - name: Validate talos configs
+        run: |
+          for config in ./talos/rendered/*.yaml; do
+            talosctl validate --config "$config" --mode metal
+          done
+
+      - name: Dry run bootstrap apps task
+        run: mise run --dry-run //bootstrap:apps
+
+      - name: Run reset task
+        run: mise --yes run //template:reset
+
+      - name: Run tidy task
+        run: mise --yes run //template:tidy

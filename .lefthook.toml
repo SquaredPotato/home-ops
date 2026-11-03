@@ -1,0 +1,41 @@
+[pre-commit]
+parallel = true
+skip = ["merge", "rebase"]
+
+# mise fmt rewrites the config in place on every run, and a mise lock that
+# reads it mid-rewrite prunes every tool from the lockfile, so the two run
+# piped while the rest of pre-commit stays parallel.
+[[pre-commit.jobs]]
+name = "mise"
+glob = [".mise/config.toml", ".mise/conf.d/*.toml"]
+
+[pre-commit.jobs.group]
+piped = true
+
+[[pre-commit.jobs.group.jobs]]
+name = "format-mise"
+run = "mise fmt"
+stage_fixed = true
+
+[[pre-commit.jobs.group.jobs]]
+name = "lock-mise"
+run = 'mise lock && git add -A -- .mise ":(exclude).mise/*.toml"'
+
+[pre-commit.commands.format-oxfmt]
+glob = ["*.json", "*.json5", "*.jsonc", "*.md", "*.markdown", "*.mdx", "*.yaml", "*.yml"]
+# mise lock sidecars are digest-pinned in mise.lock; reformatting them makes
+# `mise install --locked` fail with a digest mismatch.
+exclude = [".mise/locks/**"]
+# oxfmt exits non-zero when every path it was given is on its own ignore list
+# (e.g. a commit touching only .vscode/settings.json); told not to, it formats
+# nothing and exits zero.
+run = "oxfmt --no-error-on-unmatched-pattern {staged_files}"
+stage_fixed = true
+
+[pre-commit.commands.shellcheck]
+glob = ["*.sh"]
+run = "shellcheck {staged_files}"
+
+[pre-commit.commands.zizmor]
+glob = [".github/workflows/*.yaml", ".github/actions/**/action.yaml"]
+run = "zizmor --offline {staged_files}"

@@ -277,6 +277,17 @@ spec:
           microservices:
             app:
               - path: /usr/src/app/upload/thumbs
+      thumbs:
+        type: nfs
+        server: "${LAN_TRUENAS_IP}"
+        path: /mnt/fast/storage/immich/thumbs
+        advancedMounts:
+          server:
+            app:
+              - path: /usr/src/app/upload/new_thumbs
+          microservices:
+            app:
+              - path: /usr/src/app/upload/new_thumbs
       encoded-video:
         type: nfs
         server: "${LAN_TRUENAS_IP}"

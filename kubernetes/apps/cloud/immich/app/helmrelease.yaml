@@ -269,25 +269,16 @@ spec:
             app:
               - path: /usr/src/app/upload/library
       thumbnail:
-        existingClaim: immich-thumbs
-        advancedMounts:
-          server:
-            app:
-              - path: /usr/src/app/upload/thumbs
-          microservices:
-            app:
-              - path: /usr/src/app/upload/thumbs
-      thumbs:
         type: nfs
         server: "${LAN_TRUENAS_IP}"
         path: /mnt/fast/storage/immich/thumbs
         advancedMounts:
           server:
             app:
-              - path: /usr/src/app/upload/new_thumbs
+              - path: /usr/src/app/upload/thumbs
           microservices:
             app:
-              - path: /usr/src/app/upload/new_thumbs
+              - path: /usr/src/app/upload/thumbs
       encoded-video:
         type: nfs
         server: "${LAN_TRUENAS_IP}"

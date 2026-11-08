@@ -8,7 +8,7 @@ LEFTHOOK_OUTPUT = "false"
 [tools]
 "python" = "3.15.2"
 "pipx" = "1.18.16"
-"pipx:makejinja" = "2.9.1"
+"pipx:makejinja" = "2.9.2"
 "aqua:cilium/cilium-cli" = "0.20.2"
 "aqua:cli/cli" = "2.103.3"
 "aqua:cloudflare/cloudflared" = "2026.10.7"

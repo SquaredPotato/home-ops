@@ -7,4 +7,8 @@ ingress:
     service: &svc https://external.network.svc.cluster.local
   - hostname: "*.${SECRET_DOMAIN}"
     service: *svc
+  - hostname: "riva-va.nl"
+    service: *svc
+  - hostname: "*.riva-va.nl"
+    service: *svc
   - service: http_status:404

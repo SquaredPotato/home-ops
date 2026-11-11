@@ -12,7 +12,7 @@ spec:
     - "riva-va.nl"
     - "www.riva-va.nl"
   parentRefs:
-    - name: external-direct
+    - name: external
       namespace: network
       sectionName: https
   rules:

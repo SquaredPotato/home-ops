@@ -41,6 +41,7 @@ spec:
     txtOwnerId: default
     domainFilters:
       - "${SECRET_DOMAIN}"
+      - "riva-va.nl"
     serviceMonitor:
       enabled: true
     podAnnotations:

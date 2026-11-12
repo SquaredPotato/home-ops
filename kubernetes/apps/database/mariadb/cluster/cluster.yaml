@@ -65,7 +65,7 @@ spec:
     targetRecoveryTime: 2026-11-08T03:00:00Z
     stagingStorage:
       persistentVolumeClaim:
-        storageClassName: longhorn-static
+        storageClassName: longhorn-v2
         resources:
           requests:
             storage: 8Gi

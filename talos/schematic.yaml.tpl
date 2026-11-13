@@ -3,6 +3,20 @@
 overlay:
   image: siderolabs/sbc-raspberrypi
   name: rpi_generic
+  options:
+    configTxt: |
+      kernel=u-boot.bin
+      arm_64bit=1
+      arm_boost=1
+      initial_turbo=30
+      over_voltage=7
+      arm_freq_min=100
+      arm_freq=1800
+      enable_uart=1
+      dtoverlay=disable-bt
+      dtoverlay=disable-wifi
+      avoid_warnings=2
+      dtoverlay=noaudio
 {{ end }}
 customization:
   extraKernelArgs:

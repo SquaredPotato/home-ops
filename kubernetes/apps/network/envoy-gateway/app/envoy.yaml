@@ -60,7 +60,7 @@ spec:
   infrastructure:
     annotations:
       external-dns.kubernetes.io/hostname: *hostname
-      lbipam.cilium.io/ips: 10.0.2.102
+      lbipam.cilium.io/ips: 10.0.4.102
   listeners:
     - name: http
       protocol: HTTP
@@ -103,7 +103,7 @@ spec:
   infrastructure:
     annotations:
       external-dns.kubernetes.io/hostname: *hostname
-      lbipam.cilium.io/ips: 10.0.2.103
+      lbipam.cilium.io/ips: 10.0.4.103
   listeners:
     - name: http
       protocol: HTTP
@@ -140,7 +140,7 @@ metadata:
       group: internal
       conditions: ["[STATUS] == 200"]
       client:
-        dns-resolver: tcp://10.0.2.121:53
+        dns-resolver: tcp://10.0.4.121:53
       ui:
         hide-hostname: true
         hide-url: true
@@ -149,7 +149,7 @@ spec:
   infrastructure:
     annotations:
       external-dns.kubernetes.io/hostname: *hostname
-      lbipam.cilium.io/ips: 10.0.2.101
+      lbipam.cilium.io/ips: 10.0.4.101
   listeners:
     - name: http
       protocol: HTTP

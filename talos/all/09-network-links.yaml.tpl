@@ -19,6 +19,17 @@ addresses:
   - address: "{{ .Node.IP }}/23"
 routes:
   - gateway: "10.0.2.1"
+---
+apiVersion: v1alpha1
+kind: VLANConfig
+name: ethSel0.4
+vlanID: 4
+parent: ethSel0
+addresses:
+  - address: "{{ .Node.Data.vlanIP }}/23"
+routes:
+  - destination: 10.0.4.0/23
+    gateway: 10.0.4.1
 {{ if eq .Node.Role "control-plane" }}
 ---
 apiVersion: v1alpha1

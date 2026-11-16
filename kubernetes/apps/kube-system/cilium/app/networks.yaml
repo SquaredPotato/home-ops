@@ -7,7 +7,7 @@ metadata:
 spec:
   allowFirstLastIPs: "No"
   blocks:
-    - cidr: "10.0.2.0/23"
+    - cidr: "10.0.4.0/23"
 ---
 # yaml-language-server: $schema=https://datreeio.github.io/CRDs-catalog/cilium.io/ciliumbgpadvertisement_v2.json
 apiVersion: cilium.io/v2
@@ -54,7 +54,7 @@ spec:
       peers:
         - name: unifi
           peerASN: 64513
-          peerAddress: 10.0.2.1
+          peerAddress: 10.0.4.1
           peerConfigRef:
             name: l3-bgp-peer-config
 ---
@@ -64,7 +64,7 @@ metadata:
   name: kube-api
   annotations:
     external-dns.kubernetes.io/hostname: k8s.${SECRET_DOMAIN}
-    lbipam.cilium.io/ips: 10.0.2.100
+    lbipam.cilium.io/ips: 10.0.4.100
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local

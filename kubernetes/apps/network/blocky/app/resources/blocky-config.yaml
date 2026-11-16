@@ -30,9 +30,8 @@ customDNS:
   customTTL: 1h
   filterUnmappedTypes: true
   mapping:
-    idrac.lan: "192.168.2.126"
-    marax.lan: "192.168.2.205"
-    printer.lan: "${LAN_PRINTER_IP}"
+    idrac.lan: "10.0.2.6"
+    marax.lan: "10.0.2.5"
     truenas.abchost.nl: "${LAN_TRUENAS_IP}"
 
 prometheus:

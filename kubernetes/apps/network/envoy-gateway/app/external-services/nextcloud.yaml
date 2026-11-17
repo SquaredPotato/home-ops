@@ -43,7 +43,16 @@ spec:
       namespace: *namespace
       sectionName: https
   rules:
-    - backendRefs:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      filters:
+        - type: ResponseHeaderModifier
+          responseHeaderModifier:
+            remove:
+              - "Upgrade"
+      backendRefs:
         - name: *name
           weight: 1
           port: 80

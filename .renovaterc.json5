@@ -66,6 +66,13 @@
       group: {
         commitMessageTopic: '{{{groupName}}} group',
       },
+      automerge: true,
+      automergeType: 'branch',
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+        'digest',
+      ]
     },
     {
       description: 'CoreDNS Group',
@@ -79,6 +86,13 @@
       group: {
         commitMessageTopic: '{{{groupName}}} group',
       },
+      automerge: true,
+      automergeType: 'branch',
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+        'digest',
+      ]
     },
     {
       description: 'Flux Operator Group',
@@ -93,6 +107,13 @@
       group: {
         commitMessageTopic: '{{{groupName}}} group',
       },
+      automerge: true,
+      automergeType: 'branch',
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+        'digest',
+      ]
     },
     {
       description: 'Spegel Group',
@@ -106,6 +127,13 @@
       group: {
         commitMessageTopic: '{{{groupName}}} group',
       },
+      automerge: true,
+      automergeType: 'branch',
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+        'digest',
+      ]
     },
     {
       description: 'Immich Group',
@@ -120,6 +148,13 @@
       matchPackageNames: [
         '/immich/',
       ],
+      automerge: true,
+      automergeType: 'branch',
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+        'digest',
+      ]
     },
     {
       description: 'Redis Sentinal Group',
@@ -136,6 +171,13 @@
         commitMessageTopic: '{{{groupName}}} group',
       },
       minimumGroupSize: 3,
+      automerge: true,
+      automergeType: 'branch',
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+        'digest',
+      ]
     },
     {
       description: 'Auto-merge GitHub Actions',

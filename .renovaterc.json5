@@ -194,6 +194,20 @@
       ignoreTests: true,
     },
     {
+      description: 'Auto-merge home-operations packages',
+      matchPackageNames: [
+        '/home-operations/',
+      ],
+      automerge: true,
+      automergeType: 'branch',
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+        'digest',
+      ],
+      ignoreTests: false,
+    },
+    {
       description: 'Auto-merge Mise Tools',
       matchManagers: [
         'mise',
